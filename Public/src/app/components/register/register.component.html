@@ -20,7 +20,7 @@
             
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="username" [(ngModel)]="userValue" class="input-field" />
+                    <input pInputText id="email" [(ngModel)]="emailValue" class="input-field" />
                     <label for="Felhasználónév">E-mail cím</label>
                 </p-floatLabel>
             </div>
@@ -41,21 +41,22 @@
 
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <p-password id="password" [(ngModel)]="passValue" [toggleMask]="true" class="input-field"></p-password>
+                    <p-password id="passConfirmValue" [(ngModel)]="passConfirmValue" [toggleMask]="true" class="input-field"></p-password>
                     <label for="Jelszó">Jelszó megerősítése</label>
                 </p-floatLabel>
             </div>
-            
-            <div class="input-wrapper">
-                <p-floatLabel>
-                    <input pInputText id="username" [(ngModel)]="userValue" class="input-field" />
-                    <label for="Felhasználónév">Születési dátum</label>
-                </p-floatLabel>
-            </div>
+
             
 
         </div>
         <div class="jobb-div">
+            <h3>Add meg a születési dátumot!</h3>
+            <div class="input-wrapper">
+                <p-floatLabel>
+                    <input pInputText id="birth" [(ngModel)]="birthValue" class="input-field" />
+                    <label for="Születési dátum">2025.01.01</label>
+                </p-floatLabel>
+            </div>
 
             <h3>Válaszd ki a kategóriákat amik érdekelnek!</h3>
             <div class="card flex justify-content-center">
@@ -63,9 +64,15 @@
                     [options]="cities" 
                     [(ngModel)]="selectedCities" 
                     optionLabel="name" 
-                    placeholder="Select Cities" />
+                    placeholder="Select Cities"
+                    />
             </div>
+
         </div>
+    </div>
+    <div class="div-footer">
+        <a href="#"><p>Cégként regisztrálok...</p></a>
+        <button class="userReg-btn">Regisztráció</button>
     </div>
 </div>
 

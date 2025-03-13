@@ -5,8 +5,8 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';  
-import { StepperModule } from 'primeng/stepper';
 import {  MultiSelectModule } from 'primeng/multiselect';
+import { CalendarModule } from 'primeng/calendar';
 
 
 interface City {
@@ -17,7 +17,7 @@ interface City {
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [InputTextModule, FormsModule, FloatLabelModule, PasswordModule, ButtonModule , RadioButtonModule, StepperModule,  MultiSelectModule],
+  imports: [InputTextModule, FormsModule, FloatLabelModule, PasswordModule, ButtonModule , RadioButtonModule,  MultiSelectModule, CalendarModule ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
@@ -27,8 +27,7 @@ export class RegisterComponent {
   passValue!: string;
   emailValue!: string;
   passConfirmValue!: string;
-  userTypeValue!: boolean;
-  passConfValue!: string;
+  birthValue: Date | undefined;
 
   cities!: City[];
 
