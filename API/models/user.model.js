@@ -32,6 +32,10 @@ const User = db.define('User', {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    image: {
+        type: DataTypes.STRING(100),
+        allowNull: true
+    },
     role: {
         type: DataTypes.STRING(10),
         allowNull: true
