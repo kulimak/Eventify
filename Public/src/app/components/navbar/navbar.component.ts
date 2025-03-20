@@ -54,7 +54,7 @@ export class NavbarComponent  implements OnInit{
           },
           
           {
-            label: 'Regisztráció',icon: 'pi pi-user-plus',routerLink: '/'
+            label: 'Regisztráció',icon: 'pi pi-user-plus',routerLink: '/register'
           },
 
           {

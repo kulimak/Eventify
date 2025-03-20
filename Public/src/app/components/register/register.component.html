@@ -1,0 +1,104 @@
+<div class="svg-bg">
+    <svg width="832" height="1080" viewBox="0 0 832 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_59_14)">
+      <path class="kisvonal" d="M676.447 -48.1274L570.114 16.7694C465.246 81.7534 250.38 211.416 273.754 355.258C297.128 499.101 551.411 656.686 574.784 800.528C598.158 944.37 383.292 1074.03 278.425 1139.02L172.091 1203.91L-179.771 1182.97L-171.299 1112.25C-162.827 1041.53 -145.883 900.087 -128.939 758.644C-111.995 617.201 -95.0517 475.759 -78.1079 334.316C-61.1641 192.874 -44.2203 51.4309 -35.7484 -19.2904L-27.2766 -90.0117L676.447 -48.1274Z" fill="#032021"/>
+      <path d="M481.244 -103.996L408.134 -35.2548C336.12 33.4864 188.257 170.969 218.398 308.429C248.539 445.89 451.207 583.328 481.348 720.788C511.489 858.249 363.627 995.731 291.613 1064.47L218.503 1133.21L-44.3946 1133.25L-44.4033 1064.52C-44.412 995.783 -44.4294 858.319 -44.4469 720.855C-44.4643 583.391 -44.4818 445.927 -44.4992 308.463C-44.5166 170.999 -44.5341 33.5347 -44.5428 -35.1973L-44.5515 -103.929L481.244 -103.996Z" fill="#035559"/>
+      </g>
+      <defs>
+      <clipPath id="clip0_59_14">
+      <rect width="1237.18" height="876.325" fill="white" transform="translate(831.773 -104.041) rotate(89.9927)"/>
+      </clipPath>
+      </defs>
+    </svg>
+      
+  </div>
+
+<div class="register-container">
+    <h1>Regisztráció</h1>
+    <div class="content">
+        <div class="bal-div">
+            
+            <div class="input-wrapper">
+                <p-floatLabel>
+                    <input pInputText id="email" [(ngModel)]="emailValue" class="input-field" />
+                    <label for="Felhasználónév">E-mail cím <span class="kotelezo">*</span></label>
+                </p-floatLabel>
+            </div>
+
+            <div class="input-wrapper">
+                <p-floatLabel>
+                    <input pInputText id="username" [(ngModel)]="userValue" class="input-field" />
+                    <label for="Felhasználónév">Felhasználónév <span class="kotelezo">*</span></label>
+                </p-floatLabel>
+            </div>
+    
+            <div class="input-wrapper">
+                <p-floatLabel>
+                    <p-password id="password" [(ngModel)]="passValue" [toggleMask]="true" class="input-field"></p-password>
+                    <label for="Jelszó">Jelszó <span class="kotelezo">*</span></label>
+                </p-floatLabel>
+            </div>
+
+            <div class="input-wrapper">
+                <p-floatLabel>
+                    <p-password id="passConfirmValue" [(ngModel)]="passConfirmValue" [toggleMask]="true" class="input-field"></p-password>
+                    
+                    <label for="Jelszó">Jelszó megerősítése <span class="kotelezo">*</span></label>
+                </p-floatLabel>
+            </div>
+
+            
+
+        </div>
+        <div class="jobb-div">
+            <h3>Add meg a születési dátumot!</h3>
+            <div class="input-wrapper">
+                <p-floatLabel>
+                    <input pInputText id="birth" [(ngModel)]="birthValue" class="input-field" />
+                    <label for="Születési dátum">2025.01.01 <span class="kotelezo">*</span></label>
+                </p-floatLabel>
+            </div>
+
+            <h3>Válaszd ki a kategóriákat amik érdekelnek!</h3>
+            <div class="card flex justify-content-center">
+                <p-multiSelect 
+                    [options]="cities" 
+                    [(ngModel)]="selectedCities" 
+                    optionLabel="name" 
+                    placeholder="Válassz kategóriát"
+                    />
+            </div>
+
+        </div>
+    </div>
+    <div class="div-footer">
+        <a href="#"><p>Cégként regisztrálok...</p></a>
+        <button class="userReg-btn">Regisztráció</button>
+    </div>
+</div>
+
+<!--
+        <div class="register-box">
+        <h1>Bejelentkezés</h1>
+
+        <div class="input-wrapper">
+            <p-floatLabel>
+                <input pInputText id="username" [(ngModel)]="userValue" class="input-field" />
+                <label for="Felhasználónév">Felhasználónév</label>
+            </p-floatLabel>
+        </div>
+
+        <div class="input-wrapper">
+            <p-floatLabel>
+                <p-password id="password" [(ngModel)]="passValue" [toggleMask]="true" class="input-field"></p-password>
+                <label for="Jelszó">Jelszó</label>
+            </p-floatLabel>
+        </div>
+
+        
+
+        <button class="register-btn">Bejelentkezés</button>
+    </div>
+
+    
+-->
