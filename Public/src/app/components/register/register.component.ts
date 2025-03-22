@@ -100,7 +100,6 @@ export class RegisterComponent {
               this.messages=[{severity:'danger', detail:'Hiba a regisztráció során!'}];
               this.showMessage=true
             }
-            this.auth.SaveToken(res.user.token)
           })
         }
       }
