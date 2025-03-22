@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const { generateToken } = require('../utils/token');
 const { configDotenv } = require('dotenv');
 
-exports.registerUser = async (username, email, password, gender, defAddress, favCategories, role, status)=>{
+exports.registerUser = async (username, email, password, gender, defAddress, favCategories, birthDate, role, status)=>{
     const hashedPassword = await bcrypt.hash(password, 10);
     
     const user = await User.create({
@@ -13,6 +13,7 @@ exports.registerUser = async (username, email, password, gender, defAddress, fav
         gender,
         defAddress,
         favCategories,
+        birthDate,
         role,
         status,
     });

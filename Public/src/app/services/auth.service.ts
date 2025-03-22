@@ -19,7 +19,7 @@ export class AuthService {
     return !!localStorage.getItem(this.tokenName);
   }
 
-  login(token:string){
+  SaveToken(token:string){
     localStorage.setItem(environment.tokenName, token);
     this.isLoggedIn.next(true);
   }

@@ -9,11 +9,13 @@ Content-Type: application/json
 
 {
     "username": "teszt1",
-    "email": "teszt@gmail.com",
+    "email": "teszt1@gmail.com",
     "password": "Teszt123",
     "gender": "férfi",
     "defAddress": "1000, Teszt, teszt1",
     "favCategories": "",
+    "birthDate":"2000-01-01",
+    "image":"",
     "role": "user",
     "status": "active"
 }
@@ -26,7 +28,7 @@ Content-Type: application/json
 
 {
     "email": "teszt@gmail.com",
-    "password": "Teszt321"
+    "password": "Teszt123"
 }
 
 ### update password
