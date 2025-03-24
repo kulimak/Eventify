@@ -15,25 +15,28 @@
 
 <div class="register-container">
     <h1>Regisztráció</h1>
-    <p-messages 
-        [(value)]="messages" 
-        [enableService]="showMessage" 
-        [closable]="true"
+
+    <p-toast position="bottom-center" key="bc"    
+        [showTransformOptions]="'translateX(100%)'" 
+        [showTransitionOptions]="'500ms'" 
+        [hideTransitionOptions]="'750ms'" 
+        [showTransformOptions]="'translateY(100%)'"
     />
+
     <div class="content">
         <div class="bal-div">
             
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="email" [(ngModel)]="userReg.email" class="input-field" />
-                    <label for="Felhasználónév">E-mail cím <span class="kotelezo">*</span></label>
+                    <input pInputText id="username" [(ngModel)]="userReg.username" class="input-field" />
+                    <label for="Felhasználónév">Felhasználónév <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
 
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="username" [(ngModel)]="userReg.username" class="input-field" />
-                    <label for="Felhasználónév">Felhasználónév <span class="kotelezo">*</span></label>
+                    <input pInputText id="email" [(ngModel)]="userReg.email" class="input-field" />
+                    <label for="Felhasználónév">E-mail cím <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
     
