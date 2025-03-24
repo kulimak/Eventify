@@ -12,32 +12,34 @@
     </svg>
       
   </div>
-
+ 
 <div class="login-container">
     <div class="login-box">
+        <!--A HIBAÜZENET MÉG HIBÁSAN JELENIK MEG-->  
+            <p-messages
+                class="loginMSG"
+                [(value)]="messages" 
+                [enableService]="showMessage" 
+                [closable]="true"
+            />
         <h1>Bejelentkezés</h1>
 
         <div class="input-wrapper">
             <p-floatLabel>
-                <input pInputText id="username" [(ngModel)]="userValue" class="input-field" />
-                <label for="Felhasználónév">Felhasználónév</label>
+                <input pInputText id="email" [(ngModel)]="userLogin.email" class="input-field" />
+                <label for="email">Email cím</label>
             </p-floatLabel>
         </div>
 
         <div class="input-wrapper">
             <p-floatLabel>
-                <p-password id="password" [(ngModel)]="passValue" [toggleMask]="true" class="input-field"></p-password>
-                <label for="Jelszó">Jelszó</label>
+                <p-password id="password" [(ngModel)]="userLogin.password" [toggleMask]="true" class="input-field"></p-password>
+                <label for="password">Jelszó</label>
             </p-floatLabel>
            <a href="#">Elfelejtettem a jelszavamat...</a>
         </div>
         
-
-        
-
-        <button class="sign-in-btn">Bejelentkezés</button>
+        <button class="sign-in-btn" (click)="login()">Bejelentkezés</button>
     </div>
 
-    
 </div>
-

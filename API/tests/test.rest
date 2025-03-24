@@ -28,7 +28,7 @@ Content-Type: application/json
 
 {
     "email": "teszt@gmail.com",
-    "password": "Teszt123"
+    "password": "teszt"
 }
 
 ### update password

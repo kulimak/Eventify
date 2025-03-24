@@ -24,11 +24,6 @@ export const routes: Routes = [
     {
         path: 'landingpage', component: LandingpageComponent
     },
-
-    {
-        path: 'profile', component: ProfileComponent
-    },
-
     {
         path: '', component: LandingpageComponent
     },
@@ -40,6 +35,9 @@ export const routes: Routes = [
         path: 'newevent', component: NeweventComponent, canActivate: [UserAuthGuard]
     },
 
+    {
+        path: 'profile', component: ProfileComponent, canActivate: [UserAuthGuard]
+    },
     {
         path: 'stats', component: StatsComponent, canActivate: [UserAuthGuard]
     },

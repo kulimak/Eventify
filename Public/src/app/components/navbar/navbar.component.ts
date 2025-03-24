@@ -15,7 +15,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent  implements OnInit{
-  constructor(private auth:AuthService){}
+  constructor(
+    private auth: AuthService
+  ){}
   visible: boolean = false;
 
   showDialog() {
@@ -36,14 +38,18 @@ export class NavbarComponent  implements OnInit{
       ...(isLoggedIn) ? [
         ...(this.auth.isUser()) ? [
           {
-            label: 'Statisztika',icon: 'pi pi-file', routerLink: '/stats'
+            label: 'Statisztika', icon: 'pi pi-file', routerLink: '/stats'
           },
           {
-            label: 'Események',icon: 'pi pi-calendar', routerLink: '/'
+            label: 'Események', icon: 'pi pi-calendar', routerLink: '/'
           },
+          {
+            label: 'Profil',icon: 'pi pi-user', routerLink: '/profile'
+          },
+          {
+            label:'Kijelentkezés', icon: 'pi pi-sign-out', command: ()=>this.auth.logout()
+          } 
 
-         
-          
         ] : [
           
         ]
@@ -63,11 +69,7 @@ export class NavbarComponent  implements OnInit{
           
           {
             label: 'Vissza a főoldalra',icon: 'pi pi-home', routerLink: '/landingpage'
-          }, 
-          
-          {
-            label: 'Profil',icon: 'pi pi-user', routerLink: '/profile'
-          }, 
+          }
       ]
     ];
   }
