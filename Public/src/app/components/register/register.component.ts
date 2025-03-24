@@ -115,7 +115,6 @@ export class RegisterComponent {
       }
     }
 
-
     showMessage(tipus:string, cim:string, tartalom:string){
       this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });
     }

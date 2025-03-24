@@ -1,3 +1,4 @@
+const { User } = require('../models/user.model');
 const userService = require('../services/user.service');
 
 exports.register = async (req, res, next) => {
@@ -17,7 +18,7 @@ exports.login = async (req, res, next) => {
     try{
         const { email, password } = req.body;
         if (!email || !password){
-            return res.status(400).json({ message: 'Hiányzó adatok!'});
+            return res.status(400).json({message: 'Hiányzó adatok!'});
         }
         const user = await userService.loginUser(email, password);
         res.status(200).json({user, message: 'Sikeres bejelentkezés!'});
@@ -25,6 +26,7 @@ exports.login = async (req, res, next) => {
         next(error);
     }
 };
+
 exports.image = async(req, res, next)=>{
     try{
 

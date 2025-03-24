@@ -15,13 +15,12 @@
  
 <div class="login-container">
     <div class="login-box">
-        <!--A HIBAÜZENET MÉG HIBÁSAN JELENIK MEG-->  
-            <p-messages
-                class="loginMSG"
-                [(value)]="messages" 
-                [enableService]="showMessage" 
-                [closable]="true"
-            />
+        <p-toast position="bottom-center" key="bc"    
+            [showTransformOptions]="'translateX(-100%)'" 
+            [showTransitionOptions]="'500ms'" 
+            [hideTransitionOptions]="'750ms'" 
+            [showTransformOptions]="'translateY(100%)'"
+        />
         <h1>Bejelentkezés</h1>
 
         <div class="input-wrapper">

@@ -8,8 +8,8 @@ POST  {{baseUrl}}/users/register
 Content-Type: application/json
 
 {
-    "username": "teszt2",
-    "email": "teszt2@gmail.com",
+    "username": "teszt1",
+    "email": "teszt@gmail.com",
     "password": "Teszt123",
     "gender": "férfi",
     "defAddress": "1000, Teszt, teszt1",
@@ -28,7 +28,7 @@ Content-Type: application/json
 
 {
     "email": "teszt@gmail.com",
-    "password": "teszt"
+    "password": "asd123"
 }
 
 ### update password

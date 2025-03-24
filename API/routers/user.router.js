@@ -16,7 +16,7 @@ router.patch('/image/:id', authMiddleware, upload.single('file'), userController
 //update password
 router.patch('/password/:id', authMiddleware, userController.password);
 
-//update emai
+//update email
 router.patch('/email/:id', authMiddleware, userController.email);
 
 //update username
