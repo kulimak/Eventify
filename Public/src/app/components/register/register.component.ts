@@ -9,13 +9,15 @@ import {  MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { RouteConfigLoadEnd, Router } from '@angular/router';
 import { UserRegister } from '../../interfaces/user';
 import { isNgTemplate } from '@angular/compiler';
 import moment from 'moment';
 import { MessagesModule } from 'primeng/messages';
-import { Message } from 'primeng/api';
+import { Message, MessageService } from 'primeng/api';
 import { formatDate } from '@angular/common';
+import { ToastModule } from 'primeng/toast';
+import { RippleModule } from 'primeng/ripple';
 
 
 
@@ -26,9 +28,21 @@ interface Category {
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [InputTextModule, FormsModule, FloatLabelModule, PasswordModule, ButtonModule , RadioButtonModule,  MultiSelectModule, CalendarModule, MessagesModule],
+  imports: [InputTextModule,
+    FormsModule,
+    FloatLabelModule,
+    PasswordModule,
+    ButtonModule,
+    RadioButtonModule, 
+    MultiSelectModule,
+    CalendarModule,
+    MessagesModule,
+    ToastModule,
+    RippleModule 
+  ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrl: './register.component.scss',
+  providers: [MessageService]
 })
 
 export class RegisterComponent {
@@ -36,11 +50,12 @@ export class RegisterComponent {
   constructor(
     private api: ApiService,
     private auth: AuthService,
-    private router : Router
+    private router : Router,
+    private messageService: MessageService
   ){}
 
-  messages:Message[]=[];
-  showMessage:boolean=false;
+  /*messages:Message[]=[];
+  showMessage:boolean=false;*/
   
   birthDateMoment:any="";
 
@@ -73,13 +88,11 @@ export class RegisterComponent {
     }
     register(){
       if (this.userReg.email=="" || this.userReg.username=="" || this.userReg.password=="" || this.userReg.confirm=="" || this.birthDateMoment=="") {
-        this.messages=[{severity:'error', detail:'Nem adtál meg minden adatot!'}];
-        this.showMessage=true
+        this.showMessage('error','Hiba','Nem adtál meg minden adatot!');
       }
       else{
         if (this.userReg.password!=this.userReg.confirm) {
-          this.messages=[{severity:'error', detail:'A megadtott jelszavak nem egyeznek!'}];
-          this.showMessage=true
+          this.showMessage('error','Hiba','A jelszavak nem egyeznek!')
         }
         else{
           try {
@@ -92,16 +105,18 @@ export class RegisterComponent {
 
           this.api.register(`users`,this.userReg).subscribe((res:any)=>{
             if (res.success==true) {
-              this.messages=[{severity:'success', detail:'Sikeres regisztráció!'}];
-              this.showMessage=true
               this.router.navigate(['/login']);
             }
             else{
-              this.messages=[{severity:'danger', detail:'Hiba a regisztráció során!'}];
-              this.showMessage=true
+              this.showMessage('error','Hiba','Hiba a regisztráció srorán!')
             }
-          })
+          });
         }
       }
+    }
+
+
+    showMessage(tipus:string, cim:string, tartalom:string){
+      this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });
     }
 }
