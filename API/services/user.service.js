@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const { generateToken } = require('../utils/token');
 const { configDotenv } = require('dotenv');
 
-exports.registerUser = async (username, email, password, gender, defAddress, favCategories, role, status)=>{
+exports.registerUser = async (username, email, password, gender, defAddress, favCategories, birthDate, role, status)=>{
     const hashedPassword = await bcrypt.hash(password, 10);
     
     const user = await User.create({
@@ -13,6 +13,7 @@ exports.registerUser = async (username, email, password, gender, defAddress, fav
         gender,
         defAddress,
         favCategories,
+        birthDate,
         role,
         status,
     });
@@ -34,13 +35,19 @@ exports.loginUser = async (email, password) => {
     const user = await User.findOne({where: { email }});
 
     if (!user) throw new Error('Nem regisztrált felhasználó!');
-
     if (!await bcrypt.compare(password, user.password)) throw new Error('Hibás jelszó!');
-
-    const token = generateToken({ username: user.username, email: user.email, password: user.password, gender: user.gender, defAddress: user.defAddress, favCategories: user.favCategories, role: user.role, status: user.status});
+    
+    const token = generateToken({ username: user.username, email: user.email, password: user.password, gender: user.gender, defAddress: user.defAddress, favCategories: user.favCategories, birthDate: user.birthDate, role: user.role, status: user.status});
     
     return { token }; 
 };
+
+exports.userValid= async (email) => {
+    const user = await User.findOne({where: { email }});
+    if (!user) {
+        return 'Nincs ilyen felhasználó';
+    }
+}
 
 exports.updatePassword = async(id ,password) => {
     const hashedPassword = await bcrypt.hash(password, 10);
