@@ -80,33 +80,8 @@
         </div>
     </div>
     <div class="div-footer">
-        <a href="#"><p>Cégként regisztrálok...</p></a>
-        <button class="userReg-btn" (click)="register()">Regisztráció</button>
+        <a [routerLink]="'/companyReg'">Cégként regisztrálok...</a>
+        <button class="userReg-btn">Regisztráció</button>
+
     </div>
 </div>
-
-<!--
-        <div class="register-box">
-        <h1>Bejelentkezés</h1>
-
-        <div class="input-wrapper">
-            <p-floatLabel>
-                <input pInputText id="username" [(ngModel)]="userValue" class="input-field" />
-                <label for="Felhasználónév">Felhasználónév</label>
-            </p-floatLabel>
-        </div>
-
-        <div class="input-wrapper">
-            <p-floatLabel>
-                <p-password id="password" [(ngModel)]="passValue" [toggleMask]="true" class="input-field"></p-password>
-                <label for="Jelszó">Jelszó</label>
-            </p-floatLabel>
-        </div>
-
-        
-
-        <button class="register-btn">Bejelentkezés</button>
-    </div>
-
-    
--->

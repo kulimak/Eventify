@@ -8,6 +8,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserAuthGuard } from './guards/user-auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MyeventsComponent } from './components/myevents/myevents.component';
+import { CompanyRegComponent } from './components/company-reg/company-reg.component';
+
 
 export const routes: Routes = [
 
@@ -27,6 +29,9 @@ export const routes: Routes = [
     },
     {
         path: '', component: LandingpageComponent
+    },
+    {
+        path: 'companyReg', component: CompanyRegComponent
     },
     
     /**

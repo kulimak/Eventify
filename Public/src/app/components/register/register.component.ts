@@ -5,7 +5,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';  
-import {  MultiSelectModule } from 'primeng/multiselect';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
@@ -18,6 +18,7 @@ import { Message, MessageService } from 'primeng/api';
 import { formatDate } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -28,6 +29,7 @@ interface Category {
 @Component({
   selector: 'app-register',
   standalone: true,
+
   imports: [InputTextModule,
     FormsModule,
     FloatLabelModule,
@@ -38,7 +40,8 @@ interface Category {
     CalendarModule,
     MessagesModule,
     ToastModule,
-    RippleModule 
+    RippleModule,
+    RouterModule
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
