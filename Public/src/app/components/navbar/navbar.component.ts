@@ -15,7 +15,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent  implements OnInit{
-  constructor(private auth:AuthService){}
+  constructor(
+    private auth: AuthService
+  ){}
   visible: boolean = false;
 
   showDialog() {
@@ -35,20 +37,35 @@ export class NavbarComponent  implements OnInit{
     this.items = [
       ...(isLoggedIn) ? [
         ...(this.auth.isUser()) ? [
+
+          //logged in routes
           {
-            label: 'Statisztika',icon: 'pi pi-file', routerLink: '/stats'
-          },
-          {
-            label: 'Események',icon: 'pi pi-calendar', routerLink: '/'
+            label: 'Esemény létrehozása', icon: 'pi pi-calendar-plus', routerLink: '/newevent'
           },
 
-         
+          {
+            label: 'Saját események', icon: 'pi pi-calendar', routerLink: '/myevents'
+          },
+
+          {
+            label: 'Statisztika', icon: 'pi pi-file', routerLink: '/stats'
+          },
           
+          {
+            label: 'Profil',icon: 'pi pi-user', routerLink: '/profile'
+          },
+
+          {
+            label:'Kijelentkezés', icon: 'pi pi-sign-out', command: ()=>this.auth.logout()
+          } 
+
         ] : [
           
         ]
 
       ] : [
+
+        // logged out routes
           {
             label: 'Belépés',icon: 'pi pi-sign-in',routerLink: '/login',     
           },
@@ -63,11 +80,7 @@ export class NavbarComponent  implements OnInit{
           
           {
             label: 'Vissza a főoldalra',icon: 'pi pi-home', routerLink: '/landingpage'
-          }, 
-          
-          {
-            label: 'Profil',icon: 'pi pi-user', routerLink: '/profile'
-          }, 
+          }
       ]
     ];
   }

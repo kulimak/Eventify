@@ -12,7 +12,6 @@
     margin-top: 90px;
 }
 
-
 .login-box {
     padding: 40px;
     display: flex;
@@ -83,4 +82,8 @@ a{
 a:hover{
     //color: #035559;
     text-decoration: underline;
+}
+//A hibaüzenet még hibás css
+.loginMSG{
+    width:100%;
 }

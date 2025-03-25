@@ -7,7 +7,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserAuthGuard } from './guards/user-auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MyeventsComponent } from './components/myevents/myevents.component';
 import { CompanyRegComponent } from './components/company-reg/company-reg.component';
+
 
 export const routes: Routes = [
 
@@ -19,17 +21,12 @@ export const routes: Routes = [
     },
 
     {
-        path: 'register', component: RegisterComponent // <-- EZT ADD HOZZÁ!
+        path: 'register', component: RegisterComponent // <-- EZT ADD HOZZÁ! MIHEZ?
     },
     
     {
         path: 'landingpage', component: LandingpageComponent
     },
-
-    {
-        path: 'profile', component: ProfileComponent
-    },
-
     {
         path: '', component: LandingpageComponent
     },
@@ -44,6 +41,13 @@ export const routes: Routes = [
         path: 'newevent', component: NeweventComponent, canActivate: [UserAuthGuard]
     },
 
+    {
+        path: 'myevents', component: MyeventsComponent, canActivate: [UserAuthGuard]
+    },
+
+    {
+        path: 'profile', component: ProfileComponent, canActivate: [UserAuthGuard]
+    },
     {
         path: 'stats', component: StatsComponent, canActivate: [UserAuthGuard]
     },

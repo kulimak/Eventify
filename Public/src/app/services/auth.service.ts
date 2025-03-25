@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { BehaviorSubject, Observable, retry } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,9 @@ import { BehaviorSubject, Observable, retry } from 'rxjs';
 
 export class AuthService {
 
-  constructor() { }
+  constructor( 
+    private router:Router
+  ) { }
 
   private tokenName = environment.tokenName;
 
@@ -19,7 +22,7 @@ export class AuthService {
     return !!localStorage.getItem(this.tokenName);
   }
 
-  login(token:string){
+  SaveToken(token:string){
     localStorage.setItem(environment.tokenName, token);
     this.isLoggedIn.next(true);
   }
@@ -27,6 +30,7 @@ export class AuthService {
   logout(){
     localStorage.removeItem(environment.tokenName);
     this.isLoggedIn.next(false);
+    this.router.navigate(['/'])
   }
 
   loggedUser(){

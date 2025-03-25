@@ -15,33 +15,41 @@
 
 <div class="register-container">
     <h1>Regisztráció</h1>
+
+    <p-toast position="bottom-center" key="bc"    
+        [showTransformOptions]="'translateX(100%)'" 
+        [showTransitionOptions]="'500ms'" 
+        [hideTransitionOptions]="'750ms'" 
+        [showTransformOptions]="'translateY(100%)'"
+    />
+
     <div class="content">
         <div class="bal-div">
             
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="email" [(ngModel)]="emailValue" class="input-field" />
-                    <label for="Felhasználónév">E-mail cím <span class="kotelezo">*</span></label>
+                    <input pInputText id="username" [(ngModel)]="userReg.username" class="input-field" />
+                    <label for="Felhasználónév">Felhasználónév <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
 
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="username" [(ngModel)]="userValue" class="input-field" />
-                    <label for="Felhasználónév">Felhasználónév <span class="kotelezo">*</span></label>
+                    <input pInputText id="email" [(ngModel)]="userReg.email" class="input-field" />
+                    <label for="Felhasználónév">E-mail cím <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
     
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <p-password id="password" [(ngModel)]="passValue" [toggleMask]="true" class="input-field"></p-password>
+                    <p-password id="password" [(ngModel)]="userReg.password" [toggleMask]="true" class="input-field"></p-password>
                     <label for="Jelszó">Jelszó <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
 
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <p-password id="passConfirmValue" [(ngModel)]="passConfirmValue" [toggleMask]="true" class="input-field"></p-password>
+                    <p-password id="passConfirmValue" [(ngModel)]="userReg.confirm" [toggleMask]="true" class="input-field"></p-password>
                     
                     <label for="Jelszó">Jelszó megerősítése <span class="kotelezo">*</span></label>
                 </p-floatLabel>
@@ -54,7 +62,7 @@
             <h3>Add meg a születési dátumot!</h3>
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="birth" [(ngModel)]="birthValue" class="input-field" />
+                    <input pInputText id="birth" [(ngModel)]="birthDateMoment" class="input-field" />
                     <label for="Születési dátum">2025.01.01 <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
@@ -63,7 +71,7 @@
             <div class="card flex justify-content-center">
                 <p-multiSelect 
                     [options]="cities" 
-                    [(ngModel)]="selectedCities" 
+                    [(ngModel)]="selectedCategories" 
                     optionLabel="name" 
                     placeholder="Válassz kategóriát"
                     />
@@ -74,5 +82,6 @@
     <div class="div-footer">
         <a [routerLink]="'/companyReg'">Cégként regisztrálok...</a>
         <button class="userReg-btn">Regisztráció</button>
+
     </div>
 </div>

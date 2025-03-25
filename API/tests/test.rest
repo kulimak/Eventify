@@ -1,0 +1,66 @@
+@baseUrl = http://localhost:3000/api
+@authToken = {{login.response.body.user.token}}
+
+### Register user 
+# @name register
+
+POST  {{baseUrl}}/users/register
+Content-Type: application/json
+
+{
+    "username": "teszt1",
+    "email": "teszt@gmail.com",
+    "password": "Teszt123",
+    "gender": "férfi",
+    "defAddress": "1000, Teszt, teszt1",
+    "favCategories": "",
+    "birthDate":"2000-01-01",
+    "image":"",
+    "role": "user",
+    "status": "active"
+}
+
+### login user
+# @name login
+
+POST  {{baseUrl}}/users/login
+Content-Type: application/json
+
+{
+    "email": "teszt@gmail.com",
+    "password": "Teszt123"
+}
+
+### update password
+# @name password
+
+PATCH {{baseUrl}}/users/password/15abfcd3-ead0-4acc-bee4-e31ef9b89db9
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "password": "Teszt321",
+    "confirm": "Teszt321"
+}
+
+### update email
+# @name email
+
+PATCH {{baseUrl}}/users/email/0242be39-ba20-4539-a776-8b8b2b3916e4
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "email": "teszt@gmail.com"
+}
+
+### update username
+# @name username
+
+PATCH {{baseUrl}}/users/username/0242be39-ba20-4539-a776-8b8b2b3916e4
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "username": "teszt1"
+}

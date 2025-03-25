@@ -32,13 +32,21 @@ const User = db.define('User', {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    birthDate:{
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    image: {
+        type: DataTypes.STRING(100),
+        allowNull: true
+    },
     role: {
         type: DataTypes.STRING(10),
-        allowNull: true
+        allowNull: false
     },
     status: {
         type: DataTypes.STRING(20),
-        allowNull: true
+        allowNull: false
     }
 });
 
