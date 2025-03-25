@@ -37,15 +37,24 @@ export class NavbarComponent  implements OnInit{
     this.items = [
       ...(isLoggedIn) ? [
         ...(this.auth.isUser()) ? [
+
+          //logged in routes
+          {
+            label: 'Esemény létrehozása', icon: 'pi pi-calendar-plus', routerLink: '/newevent'
+          },
+
+          {
+            label: 'Saját események', icon: 'pi pi-calendar', routerLink: '/myevents'
+          },
+
           {
             label: 'Statisztika', icon: 'pi pi-file', routerLink: '/stats'
           },
-          {
-            label: 'Események', icon: 'pi pi-calendar', routerLink: '/'
-          },
+          
           {
             label: 'Profil',icon: 'pi pi-user', routerLink: '/profile'
           },
+
           {
             label:'Kijelentkezés', icon: 'pi pi-sign-out', command: ()=>this.auth.logout()
           } 
@@ -55,6 +64,8 @@ export class NavbarComponent  implements OnInit{
         ]
 
       ] : [
+
+        // logged out routes
           {
             label: 'Belépés',icon: 'pi pi-sign-in',routerLink: '/login',     
           },

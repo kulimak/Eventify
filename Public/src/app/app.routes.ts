@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserAuthGuard } from './guards/user-auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MyeventsComponent } from './components/myevents/myevents.component';
 
 export const routes: Routes = [
 
@@ -18,7 +19,7 @@ export const routes: Routes = [
     },
 
     {
-        path: 'register', component: RegisterComponent // <-- EZT ADD HOZZÁ!
+        path: 'register', component: RegisterComponent // <-- EZT ADD HOZZÁ! MIHEZ?
     },
     
     {
@@ -33,6 +34,10 @@ export const routes: Routes = [
    */
     {
         path: 'newevent', component: NeweventComponent, canActivate: [UserAuthGuard]
+    },
+
+    {
+        path: 'myevents', component: MyeventsComponent, canActivate: [UserAuthGuard]
     },
 
     {
