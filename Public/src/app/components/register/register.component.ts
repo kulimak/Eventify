@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';  
 import {  MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
+import { RouterModule } from '@angular/router';
 
 
 interface City {
@@ -17,7 +18,7 @@ interface City {
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [InputTextModule, FormsModule, FloatLabelModule, PasswordModule, ButtonModule , RadioButtonModule,  MultiSelectModule, CalendarModule ],
+  imports: [InputTextModule, FormsModule, FloatLabelModule, PasswordModule, ButtonModule , RadioButtonModule,  MultiSelectModule, CalendarModule, RouterModule ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
