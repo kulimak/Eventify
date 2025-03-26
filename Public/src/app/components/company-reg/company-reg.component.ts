@@ -7,7 +7,12 @@ import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';  
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/auth.service';
+import { MessageService } from 'primeng/api';
+import { CompanyRegister } from '../../interfaces/company';
+import { CompanyLogin } from '../../interfaces/company';
 
 @Component({
   selector: 'app-company-reg',
@@ -27,26 +32,15 @@ import { RouterModule } from '@angular/router';
   styleUrl: './company-reg.component.scss'
 })
 export class CompanyRegComponent {
-  companyName: string = '';
-  taxNumber: string = '';
-  companyId: string = '';
-  companyAddress: string = '';
-  contactName: string = '';
-  contactPhone: string = '';
-  emailValue: string = '';
-  passValue: string = '';
-  passConfirmValue: string = '';
+  constructor(
+    private api: ApiService,
+    private auth: AuthService,
+    private router : Router,
+    private messageService: MessageService
+  ){}
 
-  registerCompany() {
-    console.log('Céges regisztrációs adatok:', {
-      companyName: this.companyName,
-      taxNumber: this.taxNumber,
-      companyId: this.companyId,
-      companyAddress: this.companyAddress,
-      contactName: this.contactName,
-      contactPhone: this.contactPhone,
-      email: this.emailValue,
-      password: this.passValue
-    });
+
+  register() {
+    alert('helomukszil')
   }
 }

@@ -1,48 +1,47 @@
-const { User } = require('../models/user.model');
+const { CompanyUser } = require('../models/companyUser.model');
 const bcrypt = require('bcrypt');
 const { generateToken } = require('../utils/token');
 const { configDotenv } = require('dotenv');
 
-exports.registerUser = async (username, email, password, gender, defAddress, favCategories, birthDate, role, status)=>{
+exports.registerCompany = async (cegnev, adoszam, jegyzekszam, szekhely, nev, telefon, password, email)=>{
     const hashedPassword = await bcrypt.hash(password, 10);
     
-    const user = await User.create({
-        username,
-        email,
+    const company = await CompanyUser.create({
+        cegnev,
+        adoszam,
+        jegyzekszam,
+        szekhely,
+        nev,
+        telefon,
         password: hashedPassword,
-        gender,
-        defAddress,
-        favCategories,
-        birthDate,
-        role,
-        status,
+        email
     });
 
-    return user
+    return company
 };
 exports.uploadImg = async (id, image)=>{
-    const user = User.update(
+    const company = CompanyUser.update(
         {
             image
         },
         {
             where: {id}
         });
-        return user
+        return company
 };
 
-exports.loginUser = async (email, password) => {
-    const user = await User.findOne({where: { email }});
+exports.loginCompany = async (email, password) => {
+    const company = await CompanyUser.findOne({where: { email }});
 
-    if (!user) throw new Error('Nem regisztrált felhasználó!');
-    if (!await bcrypt.compare(password, user.password)) throw new Error('Hibás jelszó!');
+    if (!company) throw new Error('Nem regisztrált felhasználó!');
+    if (!await bcrypt.compare(password, company.password)) throw new Error('Hibás jelszó!');
     
-    const token = generateToken({ username: user.username, email: user.email, password: user.password, gender: user.gender, defAddress: user.defAddress, favCategories: user.favCategories, birthDate: user.birthDate, role: user.role, status: user.status});
+    const token = generateToken({ cegnev: company.cegnev, adoszam: company.adoszam, jegyzekszam: company.jegyzekszam, szekhely: company.szekhely, nev: company.nev, telefon: company.telefon, password: company.password, email: company.email});
     
     return { token }; 
 };
 
-exports.updatePassword = async(id ,password) => {
+/*exports.updatePassword = async(id ,password) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const userPasswd = User.update({
@@ -84,4 +83,4 @@ exports.updateUsername = async(id ,username) => {
 
     return 'Felhasználónév módosítás sikeres!'
 
-}
+}*/
