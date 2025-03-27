@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const { generateToken } = require('../utils/token');
 const { configDotenv } = require('dotenv');
 
-exports.registerCompany = async (cegnev, adoszam, jegyzekszam, szekhely, nev, telefon, password, email)=>{
+exports.registerCompany = async (cegnev, adoszam, jegyzekszam, szekhely, nev, telefon, password, email, role)=>{
     const hashedPassword = await bcrypt.hash(password, 10);
     
     const company = await CompanyUser.create({
@@ -14,7 +14,8 @@ exports.registerCompany = async (cegnev, adoszam, jegyzekszam, szekhely, nev, te
         nev,
         telefon,
         password: hashedPassword,
-        email
+        email,
+        role
     });
 
     return company
@@ -36,7 +37,7 @@ exports.loginCompany = async (email, password) => {
     if (!company) throw new Error('Nem regisztrált felhasználó!');
     if (!await bcrypt.compare(password, company.password)) throw new Error('Hibás jelszó!');
     
-    const token = generateToken({ cegnev: company.cegnev, adoszam: company.adoszam, jegyzekszam: company.jegyzekszam, szekhely: company.szekhely, nev: company.nev, telefon: company.telefon, password: company.password, email: company.email});
+    const token = generateToken({ cegnev: company.cegnev, adoszam: company.adoszam, jegyzekszam: company.jegyzekszam, szekhely: company.szekhely, nev: company.nev, telefon: company.telefon, password: company.password, email: company.email, role: company.role});
     
     return { token }; 
 };

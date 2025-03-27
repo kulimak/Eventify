@@ -21,7 +21,15 @@ export const routes: Routes = [
     },
 
     {
-        path: 'register', component: RegisterComponent // <-- EZT ADD HOZZÁ! MIHEZ?
+        path: 'register' ,children: 
+        [
+            {
+                path: 'userReg',  component: RegisterComponent
+            },
+            {
+                path: 'companyReg', component: CompanyRegComponent
+            }
+        ]
     },
     
     {
@@ -29,9 +37,6 @@ export const routes: Routes = [
     },
     {
         path: '', component: LandingpageComponent
-    },
-    {
-        path: 'companyReg', component: CompanyRegComponent
     },
     
     /**

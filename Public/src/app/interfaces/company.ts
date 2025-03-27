@@ -13,5 +13,7 @@ export interface CompanyRegister {
     nev: '';
     telefon: '';
     password: '';
+    confirm:'';
     email: '';
+    role:'company'
 }

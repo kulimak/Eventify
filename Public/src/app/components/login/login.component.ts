@@ -12,6 +12,7 @@ import { MessagesModule } from 'primeng/messages';
 import { Message, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ import { RippleModule } from 'primeng/ripple';
     ButtonModule, 
     MessagesModule,
     ToastModule,
-    RippleModule
+    RippleModule,
+    CheckboxModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -40,6 +42,7 @@ export class LoginComponent implements OnInit{
   ){}
   
   birthDateMoment:any="";
+  checked:boolean=false;
 
   userLogin:UserLogin={
     email: '',
@@ -50,6 +53,19 @@ export class LoginComponent implements OnInit{
   }
 
   login(){
+    if (this.checked) {
+      this.api.companyLogin(`company`, this.userLogin).subscribe({
+        next: (res: any) => {
+            this.showMessage('success', 'Siker', res.message);
+            this.auth.SaveToken(res.company.token);
+            this.router.navigate(['/stats']);
+        },
+        error: (err: any) => {
+            this.showMessage('error', 'Hiba', err.error.message || 'Hibás email cím vagy jelszó!');
+        }
+    });
+    }
+    else{
     this.api.login(`users`, this.userLogin).subscribe({
       next: (res: any) => {
           this.showMessage('success', 'Siker', res.message);
@@ -61,6 +77,7 @@ export class LoginComponent implements OnInit{
       }
   });
   }
+}
 
   showMessage(tipus:string, cim:string, tartalom:string){
     this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });

@@ -3,11 +3,11 @@ const companyService = require('../services/company.service');
 
 exports.register = async (req, res, next) => {
     try{
-        const { cegnev, adoszam, jegyzekszam, szekhely, nev, telefon, password, email } = req.body;
+        const { cegnev, adoszam, jegyzekszam, szekhely, nev, telefon, password, email, role } = req.body;
         if ( !cegnev || !adoszam || !jegyzekszam || !szekhely || !nev || !telefon || !password || !email){
             return res.status(400).json({ message: 'Hiányzó adatok!'});
         }
-        const company = await companyService.registerCompany(cegnev, adoszam, jegyzekszam, szekhely, nev, telefon, password, email);
+        const company = await companyService.registerCompany(cegnev, adoszam, jegyzekszam, szekhely, nev, telefon, password, email, role);
         res.status(201).json({success: true, message: "Sikeres regisztráció!"});
     }catch(error){
         next(error);
@@ -20,8 +20,8 @@ exports.login = async (req, res, next) => {
         if (!email || !password){
             return res.status(400).json({message: 'Hiányzó adatok!'});
         }
-        const user = await companyService.loginCompany(email, password);
-        res.status(200).json({user, message: 'Sikeres bejelentkezés!'});
+        const company = await companyService.loginCompany(email, password);
+        res.status(200).json({company, message: 'Sikeres bejelentkezés!'});
     }catch(error){
         next(error);
     }

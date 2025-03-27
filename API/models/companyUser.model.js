@@ -39,6 +39,10 @@ const CompanyUser = db.define('CompanyUser', {
         type: DataTypes.STRING(100),
         allowNull: false,
         unique: true
+    },
+    role: {
+        type: DataTypes.STRING(10),
+        allowNull: false
     }
 });
 

@@ -16,33 +16,40 @@
 
 <div class="register-container">
     <h1>Céges Regisztráció</h1>
+    
+    <p-toast position="bottom-center" key="bc"    
+        [showTransformOptions]="'translateX(100%)'" 
+        [showTransitionOptions]="'500ms'" 
+        [hideTransitionOptions]="'750ms'" 
+        [showTransformOptions]="'translateY(100%)'"
+    />
     <div class="content">
         <div class="bal-div">
             
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="company-name" [(ngModel)]="" class="input-field" />
+                    <input pInputText id="company-name" [(ngModel)]="companyReg.cegnev" class="input-field" />
                     <label for="company-name">Cégnév <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
 
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="tax-number" [(ngModel)]="" class="input-field" />
+                    <input pInputText id="tax-number" [(ngModel)]="companyReg.adoszam" class="input-field" />
                     <label for="tax-number">Adószám <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
 
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="company-id" [(ngModel)]="" class="input-field" />
+                    <input pInputText id="company-id" [(ngModel)]="companyReg.jegyzekszam" class="input-field" />
                     <label for="company-id">Cégjegyzékszám <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
 
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="address" [(ngModel)]="" class="input-field" />
+                    <input pInputText id="address" [(ngModel)]="companyReg.szekhely" class="input-field" />
                     <label for="address">Székhely címe <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
@@ -52,35 +59,35 @@
 
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="contact-name" [(ngModel)]="" class="input-field" />
+                    <input pInputText id="contact-name" [(ngModel)]="companyReg.nev" class="input-field" />
                     <label for="contact-name">Kapcsolattartó neve <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
 
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="contact-phone" [(ngModel)]="" class="input-field" />
+                    <input pInputText id="contact-phone" [(ngModel)]="companyReg.telefon" class="input-field" />
                     <label for="contact-phone">Kapcsolattartó telefonszáma <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
 
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <input pInputText id="email" [(ngModel)]="" class="input-field" />
+                    <input pInputText id="email" [(ngModel)]="companyReg.email" class="input-field" />
                     <label for="email">E-mail cím <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
 
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <p-password id="password" [(ngModel)]="" [toggleMask]="true" class="input-field"></p-password>
+                    <p-password id="password" [(ngModel)]="companyReg.password" [toggleMask]="true" class="input-field"></p-password>
                     <label for="password">Jelszó <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
 
             <div class="input-wrapper">
                 <p-floatLabel>
-                    <p-password id="passConfirmValue" [(ngModel)]="" [toggleMask]="true" class="input-field"></p-password>
+                    <p-password id="passConfirmValue" [(ngModel)]="companyReg.confirm" [toggleMask]="true" class="input-field"></p-password>
                     <label for="passConfirmValue">Jelszó megerősítése <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
