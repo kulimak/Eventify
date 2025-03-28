@@ -87,3 +87,14 @@ a:hover{
 .loginMSG{
     width:100%;
 }
+
+.checkbox{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    font-size: medium;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}

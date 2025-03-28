@@ -32,17 +32,19 @@
 
         <div class="input-wrapper">
             <p-floatLabel>
-                <p-password id="password" [(ngModel)]="userLogin.password" [toggleMask]="true" class="input-field"></p-password>
+                <p-password id="password" [(ngModel)]="userLogin.password" [toggleMask]="true" [feedback]="false" class="input-field"></p-password>
                 <label for="password">Jelszó</label>
             </p-floatLabel>
            <a href="#">Elfelejtettem a jelszavamat...</a>
         </div>
-        <span>Bejelentkezés cégként</span>
-        <p-checkbox 
-            [(ngModel)]="checked" 
-            [binary]="true" 
-            inputId="binary"
-        />
+        <div class="checkbox">
+            <span >Bejelentkezés cégként</span>
+            <p-checkbox 
+                [(ngModel)]="checked" 
+                [binary]="true" 
+                inputId="binary"
+            />
+        </div>
         <button class="sign-in-btn" (click)="login()">Bejelentkezés</button>
     </div>
 

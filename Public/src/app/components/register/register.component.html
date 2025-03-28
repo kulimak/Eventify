@@ -59,22 +59,24 @@
 
         </div>
         <div class="jobb-div">
+           
+
+            <h3>Válaszd ki a kategóriákat amik érdekelnek!</h3>
+            <div class=" ">
+                <p-multiSelect
+                    [options]="cities" 
+                    [(ngModel)]="selectedCategories" 
+                    optionLabel="name" 
+                    placeholder="Válassz kategóriát"
+                    />
+            </div>
+
             <h3>Add meg a születési dátumot!</h3>
             <div class="input-wrapper">
                 <p-floatLabel>
                     <input pInputText id="birth" [(ngModel)]="birthDateMoment" class="input-field" />
                     <label for="Születési dátum">2025.01.01 <span class="kotelezo">*</span></label>
                 </p-floatLabel>
-            </div>
-
-            <h3>Válaszd ki a kategóriákat amik érdekelnek!</h3>
-            <div class="card flex justify-content-center">
-                <p-multiSelect 
-                    [options]="cities" 
-                    [(ngModel)]="selectedCategories" 
-                    optionLabel="name" 
-                    placeholder="Válassz kategóriát"
-                    />
             </div>
 
         </div>
