@@ -3,21 +3,60 @@
         <div class="pfpDiv"></div>
         <div class="actionButtons">
             
-            <button class="update-btn">Jelszó módosítás</button>
-            <button class="update-btn">Email módosítás</button>
-            <button class="update-btn">Felhasználónév módosítás</button>
-            <button class="update-btn">Profilkép módosítás </button>
+            <div class="card flex justify-content-center">
+                <p-button (onClick)="showUserNameDialog()" label="Felhasználónév változtatás"  />
+                <p-dialog header="Felhasználónév változtatás" [modal]="true" [(visible)]="visibleUser" [draggable]="false">
+                    <div class="content">
+                        <p>Felhasználónév</p>
+                        <input pInputText id="username" class="flex-auto" autocomplete="off" />
+                        <p>Jelszó</p>
+                        <input pInputText id="password" class="flex-auto" autocomplete="off" />
+                        <br>
+                        <p-button label="Mentés" (onClick)="visibleUser = false" />
+                    </div>
+                </p-dialog>
+            </div>
+            
+            <div class="card flex justify-content-center">
+                <p-button (onClick)="showEmailDialog()" label="Email cím változtatás" id="gonb" />
+                <p-dialog header="Email cím változtatás" [modal]="true" [(visible)]="visibleEmail" [draggable]="false"  >
+                    <div class="content">
+                        <p>Új email cím</p>
+                        <input pInputText id="email" class="flex-auto" autocomplete="off" />
+                        <p>Új email cím megerősítése</p>
+                        <input pInputText id="emailConf" class="flex-auto" autocomplete="off" />
+                        <p>Jelszó</p>
+                        <input pInputText id="password" class="flex-auto" autocomplete="off" />
+                        <br>
+                        <p-button label="Mentés" (onClick)="visibleEmail = false" />
+                    </div>  
+                </p-dialog>
+            </div>
+
+            <div class="card flex justify-content-center">
+                <p-button (onClick)="showPasswdDialog()" label="Jelszó változtatás" id="gonb" />
+                <p-dialog header="Jelszó változtatás" [modal]="true" [(visible)]="visiblePass" [draggable]="false"  >
+                    <div class="content">
+                        <p>Régi Jelszó</p>
+                        <input pInputText id="username" class="flex-auto" autocomplete="off" />
+                        <p>Új jelszó</p>
+                        <input pInputText id="password" class="flex-auto" autocomplete="off" />
+                        <p>Új jelszó megerősítése</p>
+                        <input pInputText id="passwordConf" class="flex-auto" autocomplete="off" />
+                        <br>
+                        <p-button label="Mentés" (onClick)="visiblePass = false" />
+                    </div>
+                </p-dialog>
+            </div>
 
         </div>
     </div>
     <div class="rightSide">
         <div class="rightSideTop">
             
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, laudantium necessitatibus dignissimos unde earum accusantium veniam quam? Omnis, numquam sit nisi quod sunt dolor commodi assumenda, magni sequi corporis temporibus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum animi fugit, doloremque mollitia ex consequuntur. Temporibus, excepturi! Corrupti, distinctio eum quae voluptates at dolorum nihil optio? Laboriosam expedita nesciunt ipsa! Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptatum quo numquam vero? Debitis natus repellendus molestias voluptate maxime animi quae magnam aliquid doloremque doloribus delectus, at harum commodi distinctio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores deleniti odit in? A sint minus reprehenderit eaque placeat. Voluptatibus quia velit quos provident ea maiores culpa sunt nemo quod nisi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum in praesentium beatae dolore maiores alias assumenda. Dolorem nihil saepe alias fugiat est doloremque quia exercitationem temporibus provident. Consequuntur, deleniti voluptatibus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum at recusandae suscipit nulla laborum consectetur esse officia aperiam adipisci dicta fugiat fuga magni, facilis enim voluptate, iste debitis quos id!</p>
             
         </div>
         <div class="rightSideBottom">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, laudantium necessitatibus dignissimos unde earum accusantium veniam quam? Omnis, numquam sit nisi quod sunt dolor commodi assumenda, magni sequi corporis temporibus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum animi fugit, doloremque mollitia ex consequuntur. Temporibus, excepturi! Corrupti, distinctio eum quae voluptates at dolorum nihil optio? Laboriosam expedita nesciunt ipsa! Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptatum quo numquam vero? Debitis natus repellendus molestias voluptate maxime animi quae magnam aliquid doloremque doloribus delectus, at harum commodi distinctio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores deleniti odit in? A sint minus reprehenderit eaque placeat. Voluptatibus quia velit quos provident ea maiores culpa sunt nemo quod nisi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum in praesentium beatae dolore maiores alias assumenda. Dolorem nihil saepe alias fugiat est doloremque quia exercitationem temporibus provident. Consequuntur, deleniti voluptatibus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum at recusandae suscipit nulla laborum consectetur esse officia aperiam adipisci dicta fugiat fuga magni, facilis enim voluptate, iste debitis quos id!</p>
         </div>
     </div>
 </div>
