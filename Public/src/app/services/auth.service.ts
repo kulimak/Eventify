@@ -60,4 +60,8 @@ export class AuthService {
     return user.role === 'user';
   }
 
+  isCompany():boolean{
+    const company = this.loggedUser();
+    return company.role === 'company';
+  }
 }

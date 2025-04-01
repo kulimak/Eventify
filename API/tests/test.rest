@@ -28,7 +28,18 @@ Content-Type: application/json
 
 {
     "email": "teszt@gmail.com",
-    "password": "Teszt123"
+    "password": "teszt123"
+}
+
+### login company
+# @name CompanyLogin
+
+POST  {{baseUrl}}/company/login
+Content-Type: application/json
+
+{
+    "email": "asd@gmail.com",
+    "password": "asd123"
 }
 
 ### update password

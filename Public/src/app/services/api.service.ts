@@ -30,9 +30,20 @@ export class ApiService {
     return this.http.post(`${this.server}/${table}/login`, user);
   }
 
+  //Bejelentkezés cég
+  companyLogin(table: string, user: object)
+  {
+    return this.http.post(`${this.server}/${table}/login`, user);
+  }
 
   //regisztráció
   register(table: string, user: object)
+  {
+    return this.http.post(`${this.server}/${table}/register`, user);
+  }
+
+  //regisztráció cég
+  companyReg(table: string, user: object)
   {
     return this.http.post(`${this.server}/${table}/register`, user);
   }

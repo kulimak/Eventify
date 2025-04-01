@@ -36,7 +36,7 @@ export class NavbarComponent  implements OnInit{
   setupMenu(isLoggedIn:boolean){
     this.items = [
       ...(isLoggedIn) ? [
-        ...(this.auth.isUser()) ? [
+        ...(this.auth.isUser() || this.auth.isCompany()) ? [
 
           //logged in routes
           {
@@ -71,7 +71,7 @@ export class NavbarComponent  implements OnInit{
           },
           
           {
-            label: 'Regisztráció',icon: 'pi pi-user-plus',routerLink: '/register'
+            label: 'Regisztráció',icon: 'pi pi-user-plus',routerLink: '/register/userReg'
           },
 
           {
