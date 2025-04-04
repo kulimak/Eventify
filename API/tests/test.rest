@@ -28,7 +28,7 @@ Content-Type: application/json
 
 {
     "email": "teszt@gmail.com",
-    "password": "teszt123"
+    "password": "Teszt123"
 }
 
 ### login company
@@ -74,4 +74,23 @@ Authorization: Bearer {{authToken}}
 
 {
     "username": "teszt1"
+}
+
+
+### New Event
+# @name event
+POST {{baseUrl}}/event/newevent
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "eventName": "Teszt esemény",
+    "eventStart": "12:00",
+    "eventEnd": "14:00",
+    "eventAddress": "6500, Baja, Bácska tér, 1",
+    "eventDate": "2025-04-05",
+    "userId": "b1cae3a5-6431-4be5-811e-8d3b900c0034",
+    "catId": "1",
+    "description": "nagyon jo esemény gyere el"
+
 }
