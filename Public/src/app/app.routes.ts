@@ -9,6 +9,7 @@ import { UserAuthGuard } from './guards/user-auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MyeventsComponent } from './components/myevents/myevents.component';
 import { CompanyRegComponent } from './components/company-reg/company-reg.component';
+import { FooldalComponent } from './components/fooldal/fooldal.component';
 
 
 export const routes: Routes = [
@@ -42,6 +43,11 @@ export const routes: Routes = [
     /**
    * logged in routes
    */
+
+    {
+        path: 'fooldal', component: FooldalComponent, canActivate: [UserAuthGuard]
+    },
+
     {
         path: 'newevent', component: NeweventComponent, canActivate: [UserAuthGuard]
     },

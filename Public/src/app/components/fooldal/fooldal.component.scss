@@ -1,0 +1,62 @@
+.menubar {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center; 
+    width: 100%; 
+    
+  }
+  
+::ng-deep .p-menubar  {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: auto; 
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  p-button {
+    margin: 0 15px; 
+  }
+  
+  p-iconField {
+    margin: 0 15px;
+  }
+ 
+.svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px; 
+    margin-top: 150px;
+    z-index: 5;
+}
+
+.svg-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -5;
+}
+
+.svg-bg svg {
+  height: 100vh;
+  width: auto;
+  left: 0;
+  max-width: none;
+
+}
+
+.felhasznFeltetelek {
+  text-align: justify;
+}
+
+.content{
+
+  justify-content: center;
+}
+

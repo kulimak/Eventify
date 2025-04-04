@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { MenubarModule } from 'primeng/menubar';
 import { AuthService } from '../../services/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -39,6 +40,9 @@ export class NavbarComponent  implements OnInit{
         ...(this.auth.isUser() || this.auth.isCompany()) ? [
 
           //logged in routes
+          {
+            label: 'Főoldal', icon: 'pi pi-home', routerLink: '/fooldal'
+          },
           {
             label: 'Esemény létrehozása', icon: 'pi pi-calendar-plus', routerLink: '/newevent'
           },
