@@ -1,3 +1,7 @@
+body, html {
+    overflow: scroll;
+}
+
 .svg-bg {
     position: fixed;
     top: 0;
@@ -15,4 +19,53 @@
     left: 0;
     max-width: none;
   
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+
+}
+
+.eventName{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    margin-bottom: 5px;
+}
+
+small{
+    margin-top: 5px;
+}
+
+input{
+    width: 30%;
+}
+
+.eventDesc{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.eventCalendar{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.eventAddress{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
