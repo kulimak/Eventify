@@ -22,7 +22,7 @@
     </ng-template>
     
     <div class="eventName">
-      <label for="name">Név</label>
+      <label for="name"><b>Név</b></label>
       <input 
           pInputText 
           id="name" 
@@ -36,7 +36,7 @@
     <hr>
 
    <div class="eventDesc">
-    <label for="eventDesc">Leírás</label>
+    <label for="eventDesc"><b>Leírás</b></label>
       <textarea 
       rows="5"
       cols="30" 
@@ -51,7 +51,7 @@
    <hr>
 
    <div class="eventCalendar">
-    <label for="eventCalendar">Dátum</label>
+    <label for="eventCalendar"><b>Dátum</b></label>
     <p-calendar 
     [(ngModel)]="date" 
     variant="filled" />
@@ -63,7 +63,7 @@
    <hr>
 
    <div class="eventAddress">
-    <label for="eventAddress">Cím</label>
+    <label for="eventAddress"><b>Cím</b></label>
     <input 
         pInputText 
         id="eventAddress" 
@@ -76,10 +76,35 @@
 
   <hr>
 
+  <label for="eventEndStart"><b>Esemeny kezdete és vége</b></label>
+  <div class="eventEndStart">
+
+    <label id="eventEndStart-help">
+      Kezdés:
+    </label>
+
+    <input 
+        pInputText 
+        id="eventStart" 
+        aria-describedby="eventEndStart-help" 
+        [(ngModel)]="value" />
+
+    <label id="eventEndStart-help">
+      Vég:
+    </label>
+
+        <input 
+        pInputText 
+        id="eventEnd" 
+        aria-describedby="eventEndStart-help" 
+        [(ngModel)]="value" />
+
+    
+  </div>
+
     <ng-template pTemplate="footer">
-        <div class="actionButtons">
-            <p-button label="Cancel" severity="secondary" class="w-full" styleClass="w-full" />
-            <p-button label="Save" class="w-full" styleClass="w-full" />
+        <div class="actionButton">
+            <p-button  label="Létrehozás" class="w-full" styleClass="w-full" />
         </div>
     </ng-template>
 </p-card>
