@@ -26,7 +26,8 @@ body, html {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
+    width: auto;
+    margin-top: 20px;
 
 }
 
@@ -38,7 +39,9 @@ body, html {
 }
 
 label{
-    margin-bottom: 5px;
+    font-size: 140%;
+    
+
 }
 
 small{
@@ -49,11 +52,20 @@ input{
     width: 30%;
 }
 
+.eventName{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .eventDesc{
     height:auto;
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .eventCalendar{
@@ -61,6 +73,7 @@ input{
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .eventAddress{
@@ -68,4 +81,24 @@ input{
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+}
+
+
+.eventEndStart{
+    display: flex;
+    align-items: baseline;
+    height:auto;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    
+}
+
+.actionButton{
+    display: flex;
+    justify-content: flex-end;
 }
