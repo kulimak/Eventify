@@ -1,6 +1,6 @@
 # Eventify
 
-Egy modern esemény kereső, létrehozó és kezelő portál portál Angular és Node.js alapokon, amely lehetővé teszi a felhasználók számára, hogy eseményeket tegyenek közzé és kezeljenek.
+Egy modern esemény kereső, létrehozó és kezelő portál Angular és Node.js alapokon, amely lehetővé teszi a felhasználók számára, hogy eseményeket tegyenek közzé és kezeljenek.
 
 ## Tartalomjegyzék  
 - [Telepítés](#telepítés)  
