@@ -94,30 +94,39 @@ export class RegisterComponent {
         this.showMessage('error','Hiba','Nem adtál meg minden adatot!');
       }
       else{
-        if (this.userReg.password!=this.userReg.confirm) {
-          this.showMessage('error','Hiba','A jelszavak nem egyeznek!')
+        // Email validálás
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailRegex.test(this.userReg.email)) {
+          this.showMessage('error','Hiba','Érvénytelen email cím!');
+          return; // Leállítjuk a további feldolgozást, ha érvénytelen az email
         }
-        else{
+    
+        // Jelszó egyezőség ellenőrzés
+        if (this.userReg.password != this.userReg.confirm) {
+          this.showMessage('error','Hiba','A jelszavak nem egyeznek!');
+        }
+        else {
           try {
-            this.selectedCategories.forEach(item=>{
-              this.userReg.favCategories+=` ${item.name},`;
+            this.selectedCategories.forEach(item => {
+              this.userReg.favCategories += ` ${item.name},`;
             });
-          } catch (error){}
+          } catch (error) {}
+          
           this.birthDateMoment = moment(this.birthDateMoment).format('YYYY-MM-DD');
-          this.userReg.birthDate=this.birthDateMoment
-
-          this.api.register(`users`,this.userReg).subscribe((res:any)=>{
-            if (res.success==true) {
+          this.userReg.birthDate = this.birthDateMoment;
+    
+          // Regisztrációs API hívás
+          this.api.register(`users`, this.userReg).subscribe((res: any) => {
+            if (res.success == true) {
               this.router.navigate(['/login']);
-            }
-            else{
-              this.showMessage('error','Hiba','Hiba a regisztráció srorán!')
+            } else {
+              this.showMessage('error', 'Hiba', 'Hiba a regisztráció során!');
             }
           });
         }
       }
     }
-
+    
     showMessage(tipus:string, cim:string, tartalom:string){
       this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });
     }
