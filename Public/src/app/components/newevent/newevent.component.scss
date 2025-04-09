@@ -2,24 +2,21 @@ body, html {
     overflow: scroll;
 }
 
-.svg-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: auto;
-    height: 100vh;
-    overflow: hidden;
-    z-index: -5;
+
+.bg {
+    position: fixed; /* Fixált pozicionálás, így mindig az ablak alján marad */
+    bottom: 0; /* Az oldal aljára igazítja */
+    left: 0; /* A bal oldalra helyezi */
+    width: 100%; /* Az egész képernyő szélességét lefedi */
+    z-index: -1; /* A háttérbe helyezi, hogy ne takarja el a tartalmat */
 }
-  
-.svg-bg svg {
-    position: relative;
-    height: 100vh;
-    width: auto;
-    left: 0;
-    max-width: none;
-  
+
+.bg svg {
+    width: 100%; /* Az SVG kitölti a konténert */
+    height: auto; /* A magasság automatikusan igazodik a szélességhez */
 }
+
+
 
 .content{
     display: flex;

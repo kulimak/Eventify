@@ -4,7 +4,7 @@
     align-items: center; 
     width: 100%; 
     
-  }
+}
   
 ::ng-deep .p-menubar  {
     display: flex;
@@ -14,12 +14,9 @@
     background: none !important;
     border: none !important;
     box-shadow: none !important;
-  }
+}
   
 p-button {
     margin: 0 15px; 
 }
   
-p-iconField {
-    margin: 0 15px;
-}
