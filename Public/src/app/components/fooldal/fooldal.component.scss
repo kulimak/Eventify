@@ -60,3 +60,18 @@
   justify-content: center;
 }
 
+.popular-cards{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.newest-events{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+h1{
+  text-align: center;
+}

@@ -9,11 +9,12 @@ import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
 import { FooterComponent } from '../footer/footer.component';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-fooldal',
   standalone: true,
-  imports: [RouterModule, InputIconModule, IconFieldModule, InputTextModule, ButtonModule, FormsModule, MenubarModule, CommonModule, DialogModule, FooterComponent],
+  imports: [RouterModule, InputIconModule, IconFieldModule, InputTextModule, ButtonModule, FormsModule, MenubarModule, CommonModule, DialogModule, FooterComponent, CardModule],
   templateUrl: './fooldal.component.html',
   styleUrl: './fooldal.component.scss'
 })
