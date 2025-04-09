@@ -12,3 +12,102 @@
     </svg>
       
 </div>
+
+<div class="content">
+
+  <p-card  [style]="{ width: '100%' }">
+
+    <ng-template pTemplate="header">
+        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
+    </ng-template>
+    
+    <div class="eventName">
+      <label for="name"><b>Név</b></label>
+      <input 
+          pInputText 
+          id="name" 
+          aria-describedby="eventName-help" 
+          [(ngModel)]="value" />
+      <small id="eventName-help">
+          Ez lesz a neve a létrehozott eseménynek.
+      </small>
+    </div>
+
+    <hr>
+
+   <div class="eventDesc">
+    <label for="eventDesc"><b>Leírás</b></label>
+      <textarea 
+      rows="5"
+      cols="30" 
+      pInputTextarea 
+      [autoResize]="true">
+    </textarea>
+    <small id="eventDesc-help">
+      Ezzel a szöveggel tudod jellemezni az eseményt.
+    </small>
+   </div>
+
+   <hr>
+
+   <div class="eventCalendar">
+    <label for="eventCalendar"><b>Dátum</b></label>
+    <p-calendar 
+    [(ngModel)]="date" 
+    variant="filled" />
+    <small id="eventCalendar-help">
+      Ekkor kerül megrendezésre az esemény.
+    </small>
+   </div>
+
+   <hr>
+
+   <div class="eventAddress">
+    <label for="eventAddress"><b>Cím</b></label>
+    <input 
+        pInputText 
+        id="eventAddress" 
+        aria-describedby="eventAddress-help" 
+        [(ngModel)]="value" />
+    <small id="eventAddress-help">
+        Ezen a címen kerül megrendezésre az esemény.
+    </small>
+  </div>
+
+  <hr>
+
+  <label for="eventEndStart"><b>Esemeny kezdete és vége</b></label>
+  <div class="eventEndStart">
+
+    <label id="eventEndStart-help">
+      Kezdés:
+    </label>
+
+    <input 
+        pInputText 
+        id="eventStart" 
+        aria-describedby="eventEndStart-help" 
+        [(ngModel)]="value" />
+
+    <label id="eventEndStart-help">
+      Vég:
+    </label>
+
+        <input 
+        pInputText 
+        id="eventEnd" 
+        aria-describedby="eventEndStart-help" 
+        [(ngModel)]="value" />
+
+    
+  </div>
+
+    <ng-template pTemplate="footer">
+        <div class="actionButton">
+            <p-button  label="Létrehozás" class="w-full" styleClass="w-full" />
+        </div>
+    </ng-template>
+</p-card>
+
+</div>
+

@@ -1,14 +1,104 @@
-.container{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+body, html {
+    overflow: scroll;
+}
+
+.svg-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
     height: 100vh;
+    overflow: hidden;
+    z-index: -5;
+}
+  
+.svg-bg svg {
+    position: relative;
+    height: 100vh;
+    width: auto;
+    left: 0;
+    max-width: none;
+  
+}
+
+.content{
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 30px;
-    padding: 3px;
+    flex-wrap: wrap;
+    width: auto;
+    margin-top: 20px;
+
 }
-.actionButtons{
+
+.eventName{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-size: 140%;
+    
+
+}
+
+small{
+    margin-top: 5px;
+}
+
+input{
+    width: 30%;
+}
+
+.eventName{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.eventDesc{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.eventCalendar{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.eventAddress{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.eventEndStart{
+    display: flex;
+    align-items: baseline;
+    height:auto;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    
+}
+
+.actionButton{
     display: flex;
     justify-content: space-between;
 }
