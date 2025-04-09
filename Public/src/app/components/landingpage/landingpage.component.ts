@@ -36,7 +36,7 @@ export class LandingpageComponent {
   ngOnInit() {
     this.items = [
         {
-          label: 'Esemény tevezés',
+          label: 'Esemény tervezés',
           icon: 'pi pi-file',
           routerLink: '/newevent',
         },
