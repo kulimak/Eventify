@@ -65,7 +65,6 @@ p-password .p-inputwrapper {
     text-align: center; /* Ha flex nem működne */
 }
 
-
 .svg-bg {
     position: fixed;
     top: 0;
@@ -76,11 +75,15 @@ p-password .p-inputwrapper {
     z-index: -5;
 }
 
+.kot{
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    margin-left: 20px;
+}
 .container {
     display: flex;
     width: 100%;
-    justify-content: center;
-    align-items: center;
 
 }
 
@@ -97,6 +100,7 @@ p{
     justify-content: space-evenly;
     padding: 20px;
 }
+
 .selected-categories {
     margin-top: 10px;
     h4 {
@@ -139,6 +143,7 @@ a:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 
 .bal-div{
@@ -172,6 +177,14 @@ p-calendar{
         display: flex;
         flex-direction: column;
         height: auto;
+    }
+
+    .bal-div{
+        height: 400px;
+    }
+    
+    .jobb-div{
+        height: 400px;
     }
 }
 

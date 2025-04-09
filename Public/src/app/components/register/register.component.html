@@ -60,7 +60,6 @@
         </div>
         <div class="jobb-div">
            
-
             <h3>Válaszd ki a kategóriákat amik érdekelnek!</h3>
             <div class=" ">
                 <p-multiSelect
@@ -78,9 +77,18 @@
                     <label for="Születési dátum">2025.01.01 <span class="kotelezo">*</span></label>
                 </p-floatLabel>
             </div>
+            
+            <div class="kot">
+                <small><span class="kotelezo">*</span> Kötelező mezők</small>
+            </div>
 
         </div>
+
+        
     </div>
+
+   
+
     <div class="div-footer">
         <a [routerLink]="'/register/companyReg'">Cégként regisztrálok...</a>
         <button class="userReg-btn" (click)="register()">Regisztráció</button>
