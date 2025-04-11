@@ -13,6 +13,7 @@
       </svg>
         
     </div>
+
  <!-- Tartalom -->
   <div class="container mx-auto px-4 py-12 text-white">
   <h1 class="text-4xl font-bold mb-8 text-center">Főoldal</h1>
@@ -21,7 +22,7 @@
   <section class="mb-16">
     <h2 class="text-2xl font-semibold mb-6">Friss események:</h2>
     <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Esemény kártya - *ngFor ciklus ajánlott -->
+      
       <p-card *ngFor="let event of newestEvents" class="shadow-lg rounded-xl overflow-hidden">
         <ng-template pTemplate="header">
           <img [src]="event.image" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
@@ -35,12 +36,7 @@
           <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.start }} | <b>Vég:</b> {{ event.end }}</p>
         </div>
 
-        <ng-template pTemplate="footer">
-          <div class="flex justify-between px-4 pb-4 gap-2">
-            <p-button severity="warning" label="Módosítás" class="w-full" />
-            <p-button severity="danger" label="Törlés" class="w-full" />
-          </div>
-        </ng-template>
+
       </p-card>
     </div>
   </section>
@@ -49,7 +45,8 @@
   <section>
     <h2 class="text-2xl font-semibold mb-6">Legnépszerűbb események:</h2>
     <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Esemény kártya - *ngFor ciklus ajánlott -->
+
+   
       <p-card *ngFor="let event of popularEvents" class="shadow-lg rounded-xl overflow-hidden">
         <ng-template pTemplate="header">
           <img [src]="event.image" alt="Event Image" style="max-width: 100%; height: auto;" class="w-full h-48 object-cover rounded-t-xl" />
@@ -63,12 +60,6 @@
           <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.start }} | <b>Vég:</b> {{ event.end }}</p>
         </div>
 
-        <ng-template pTemplate="footer">
-          <div class="flex justify-between px-4 pb-4 gap-2">
-            <p-button severity="warning" label="Módosítás" class="w-full" />
-            <p-button severity="danger" label="Törlés" class="w-full" />
-          </div>
-        </ng-template>
       </p-card>
     </div>
   </section>

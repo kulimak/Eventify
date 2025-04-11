@@ -90,7 +90,7 @@ h2 {
 
 /* Kártyák stílusa */
 p-card {
-  background-color: rgba(255, 255, 255, 0.9); /* Világos háttér */
+  background-color: rgba(255, 255, 255, 0.9); 
   border-radius: 8px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
@@ -116,27 +116,17 @@ p-card .p-card-body {
   padding: 16px;
 }
 
-p-card .p-card-footer {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-}
-
-p-button {
-  width: 48%;
-  margin: 0;
-}
 
 /* Reszponzív beállítások */
 
 /* Mobil nézet (max 768px) */
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: 1fr; /* Mobil nézetben egy oszlop */
+    grid-template-columns: 1fr;
   }
 
   p-card {
-    width: 100%; /* Teljes szélességű kártyák */
+    width: 100%; 
     margin-bottom: 1rem;
   }
 }
@@ -144,17 +134,17 @@ p-button {
 /* Asztali nézet (min 1024px) */
 @media (min-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 kártya egy sorban */
+    grid-template-columns: repeat(2, 1fr); 
   }
 
   p-card {
-    width: 100%; /* 100%-os szélesség, hogy a kártyák jól illeszkedjenek */
+    width: 100%; 
   }
 }
 
 /* Nagy asztali nézetek (min 1400px) */
 @media (min-width: 1400px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 kártya egy sorban */
+    grid-template-columns: repeat(3, 1fr); 
   }
 }
