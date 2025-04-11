@@ -3,6 +3,7 @@
     justify-content: flex-end; 
     align-items: center; 
     width: 100%; 
+
     
 }
   
@@ -14,9 +15,17 @@
     background: none !important;
     border: none !important;
     box-shadow: none !important;
+    font-size: larger;
 }
-  
-p-button {
-    margin: 0 15px; 
+
+::ng-deep .p-menubar-button {
+    width: 150px !important;
+    height: auto !important;
+    border-radius: 0;
+}
+
+::ng-deep .p-icon {
+    width: 30px;
+    height: 30px;
 }
   
