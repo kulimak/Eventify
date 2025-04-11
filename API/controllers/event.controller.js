@@ -18,3 +18,18 @@ exports.newevent = async (req, res, next) => {
         next(error);
     }
 }
+
+exports.delete = async (req, res, next) => {
+    try {
+        if (!req.params.id) {
+            return res.status(400).json({ message: 'Hiányzó esemény azonosító!'});
+        }
+
+        const event = await eventService.deleteEvent(req.params.id);
+        
+        res.status(200).json({success:true, results: event});
+        
+    } catch (error) {
+        next(error)
+    }
+}

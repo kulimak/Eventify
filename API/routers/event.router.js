@@ -7,4 +7,7 @@ const upload = require('../middlewares/upload.middleware');
 //New Event
 router.post('/newevent', authMiddleware, eventController.newevent);
 
+//Delete Event
+router.delete('/delete/:id', authMiddleware, eventController.delete);
+
 module.exports = router
