@@ -7,8 +7,8 @@ exports.newevent = async (req, res, next) => {
         if (!eventName || !eventStart || !eventEnd || !eventAddress || !eventDate || !description) {
             return res.status(400).json({ message: 'Hiányzó adatok!'});
         }
-        else if (eventStart > eventEnd) {
-            return res.status(400).json({ message: 'Az esemény kezdete nem lehet előbb mint az esemény vége!'});
+        else if (eventStart >= eventEnd) {
+            return res.status(400).json({ message: 'Az esemény kezdete nem lehet előbb vagy ugyanakkor, mint az esemény vége!'});
         }
         else{
             const event = await eventService.newEvent(eventName, eventStart, eventEnd, eventAddress, eventDate, description);
