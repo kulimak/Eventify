@@ -90,7 +90,28 @@
         aria-describedby="eventEndStart-help" 
         [(ngModel)]="value" />
 
-    
+  </div>
+
+  <hr>
+
+  <div class="category">
+
+    <label id="eventCat-help">
+      Kategóriák:
+    </label>
+
+    <p-selectButton 
+    [options]="paymentOptions" 
+    [(ngModel)]="Catvalue" 
+    [multiple]="true" 
+    optionLabel="name" 
+    optionValue="value" />
+
+    <small id="eventCat-help">
+      Válaszd ki, milyen kategóriá(k)ba tartozik az esemény
+  </small>
+
+
   </div>
 
     <ng-template pTemplate="footer">
