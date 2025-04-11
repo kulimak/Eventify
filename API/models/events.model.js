@@ -9,12 +9,16 @@ const Events = db.define('Events', {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true
     },
+    eventName:{
+        type: DataTypes.STRING(100),
+        allowNull: false
+    },
     eventStart: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING(20),
         allowNull: false
     },
     eventEnd: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING(20),
         allowNull: false
     },
     eventAddress: {
@@ -22,15 +26,21 @@ const Events = db.define('Events', {
         allowNull: false
     },
     eventDate:{
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
+        allowNull: false
+    },
+    description:{
+        type: DataTypes.TEXT,
         allowNull: false
     }
 });
 
 //Kapcsolatok
-User.hasMany(Events, Categories, {foreignKey: 'userId'});
-Categories.hasMany(Events, {foreignKey: 'catId'});
+User.hasMany(Events, { foreignKey: 'userId' });
+Categories.hasMany(Events, { foreignKey: 'catId' });
 
-Events.belongsTo(User, Categories, {foreignKey: 'userId', foreignKey: 'catId'});
+Events.belongsTo(User, { foreignKey: 'userId' });
+Events.belongsTo(Categories, { foreignKey: 'catId' });
+
 
 module.exports = { Events };
