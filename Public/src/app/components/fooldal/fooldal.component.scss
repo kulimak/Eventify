@@ -1,36 +1,35 @@
 .menubar {
-    display: flex;
-    justify-content: flex-end; 
-    align-items: center; 
-    width: 100%; 
-    
-  }
-  
-::ng-deep .p-menubar  {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    width: auto; 
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
-  
-  p-button {
-    margin: 0 15px; 
-  }
-  
-  p-iconField {
-    margin: 0 15px;
-  }
- 
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+::ng-deep .p-menubar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+p-button {
+  margin: 0 15px;
+}
+
+p-iconField {
+  margin: 0 15px;
+}
+
 .svg-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px; 
-    margin-top: 150px;
-    z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  margin-top: 150px;
+  z-index: 5;
 }
 
 .svg-bg {
@@ -48,30 +47,72 @@
   width: auto;
   left: 0;
   max-width: none;
-
 }
 
 .felhasznFeltetelek {
   text-align: justify;
 }
 
-.content{
-
+.content {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center; /* Középre igazítja a tartalmat */
 }
 
-.popular-cards{
+.popular-cards {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-wrap: wrap; /* Eltűnik a túlcsordulás, ha a kártyák nem férnek el */
+  justify-content: center; /* Középre igazítja a kártyákat */
+  gap: 15px; /* Kártyák közötti távolság */
+  margin-top: 30px; /* Fenti távolság a kártyák között */
+  margin-bottom: 30px; /* Lenti távolság a kártyák között */
 }
 
-.newest-events{
+.newest-events {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-wrap: wrap; /* Eltűnik a túlcsordulás, ha a kártyák nem férnek el */
+  justify-content: center; /* Középre igazítja a kártyákat */
+  gap: 15px; /* Kártyák közötti távolság */
+  margin-top: 30px; /* Fenti távolság a kártyák között */
+  margin-bottom: 30px; /* Lenti távolság a kártyák között */
 }
 
-h1{
+h1 {
   text-align: center;
+}
+
+.popular-cards p-card, .newest-events p-card {
+  width: 750px; /* Kártyák szélessége */
+  height: 500px; /* Kártyák magassága */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Kártyák tartalmának elrendezése */
+  align-items: center;
+  background-color: #fefefe; /* Még világosabb háttérszín */
+  border-radius: 8px; /* Lekerekített sarkok */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Finomabb árnyék */
+  transition: box-shadow 0.3s ease; /* Lassan változó árnyék */
+}
+
+.popular-cards p-card:hover, .newest-events p-card:hover {
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2); /* Erősebb árnyék hoverre */
+}
+
+.popular-cards p-card img, .newest-events p-card img {
+  width: 100%; /* A kép szélessége a kártya szélességéhez igazodik */
+  height: 100%; /* A kép magassága a kártya magasságához igazodik */
+  object-fit: cover; /* A kép tökéletesen illeszkedik anélkül, hogy torzulna */
+}
+
+h2 {
+  text-align: center;
+}
+
+/* Media query a számítógépes nézetekhez */
+@media (min-width: 1024px) {
+  .popular-cards p-card img,
+  .newest-events p-card img {
+    max-height: 100px !important; /* Kép maximális magassága számítógépes nézetben */
+  }
 }
