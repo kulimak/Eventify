@@ -68,12 +68,12 @@ Authorization: Bearer {{authToken}}
 ### update username
 # @name username
 
-PATCH {{baseUrl}}/users/username/0242be39-ba20-4539-a776-8b8b2b3916e4
+PATCH {{baseUrl}}/users/username/f2cb07a1-621c-429e-a855-7d0c02d99be0
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "username": "teszt1"
+    "username": "asd123"
 }
 
 
@@ -100,3 +100,14 @@ Authorization: Bearer {{authToken}}
 DELETE {{baseUrl}}/event/delete/89c01c2a-9448-4fde-8339-93f183b69f5e 
 Content-Type: application/json 
 Authorization: Bearer {{authToken}}
+
+### Update Event
+# @name updateEvent
+
+PATCH  {{baseUrl}}/event/update/d80c709d-2204-4e33-a4aa-9ba570c2cc89
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "description": "Leírás módosítása"
+}

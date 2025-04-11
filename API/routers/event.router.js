@@ -10,4 +10,7 @@ router.post('/newevent', authMiddleware, eventController.newevent);
 //Delete Event
 router.delete('/delete/:id', authMiddleware, eventController.delete);
 
+//Update Event
+router.patch('/update/:id', authMiddleware, eventController.update);
+
 module.exports = router
