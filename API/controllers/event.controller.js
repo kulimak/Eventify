@@ -28,8 +28,23 @@ exports.delete = async (req, res, next) => {
         const event = await eventService.deleteEvent(req.params.id);
         
         res.status(200).json({success:true, results: event});
-        
+
     } catch (error) {
         next(error)
+    }
+}
+
+exports.update = async (req, res, next) => {
+    try {
+        const {eventName, eventStart, eventEnd, eventAddress, eventDate, description} = req.body
+        if (!req.params.id) {
+            return res.status(400).json({ message: 'Hiányzó esemény azonosító!'});
+        }
+        else{
+            const event = await eventService.updateEvent(req.params.id, eventName, eventStart, eventEnd, eventAddress, eventDate, description);
+            res.status(201).json({success: true, message: "Esemény módosítása sikeres!"});
+        }
+    } catch (error) {
+        next(error);
     }
 }

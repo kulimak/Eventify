@@ -17,6 +17,7 @@ exports.newEvent = async (eventName, eventStart, eventEnd, eventAddress, eventDa
 }
 
 exports.deleteEvent = async (id) => {
+    
     const event = await Events.destroy({
         where: {id}
     });
@@ -24,4 +25,23 @@ exports.deleteEvent = async (id) => {
     if (!event) throw new Error('Esemény nem található!');
 
     return "Esemény törölve!";
+}
+
+exports.updateEvent = async (id, eventName, eventStart, eventEnd, eventAddress, eventDate, description) => {
+
+    const updateEvent = Events.update({
+        eventName, 
+        eventStart, 
+        eventEnd, 
+        eventAddress, 
+        eventDate, 
+        description
+    },
+    {
+        where: {id}
+    });
+
+    if (updateEvent == 0) throw new Error('Az Esemény nem található!');
+
+    return 'Esemény módosítás sikeres!'
 }
