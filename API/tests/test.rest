@@ -78,7 +78,7 @@ Authorization: Bearer {{authToken}}
 
 
 ### New Event
-# @name event
+# @name newEvent
 POST {{baseUrl}}/event/newevent
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
@@ -94,3 +94,9 @@ Authorization: Bearer {{authToken}}
     "description": "nagyon jo esemény gyere el"
 
 }
+
+### Delete Event
+# @name deleteEvent
+DELETE {{baseUrl}}/event/delete/89c01c2a-9448-4fde-8339-93f183b69f5e 
+Content-Type: application/json 
+Authorization: Bearer {{authToken}}
