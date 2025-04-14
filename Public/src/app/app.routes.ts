@@ -10,6 +10,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MyeventsComponent } from './components/myevents/myevents.component';
 import { CompanyRegComponent } from './components/company-reg/company-reg.component';
 import { FooldalComponent } from './components/fooldal/fooldal.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 
 
 export const routes: Routes = [
@@ -20,6 +21,14 @@ export const routes: Routes = [
     {
         path: 'login', component: LoginComponent
     },
+
+    {
+        path: 'passwordreset',
+        loadComponent: () =>
+            import('./components/password-reset/password-reset.component')
+                .then(m => m.PasswordResetComponent)
+    }
+    ,
 
     {
         path: 'register' ,children: 

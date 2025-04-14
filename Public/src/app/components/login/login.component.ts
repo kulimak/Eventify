@@ -5,7 +5,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { ApiService } from '../../services/api.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UserLogin } from '../../interfaces/user';
 import { MessagesModule } from 'primeng/messages';
@@ -26,7 +26,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     MessagesModule,
     ToastModule,
     RippleModule,
-    CheckboxModule
+    CheckboxModule,
+    RouterLink
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
