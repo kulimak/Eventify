@@ -77,6 +77,8 @@ Authorization: Bearer {{authToken}}
 }
 
 
+###EVENTS###
+
 ### New Event
 # @name newEvent
 POST {{baseUrl}}/event/newevent
@@ -102,7 +104,7 @@ Authorization: Bearer {{authToken}}
 
 ### Get one Event by id
 # @name getOneById
-GET {{baseUrl}}/event/get/c7a1f171-7505-41c1-9ea2-223e94fb5b46
+GET {{baseUrl}}/event/get/a0c50a4b-8a57-4eb0-bf8d-e233b6cf0ae7
 Authorization: Bearer {{authToken}}
 
 ### Delete Event
@@ -121,3 +123,46 @@ Authorization: Bearer {{authToken}}
 {
     "description": "Leírás módosítása"
 }
+
+
+### EVENT RATINGS ###
+
+### New Rating
+# @name newRating
+POST {{baseUrl}}/eventrating/new
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "rating":"4",
+    "opinion":"okés",
+    "userId":"ee6b3b45-0c2e-454e-a021-15a786524062",
+    "eventId":"a0c50a4b-8a57-4eb0-bf8d-e233b6cf0ae7"
+}
+
+### Update Rating
+# @name updateRating
+PATCH {{baseUrl}}/eventrating/update/1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "rating":"4",
+    "opinion":"jó volt"
+}
+
+### Delete Rating
+# @name DeleteRating
+DELETE {{baseUrl}}/eventrating/delete/1
+Content-Type: application/json 
+Authorization: Bearer {{authToken}}
+
+### Get all Ratings
+# @name getAll
+GET {{baseUrl}}/eventrating/get
+Authorization: Bearer {{authToken}}
+
+### Get one Rating by id
+# @name getOneById
+GET {{baseUrl}}/eventrating/get/3
+Authorization: Bearer {{authToken}}
