@@ -84,12 +84,12 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "eventName": "Teszt esemény 4",
+    "eventName": "Retro Feeling koncert",
     "eventStart": "10:00",
     "eventEnd": "13:00",
     "eventAddress": "6500, Baja, Bácska tér, 5",
     "eventDate": "2025-04-05",
-    "userId": "",
+    "userId": "ee6b3b45-0c2e-454e-a021-15a786524062",
     "catId": "1",
     "description": "nagyon jo esemény gyere el"
 
@@ -100,7 +100,7 @@ Authorization: Bearer {{authToken}}
 GET {{baseUrl}}/event/get
 Authorization: Bearer {{authToken}}
 
-### Get one Event by if
+### Get one Event by id
 # @name getOneById
 GET {{baseUrl}}/event/get/c7a1f171-7505-41c1-9ea2-223e94fb5b46
 Authorization: Bearer {{authToken}}

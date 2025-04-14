@@ -3,7 +3,7 @@ const eventService = require('../services/event.service');
 
 exports.newevent = async (req, res, next) => {
     try {
-        const { eventName, eventStart, eventEnd, eventAddress, eventDate, description } = req.body;
+        const { eventName, eventStart, eventEnd, eventAddress, eventDate, description, userId, catId} = req.body;
         if (!eventName || !eventStart || !eventEnd || !eventAddress || !eventDate || !description) {
             return res.status(400).json({ message: 'Hiányzó adatok!'});
         }
@@ -11,7 +11,7 @@ exports.newevent = async (req, res, next) => {
             return res.status(400).json({ message: 'Az esemény kezdete nem lehet előbb vagy ugyanakkor, mint az esemény vége!'});
         }
         else{
-            const event = await eventService.newEvent(eventName, eventStart, eventEnd, eventAddress, eventDate, description);
+            const event = await eventService.newEvent(eventName, eventStart, eventEnd, eventAddress, eventDate, description, userId, catId);
             res.status(201).json({success: true, message: "Esemény létrehozása sikeres!"});
         }
     } catch (error) {
