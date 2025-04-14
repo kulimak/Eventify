@@ -16,6 +16,20 @@ exports.newEvent = async (eventName, eventStart, eventEnd, eventAddress, eventDa
     return newEvent;
 }
 
+exports.getAll = async () => {
+    const events = await Events.findAll();
+
+    return events;
+}
+
+exports.getOneById = async (id) => {
+    const event = await Events.findOne({
+        where: {id}
+    })
+
+    return event
+}
+
 exports.deleteEvent = async (id) => {
     
     const event = await Events.destroy({

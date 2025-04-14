@@ -19,6 +19,30 @@ exports.newevent = async (req, res, next) => {
     }
 }
 
+exports.getAll = async (req, res, next) => {
+    try {
+        const events = await eventService.getAll();
+
+        res.status(200).json({success:true, results: events});
+    } catch (error) {
+        next(error)
+    }
+}
+
+exports.getOneById = async (req, res, next) => {
+    try {
+        if (!req.params.id) {
+            return res.status(400).json({ message: 'Hiányzó esemény azonosító!'});
+        }
+
+        const event = await eventService.getOneById(req.params.id);
+        
+        res.status(200).json({success:true, results: event});
+    } catch (error) {
+        next(error)
+    }
+}
+
 exports.delete = async (req, res, next) => {
     try {
         if (!req.params.id) {
