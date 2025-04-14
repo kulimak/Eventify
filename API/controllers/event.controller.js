@@ -66,7 +66,7 @@ exports.update = async (req, res, next) => {
         }
         else{
             const event = await eventService.updateEvent(req.params.id, eventName, eventStart, eventEnd, eventAddress, eventDate, description);
-            res.status(201).json({success: true, message: "Esemény módosítása sikeres!"});
+            res.status(200).json({success: true, message: "Esemény módosítása sikeres!"});
         }
     } catch (error) {
         next(error);
