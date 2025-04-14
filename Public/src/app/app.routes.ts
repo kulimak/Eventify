@@ -11,6 +11,7 @@ import { MyeventsComponent } from './components/myevents/myevents.component';
 import { CompanyRegComponent } from './components/company-reg/company-reg.component';
 import { FooldalComponent } from './components/fooldal/fooldal.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { PassResetSikeresComponent } from './components/pass-reset-sikeres/pass-reset-sikeres.component';
 
 
 export const routes: Routes = [
@@ -23,12 +24,15 @@ export const routes: Routes = [
     },
 
     {
+        path: 'pass-reset-sikeres', component: PassResetSikeresComponent
+    },
+
+    {
         path: 'passwordreset',
         loadComponent: () =>
             import('./components/password-reset/password-reset.component')
                 .then(m => m.PasswordResetComponent)
-    }
-    ,
+    },
 
     {
         path: 'register' ,children: 

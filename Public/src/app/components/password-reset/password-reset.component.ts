@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink,  } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FloatLabelModule } from 'primeng/floatlabel';
@@ -30,9 +30,5 @@ import { ToastModule } from 'primeng/toast';
 })
 export class PasswordResetComponent {
   email: string = '';
-
-  onSubmit() {
-    console.log('Jelszó visszaállító email:', this.email);
-  }
 
 }
