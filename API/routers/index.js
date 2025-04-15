@@ -9,4 +9,6 @@ router.use('/event', require('./event.router'));
 
 router.use('/eventrating', require('./eventRating.router'));
 
+router.use('/eventregistrations', require('./eventRegistrations.router'));
+
 module.exports = router;

@@ -8,9 +8,9 @@ POST  {{baseUrl}}/users/register
 Content-Type: application/json
 
 {
-    "username": "teszt1",
-    "email": "teszt@gmail.com",
-    "password": "Teszt123",
+    "username": "pisti",
+    "email": "pisti@gmail.com",
+    "password": "Pisti123",
     "gender": "férfi",
     "defAddress": "1000, Teszt, teszt1",
     "favCategories": "",
@@ -77,7 +77,7 @@ Authorization: Bearer {{authToken}}
 }
 
 
-###EVENTS###
+### EVENTS ###
 
 ### New Event
 # @name newEvent
@@ -91,8 +91,8 @@ Authorization: Bearer {{authToken}}
     "eventEnd": "13:00",
     "eventAddress": "6500, Baja, Bácska tér, 5",
     "eventDate": "2025-04-05",
-    "userId": "ee6b3b45-0c2e-454e-a021-15a786524062",
-    "catId": "1",
+    "userId": "97c7e329-8f30-4f82-92c7-2aa6a8be95c9",
+    "catId": "2",
     "description": "nagyon jo esemény gyere el"
 
 }
@@ -165,4 +165,34 @@ Authorization: Bearer {{authToken}}
 ### Get one Rating by id
 # @name getOneById
 GET {{baseUrl}}/eventrating/get/3
+Authorization: Bearer {{authToken}}
+
+
+### Event Registrations ###
+
+### New Registration
+# @name newRegistration
+POST {{baseUrl}}/eventregistrations/new
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "userId":"fb0b79b8-7d61-4058-80d6-cf6d79fe5f5c",
+    "eventId":"acf2182a-7ba8-4b77-b395-b79971a40467"
+}
+
+### Get all Registrations
+# @name getAll
+GET {{baseUrl}}/eventregistrations/get
+Authorization: Bearer {{authToken}}
+
+### Get one Registration by id
+# @name getOneById
+GET {{baseUrl}}/eventregistrations/get/2
+Authorization: Bearer {{authToken}}
+
+### Delete Registration
+# @name DeleteRating
+DELETE {{baseUrl}}/eventregistrations/delete/2
+Content-Type: application/json 
 Authorization: Bearer {{authToken}}

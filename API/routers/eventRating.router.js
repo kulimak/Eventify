@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const eventRatingController = require('../controllers/eventRating.controller');
 const { authMiddleware } = require('../middlewares/auth.middleware');
-const upload = require('../middlewares/upload.middleware');
 
 //New Rating
 router.post('/new', authMiddleware, eventRatingController.newRating);
