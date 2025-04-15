@@ -37,7 +37,10 @@
               <td>{{ user.name }}</td>
               <td>{{ user.email }}</td>
               <td>
-                <!-- műveletek pl. törlés/szerkesztés gomb -->
+                    <div class="gombok">
+                        <button class="edit-btn" (click)="loadEvents()">Módosítás</button>   
+                        <button class="delete-btn" (click)="loadEvents()">Törlés</button>
+                    </div>
               </td>
             </tr>
           </tbody>
@@ -50,14 +53,21 @@
             <tr>
               <th>Esemény címe</th>
               <th>Dátum</th>
-              <th>Leírás</th>
+              <th>Létrehozó</th>
+              <th>Műveletek</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let event of events">
               <td>{{ event.title }}</td>
               <td>{{ event.date }}</td>
-              <td>{{ event.description }}</td>
+              <td>{{ event.userId }}</td>
+              <td>
+                <div class="gombok">
+                    <button class="edit-btn" (click)="loadEvents()">Módosítás</button>   
+                    <button class="delete-btn" (click)="loadEvents()">Törlés</button>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>

@@ -28,9 +28,10 @@
 }
 
 .alsodiv{
-
     color: black;
-    height: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .admin-btn {
@@ -43,6 +44,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-right: 10px;
+    font-size: large;
 }
 
 .admin-btn:hover {
@@ -50,7 +52,8 @@
 }
 
 .user-table {
-    width: 100%;
+    background-color: white;
+    width: 70%;
     border-collapse: collapse;
     margin-top: 20px;
 }
@@ -82,9 +85,31 @@
 .user-table .edit-btn {
     background-color: #ffca28;
     color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
 }
 
 .user-table .delete-btn {
     background-color: #e53935;
     color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.user-table .edit-btn:hover{
+    background-color: #b98e0d;
+}
+
+.user-table .delete-btn:hover{
+    background-color: #9e1b19;
 }
