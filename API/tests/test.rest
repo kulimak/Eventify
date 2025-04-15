@@ -8,9 +8,9 @@ POST  {{baseUrl}}/users/register
 Content-Type: application/json
 
 {
-    "username": "pisti",
-    "email": "pisti@gmail.com",
-    "password": "Pisti123",
+    "username": "teszt1",
+    "email": "teszt@gmail.com",
+    "password": "Teszt123",
     "gender": "férfi",
     "defAddress": "1000, Teszt, teszt1",
     "favCategories": "",
@@ -86,13 +86,13 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "eventName": "Retro Feeling koncert",
+    "eventName": "5km futás",
     "eventStart": "10:00",
     "eventEnd": "13:00",
-    "eventAddress": "6500, Baja, Bácska tér, 5",
+    "eventAddress": "6500, Baja, Petőfi Sziget",
     "eventDate": "2025-04-05",
-    "userId": "97c7e329-8f30-4f82-92c7-2aa6a8be95c9",
-    "catId": "2",
+    "userId": "282e7baa-49af-40f6-aa7a-fe160f54631f",
+    "catId": "3",
     "description": "nagyon jo esemény gyere el"
 
 }
@@ -104,7 +104,7 @@ Authorization: Bearer {{authToken}}
 
 ### Get one Event by id
 # @name getOneById
-GET {{baseUrl}}/event/get/a0c50a4b-8a57-4eb0-bf8d-e233b6cf0ae7
+GET {{baseUrl}}/event/get/ae832f03-c39b-4da7-a162-bbde95563621
 Authorization: Bearer {{authToken}}
 
 ### Delete Event
@@ -116,12 +116,12 @@ Authorization: Bearer {{authToken}}
 ### Update Event
 # @name updateEvent
 
-PATCH  {{baseUrl}}/event/update/d80c709d-2204-4e33-a4aa-9ba570c2cc89
+PATCH  {{baseUrl}}/event/update/ae832f03-c39b-4da7-a162-bbde95563621
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "description": "Leírás módosítása"
+    "description": "Kikapcsolódás sprotolás"
 }
 
 
@@ -134,10 +134,10 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "rating":"4",
-    "opinion":"okés",
-    "userId":"ee6b3b45-0c2e-454e-a021-15a786524062",
-    "eventId":"a0c50a4b-8a57-4eb0-bf8d-e233b6cf0ae7"
+    "rating":"5",
+    "opinion":"szuper volt",
+    "userId":"282e7baa-49af-40f6-aa7a-fe160f54631f",
+    "eventId":"ae832f03-c39b-4da7-a162-bbde95563621"
 }
 
 ### Update Rating
@@ -164,7 +164,7 @@ Authorization: Bearer {{authToken}}
 
 ### Get one Rating by id
 # @name getOneById
-GET {{baseUrl}}/eventrating/get/3
+GET {{baseUrl}}/eventrating/get/1
 Authorization: Bearer {{authToken}}
 
 
@@ -177,8 +177,8 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "userId":"fb0b79b8-7d61-4058-80d6-cf6d79fe5f5c",
-    "eventId":"acf2182a-7ba8-4b77-b395-b79971a40467"
+    "userId":"282e7baa-49af-40f6-aa7a-fe160f54631f",
+    "eventId":"ae832f03-c39b-4da7-a162-bbde95563621"
 }
 
 ### Get all Registrations
@@ -188,7 +188,7 @@ Authorization: Bearer {{authToken}}
 
 ### Get one Registration by id
 # @name getOneById
-GET {{baseUrl}}/eventregistrations/get/2
+GET {{baseUrl}}/eventregistrations/get/1
 Authorization: Bearer {{authToken}}
 
 ### Delete Registration
