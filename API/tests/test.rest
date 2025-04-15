@@ -87,12 +87,12 @@ Authorization: Bearer {{authToken}}
 
 {
     "eventName": "5km futás",
-    "eventStart": "10:00",
+    "eventStart": "09:00",
     "eventEnd": "13:00",
     "eventAddress": "6500, Baja, Petőfi Sziget",
     "eventDate": "2025-04-05",
     "userId": "282e7baa-49af-40f6-aa7a-fe160f54631f",
-    "catId": "3",
+    "catId": "3 10 2",
     "description": "nagyon jo esemény gyere el"
 
 }
@@ -195,4 +195,12 @@ Authorization: Bearer {{authToken}}
 # @name DeleteRating
 DELETE {{baseUrl}}/eventregistrations/delete/2
 Content-Type: application/json 
+Authorization: Bearer {{authToken}}
+
+
+### Categories ###
+
+### Get all Categories
+# @name getAll
+GET {{baseUrl}}/categories/get
 Authorization: Bearer {{authToken}}

@@ -51,19 +51,37 @@ export class ApiService {
    //Felhasználónév módosítás
   passord(table: string, id: string, data:object)
   {
-    return this.http.post(`${this.server}/${table}/password/${id}`, this.tokenHeader, data);
+    return this.http.post(`${this.server}/${table}/password/${id}`, data, this.tokenHeader());
   }
 
 
  //Email módosítás
   email(table: string, id: string, data:object)
   {
-    return this.http.post(`${this.server}/${table}/email/${id}`, this.tokenHeader, data);
+    return this.http.post(`${this.server}/${table}/email/${id}`, data, this.tokenHeader());
   }
 
  //Email módosítás
  username(table: string, id: string, data:object)
  {
-   return this.http.post(`${this.server}/${table}/username/${id}`, this.tokenHeader, data);
+   return this.http.post(`${this.server}/${table}/username/${id}`, data, this.tokenHeader() );
+ }
+
+
+ //Kategóriák
+
+ //összes kategória lekérése
+ categories(table:string)
+ {
+    return this.http.get(`${this.server}/${table}/get`, this.tokenHeader());
+ }
+
+
+ //Események
+
+ //Esemény létrehozása
+ newEvent(table: string, event: object)
+ {
+   return this.http.post(`${this.server}/${table}/newevent`, event, this.tokenHeader());
  }
 }
