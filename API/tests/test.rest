@@ -28,7 +28,7 @@ Content-Type: application/json
 
 {
     "email": "teszt@gmail.com",
-    "password": "teszt123"
+    "password": "Teszt123"
 }
 
 ### login company
@@ -68,10 +68,131 @@ Authorization: Bearer {{authToken}}
 ### update username
 # @name username
 
-PATCH {{baseUrl}}/users/username/0242be39-ba20-4539-a776-8b8b2b3916e4
+PATCH {{baseUrl}}/users/username/f2cb07a1-621c-429e-a855-7d0c02d99be0
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "username": "teszt1"
+    "username": "asd123"
 }
+
+
+### EVENTS ###
+
+### New Event
+# @name newEvent
+POST {{baseUrl}}/event/newevent
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "eventName": "5km futás",
+    "eventStart": "10:00",
+    "eventEnd": "13:00",
+    "eventAddress": "6500, Baja, Petőfi Sziget",
+    "eventDate": "2025-04-05",
+    "userId": "282e7baa-49af-40f6-aa7a-fe160f54631f",
+    "catId": "3",
+    "description": "nagyon jo esemény gyere el"
+
+}
+
+### Get all Events
+# @name getAll
+GET {{baseUrl}}/event/get
+Authorization: Bearer {{authToken}}
+
+### Get one Event by id
+# @name getOneById
+GET {{baseUrl}}/event/get/ae832f03-c39b-4da7-a162-bbde95563621
+Authorization: Bearer {{authToken}}
+
+### Delete Event
+# @name deleteEvent
+DELETE {{baseUrl}}/event/delete/89c01c2a-9448-4fde-8339-93f183b69f5e 
+Content-Type: application/json 
+Authorization: Bearer {{authToken}}
+
+### Update Event
+# @name updateEvent
+
+PATCH  {{baseUrl}}/event/update/ae832f03-c39b-4da7-a162-bbde95563621
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "description": "Kikapcsolódás sprotolás"
+}
+
+
+### EVENT RATINGS ###
+
+### New Rating
+# @name newRating
+POST {{baseUrl}}/eventrating/new
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "rating":"5",
+    "opinion":"szuper volt",
+    "userId":"282e7baa-49af-40f6-aa7a-fe160f54631f",
+    "eventId":"ae832f03-c39b-4da7-a162-bbde95563621"
+}
+
+### Update Rating
+# @name updateRating
+PATCH {{baseUrl}}/eventrating/update/1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "rating":"4",
+    "opinion":"jó volt"
+}
+
+### Delete Rating
+# @name DeleteRating
+DELETE {{baseUrl}}/eventrating/delete/1
+Content-Type: application/json 
+Authorization: Bearer {{authToken}}
+
+### Get all Ratings
+# @name getAll
+GET {{baseUrl}}/eventrating/get
+Authorization: Bearer {{authToken}}
+
+### Get one Rating by id
+# @name getOneById
+GET {{baseUrl}}/eventrating/get/1
+Authorization: Bearer {{authToken}}
+
+
+### Event Registrations ###
+
+### New Registration
+# @name newRegistration
+POST {{baseUrl}}/eventregistrations/new
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "userId":"282e7baa-49af-40f6-aa7a-fe160f54631f",
+    "eventId":"ae832f03-c39b-4da7-a162-bbde95563621"
+}
+
+### Get all Registrations
+# @name getAll
+GET {{baseUrl}}/eventregistrations/get
+Authorization: Bearer {{authToken}}
+
+### Get one Registration by id
+# @name getOneById
+GET {{baseUrl}}/eventregistrations/get/1
+Authorization: Bearer {{authToken}}
+
+### Delete Registration
+# @name DeleteRating
+DELETE {{baseUrl}}/eventregistrations/delete/2
+Content-Type: application/json 
+Authorization: Bearer {{authToken}}
