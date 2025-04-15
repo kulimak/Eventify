@@ -9,70 +9,140 @@ import { CardModule } from 'primeng/card';
   templateUrl: './stats.component.html',
   styleUrl: './stats.component.scss'
 })
-export class StatsComponent implements OnInit {
+export class StatsComponent implements OnInit  {
+    pieData: any;
+    pieOptions: any;
 
-  data: any;
+    barData: any;
+    barOptions: any;
 
-  options: any;
+    lineData: any;
+    lineOptions: any;
+
 
   ngOnInit() {
-      const documentStyle = getComputedStyle(document.documentElement);
-      const textColor = documentStyle.getPropertyValue('--text-color');
-      const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-      const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+    const documentStyle = getComputedStyle(document.documentElement);
 
-      this.data = {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [
-              {
-                  label: 'First Dataset',
-                  data: [65, 59, 80, 81, 56, 55, 40],
-                  fill: false,
-                  borderColor: documentStyle.getPropertyValue('--blue-500'),
-                  tension: 0.4
-              },
-              {
-                  label: 'Second Dataset',
-                  data: [28, 48, 40, 19, 86, 27, 90],
-                  fill: false,
-                  borderColor: documentStyle.getPropertyValue('--pink-500'),
-                  tension: 0.4
-              }
+    // Kördiagram (pie)
+    this.pieData = {
+      labels: ['Kategória A', 'Kategória B', 'Kategória C'],
+      datasets: [
+        {
+          data: [
+            Math.floor(Math.random() * 500 + 100),
+            Math.floor(Math.random() * 500 + 100),
+            Math.floor(Math.random() * 500 + 100)
+          ],
+          backgroundColor: [
+            documentStyle.getPropertyValue('--blue-500'),
+            documentStyle.getPropertyValue('--green-500'),
+            documentStyle.getPropertyValue('--orange-500')
+          ],
+          hoverBackgroundColor: [
+            documentStyle.getPropertyValue('--blue-400'),
+            documentStyle.getPropertyValue('--green-400'),
+            documentStyle.getPropertyValue('--orange-400')
           ]
-      };
+        }
+      ]
+    };
 
-      this.options = {
-          maintainAspectRatio: false,
-          aspectRatio: 0.6,
-          plugins: {
-              legend: {
-                  labels: {
-                      color: textColor
-                  }
-              }
-          },
-          scales: {
-              x: {
-                  ticks: {
-                      color: textColorSecondary
-                  },
-                  grid: {
-                      color: surfaceBorder,
-                      drawBorder: false
-                  }
-              },
-              y: {
-                  ticks: {
-                      color: textColorSecondary
-                  },
-                  grid: {
-                      color: surfaceBorder,
-                      drawBorder: false
-                  }
-              }
+    this.pieOptions = {
+      plugins: {
+        legend: {
+          labels: {
+            usePointStyle: true,
+            color: documentStyle.getPropertyValue('--text-color')
           }
-      };
+        }
+      }
+    };
 
-      
+    // Oszlopdiagram (bar)
+    this.barData = {
+      labels: ['Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek'],
+      datasets: [
+        {
+          label: 'Látogatók',
+          backgroundColor: documentStyle.getPropertyValue('--cyan-500'),
+          data: Array.from({ length: 5 }, () => Math.floor(Math.random() * 100 + 1))
+        }
+      ]
+    };
+
+    this.barOptions = {
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: {
+            color: documentStyle.getPropertyValue('--text-color')
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: documentStyle.getPropertyValue('--text-color-secondary')
+          },
+          grid: {
+            color: documentStyle.getPropertyValue('--surface-border')
+          }
+        },
+        y: {
+          ticks: {
+            color: documentStyle.getPropertyValue('--text-color-secondary')
+          },
+          grid: {
+            color: documentStyle.getPropertyValue('--surface-border')
+          }
+        }
+      }
+    };
+
+    // Vonaldiagram (line)
+this.lineData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+    datasets: [
+      {
+        label: 'Felhasználók',
+        fill: false,
+        borderColor: documentStyle.getPropertyValue('--purple-500'),
+        tension: 0.4,
+        data: Array.from({ length: 7 }, () => Math.floor(Math.random() * 100 + 1))
+      }
+    ]
+  };
+  
+  this.lineOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        labels: {
+          color: documentStyle.getPropertyValue('--text-color')
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: documentStyle.getPropertyValue('--text-color-secondary')
+        },
+        grid: {
+          color: documentStyle.getPropertyValue('--surface-border')
+        }
+      },
+      y: {
+        ticks: {
+          color: documentStyle.getPropertyValue('--text-color-secondary')
+        },
+        grid: {
+          color: documentStyle.getPropertyValue('--surface-border')
+        }
+      }
+    }
+  };
+  
   }
+
+
 }

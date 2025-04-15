@@ -1,15 +1,38 @@
 <p>Statisztikák</p>
+
 <div class="container">
-    <div class="chart">
-        <p-chart type="line" [data]="data" [options]="options"></p-chart>
+  <div class="baloldal">
+    <div class="infoSor">
+      <div class="letrehozottEvent"><span>1234</span></div>
+      <div class="avgErtekeles"><span>3.6</span></div>
+      <div class="kedvencKategoria"><span>Koncert</span></div>
     </div>
 
-    <div class="card">
-        <p-card header="Legjbb értékelésű felhasználók">
-            <p class="m-0">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
-            </p>
-        </p-card>
-    </div>
+    <div class="tablazat">  
+        <p-chart type="bar" [data]="barData" [options]="barOptions"></p-chart>
 
+        <div class="tablazat2">
+        <p-chart id="kor"
+            type="pie" 
+            [data]="pieData" 
+            [options]="pieOptions" 
+            style="max-width: 40%; display: block; margin: 0 auto;">
+        </p-chart>
+
+        <p-chart id="vonal"
+            type="line" 
+            [data]="lineData" 
+            [options]="lineOptions" 
+            style="max-width: 600px; display: block; margin: 0 auto;">
+        </p-chart>
+        </div>
+
+    </div>
+  </div>
+
+  
+
+  <div class="jobboldal">
+    <h2>Kategóriák, amiket ajánlunk:</h2>
+  </div>
 </div>

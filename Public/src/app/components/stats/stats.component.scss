@@ -1,33 +1,147 @@
+body html {
+  overflow: scroll;
+}
+
 .container {
-    display: flex; /* Flexbox elrendezés alkalmazása */
-    justify-content: space-between; /* Elrendezi a két elemet egymás mellett */
-    width: 100%; /* A konténer teljes szélességet használ */
-    align-items: flex-start;
-  }
+  display: flex;
+  width: 100%; 
+  flex-direction: row;
+}
+
+.baloldal {
+  display: flex;
+  width: 70%;
+
+  flex-direction: column;
+}
+
+.jobboldal{
+  display: flex;
+  width: 30%;background-color: #035559;
+  height: 100vh;
+  margin-left: 10px;
+  border-radius: 12px;
+  justify-content: center;
   
-  .chart {
-    width: 60%; /* A grafikon a képernyő 60%-át foglalja el */
-    padding: 10px; /* Néhány padding, hogy ne legyenek túl szorosak az elemek */
-  }
-  
-  .card {
-    width: 40%; /* A kártya a képernyő 40%-át foglalja el */
-    padding: 10px; /* Padding a kártya belsejében */
+}
+
+.letrehozottEvent{
+  display: flex;
+  width: 23%;
+  background-color: #035559;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.avgErtekeles{
+  display: flex;
+  width: 23%;
+  background-color: #032021;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.kedvencKategoria{
+  display: flex;
+  width: 23%;
+  background-color: #035559;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+p{
+  font-size: 200%;
+  text-indent: 30px;
+}
+
+.baloldal {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoSor {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.letrehozottEvent,
+.avgErtekeles,
+.kedvencKategoria {
+  padding: 10px;
+  background-color: #032021;
+  border-radius: 6px;
+  font-size: 150%;
+}
+
+p-chart{
+  width: 100%;
+}
+
+.tablazat2{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+ #kor{
+  width: 50%;
+ }
+
+ 
+ #vonal{
+  width: 50%;
+ }
+
+ @media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column; /* Ha a képernyő szélessége kisebb, az elemek egymás alá kerülnek */
-    }
-  
-    .chart, .card {
-      width: 100%; /* Az elemek teljes szélességet foglalnak el mobilon */
-    }
-  }
-
-p {
+  .baloldal, .jobboldal {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 300%;
+  }
+
+  .infoSor {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tablazat2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #kor, #vonal {
+    max-width: 90% !important;
+  }
+
+  .letrehozottEvent,
+  .avgErtekeles,
+  .kedvencKategoria {
+  padding: 10px;
+  background-color: #032021;
+  border-radius: 6px;
+  font-size: 150%;
+  width: 100px;
+  height: 60px;
 }
+}
+
+
+
+  
