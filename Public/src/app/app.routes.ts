@@ -12,6 +12,7 @@ import { CompanyRegComponent } from './components/company-reg/company-reg.compon
 import { FooldalComponent } from './components/fooldal/fooldal.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { PassResetSikeresComponent } from './components/pass-reset-sikeres/pass-reset-sikeres.component';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 
 export const routes: Routes = [
@@ -21,6 +22,10 @@ export const routes: Routes = [
    */
     {
         path: 'login', component: LoginComponent
+    },
+
+    {
+        path: 'adminpage', component: AdminPageComponent
     },
 
     {

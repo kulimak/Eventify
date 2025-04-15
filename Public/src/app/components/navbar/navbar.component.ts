@@ -6,7 +6,6 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { MenubarModule } from 'primeng/menubar';
 import { AuthService } from '../../services/auth.service';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -73,7 +72,9 @@ export class NavbarComponent  implements OnInit{
           {
             label: 'Belépés',icon: 'pi pi-sign-in',routerLink: '/login',     
           },
-          
+          {
+            label: 'Admin', icon: 'pi pi-users', routerLink: '/adminpage'
+          },
           {
             label: 'Regisztráció',icon: 'pi pi-user-plus',routerLink: '/register/userReg'
           },
