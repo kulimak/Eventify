@@ -5,7 +5,12 @@
 </div>
 
 <div class="content">
-
+  <p-toast position="bottom-center" key="bc"    
+    [showTransformOptions]="'translateX(-100%)'" 
+    [showTransitionOptions]="'500ms'" 
+    [hideTransitionOptions]="'750ms'" 
+    [showTransformOptions]="'translateY(100%)'"
+  />
   <p-card >
 
     <ng-template pTemplate="header">
@@ -18,7 +23,7 @@
           pInputText 
           id="name" 
           aria-describedby="eventName-help" 
-          [(ngModel)]="value" />
+          [(ngModel)]="newEvent.eventName" />
       <small id="eventName-help">
           Ez lesz a neve a létrehozott eseménynek.
       </small>
@@ -32,7 +37,8 @@
       rows="5"
       cols="30" 
       pInputTextarea 
-      [autoResize]="true">
+      [autoResize]="true"
+      [(ngModel)]="newEvent.description">
     </textarea>
     <small id="eventDesc-help">
       Ezzel a szöveggel tudod jellemezni az eseményt.
@@ -44,7 +50,7 @@
    <div class="eventCalendar">
     <label for="eventCalendar"><b>Dátum</b></label>
     <p-calendar 
-    [(ngModel)]="date" 
+    [(ngModel)]="eventDateMoment" 
     variant="filled" />
     <small id="eventCalendar-help">
       Ekkor kerül megrendezésre az esemény.
@@ -59,9 +65,9 @@
         pInputText 
         id="eventAddress" 
         aria-describedby="eventAddress-help" 
-        [(ngModel)]="value" />
+        [(ngModel)]="newEvent.eventAddress" />
     <small id="eventAddress-help">
-        Ezen a címen kerül megrendezésre az esemény.
+        Ezen a címen kerül megrendezésre az esemény (irányítószám, település neve, utca, házszám).
     </small>
   </div>
 
@@ -78,7 +84,8 @@
         pInputText 
         id="eventStart" 
         aria-describedby="eventEndStart-help" 
-        [(ngModel)]="value" />
+        [(ngModel)]="newEvent.eventStart" 
+        placeholder="08:00"/>
 
     <label id="eventEndStart-help">
       Vég:
@@ -88,7 +95,8 @@
         pInputText 
         id="eventEnd" 
         aria-describedby="eventEndStart-help" 
-        [(ngModel)]="value" />
+        [(ngModel)]="newEvent.eventEnd" 
+        placeholder="10:00"/>
 
   </div>
 
@@ -101,14 +109,14 @@
     </label>
 
     <p-selectButton 
-    [options]="paymentOptions" 
-    [(ngModel)]="Catvalue" 
-    [multiple]="true" 
+    [options]="categories" 
+    [(ngModel)]="newEvent.catId" 
+    [multiple]="false" 
     optionLabel="name" 
     optionValue="value" />
 
     <small id="eventCat-help">
-      Válaszd ki, milyen kategóriá(k)ba tartozik az esemény
+      Válaszd ki, milyen kategóriába tartozik az esemény
   </small>
 
 
@@ -116,7 +124,7 @@
 
     <ng-template pTemplate="footer">
         <div class="actionButton">
-            <p-button  label="Létrehozás" class="w-full" styleClass="w-full" />
+            <p-button (onClick)="createEvent()" label="Létrehozás" class="w-full" styleClass="w-full" />
         </div>
     </ng-template>
 </p-card>

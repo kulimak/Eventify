@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
@@ -6,25 +6,79 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { NewEvent } from '../../interfaces/events';
+import { Token } from '@angular/compiler';
+import { ToastModule } from 'primeng/toast';
+import moment from 'moment';
 
 
 @Component({
   selector: 'app-newevent',
   standalone: true,
-  imports: [  FormsModule, ButtonModule, CardModule, InputTextModule,InputTextareaModule, CalendarModule, SelectButtonModule],
+  imports: [  FormsModule, ButtonModule, CardModule, InputTextModule,InputTextareaModule, CalendarModule, SelectButtonModule, ToastModule],
   templateUrl: './newevent.component.html',
   styleUrl: './newevent.component.scss',
+  providers: [MessageService]
 })
-export class NeweventComponent {
+
+export class NeweventComponent implements OnInit{
+
+  constructor(
+    private api: ApiService,
+    private auth: AuthService,
+    private router : Router,
+    private messageService: MessageService
+  ){}
   value: string | undefined;
   date: Date[] | undefined;
 
 
   Catvalue!: number;
-    
-  paymentOptions: any[] = [
-      { name: 'Teszt1', value: 1 },
-      { name: 'Teszt2', value: 2 },
-      { name: 'Tesz3', value: 3 }
-  ];
+  eventDateMoment:any="";
+  categories: any[] = [];
+
+  newEvent:NewEvent={
+    eventName: '',
+    eventStart: '',
+    eventEnd: '',
+    eventAddress: '',
+    eventDate: '',
+    userId: this.auth.loggedUser().id,
+    catId: '',
+    description: ''
+  }
+
+  ngOnInit(): void {
+    this.api.categories('categories').subscribe((res: any) => {
+      if (res.success == true) {
+        this.categories = res.results.map((cat: any) => ({
+          name: cat.name,  
+          value: cat.Id     
+        }));
+      }
+    })
+  }
+
+  createEvent(){
+    this.eventDateMoment=moment(this.eventDateMoment).format('YYYY-MM-DD');
+    this.newEvent.eventDate=this.eventDateMoment;
+
+    this.api.newEvent('event', this.newEvent).subscribe({
+      next: (res: any) => {
+          this.showMessage('success', 'Siker', res.message);
+                
+      },
+      error: (err: any) => {
+          this.showMessage('error', 'Hiba', err.error.message);
+      }
+  });
+  }
+
+  showMessage(tipus:string, cim:string, tartalom:string){
+    this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });
+  }
 }

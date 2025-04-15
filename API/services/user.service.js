@@ -37,7 +37,7 @@ exports.loginUser = async (email, password) => {
     if (!user) throw new Error('Nem regisztrált felhasználó!');
     if (!await bcrypt.compare(password, user.password)) throw new Error('Hibás jelszó!');
     
-    const token = generateToken({ username: user.username, email: user.email, password: user.password, gender: user.gender, defAddress: user.defAddress, favCategories: user.favCategories, birthDate: user.birthDate, role: user.role, status: user.status});
+    const token = generateToken({ id:user.Id, username: user.username, email: user.email, password: user.password, gender: user.gender, defAddress: user.defAddress, favCategories: user.favCategories, birthDate: user.birthDate, role: user.role, status: user.status});
     
     return { token }; 
 };
