@@ -26,7 +26,26 @@ export class AdminPageComponent implements OnInit {
     this.users = [
       { name: 'Teszt Elek', email: 'teszt@pelda.hu' },
       { name: 'Kovács Anna', email: 'anna@pelda.hu' },
-      { name: 'Varga Péter', email: 'peter@pelda.hu' }
+      { name: 'Varga Péter', email: 'peter@pelda.hu' },
+      
+      { name: 'Teszt Elek', email: 'teszt@pelda.hu' },
+      { name: 'Kovács Anna', email: 'anna@pelda.hu' },
+      { name: 'Varga Péter', email: 'peter@pelda.hu' },
+      
+      { name: 'Teszt Elek', email: 'teszt@pelda.hu' },
+      { name: 'Kovács Anna', email: 'anna@pelda.hu' },
+      { name: 'Varga Péter', email: 'peter@pelda.hu' },
+      { name: 'Teszt Elek', email: 'teszt@pelda.hu' },
+      { name: 'Kovács Anna', email: 'anna@pelda.hu' },
+      { name: 'Varga Péter', email: 'peter@pelda.hu' },
+      
+      { name: 'Teszt Elek', email: 'teszt@pelda.hu' },
+      { name: 'Kovács Anna', email: 'anna@pelda.hu' },
+      { name: 'Varga Péter', email: 'peter@pelda.hu' },
+      
+      { name: 'Teszt Elek', email: 'teszt@pelda.hu' },
+      { name: 'Kovács Anna', email: 'anna@pelda.hu' },
+      { name: 'Varga Péter', email: 'peter@pelda.hu' },
     ];
   }
 
