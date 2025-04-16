@@ -1,3 +1,19 @@
+<div class="card flex justify-content-center" id="siteNavigate">
+  <p-sidebar #sidebarRef [(visible)]="sidebarVisible">
+
+    <h2>Navigálás az oldalon</h2>
+
+    <div id="buttons">
+      <button (click)="scrollToSection('osszes')" class="siteNavBtn">Összes esemény</button>
+      <button (click)="scrollToSection('nepszeru')" class="siteNavBtn">Legnépszerűbb események</button>
+      <button (click)="scrollToSection('friss')" class="siteNavBtn">Friss események</button>
+    </div>
+
+  </p-sidebar>
+  <p-button severity="secondary" (onClick)="sidebarVisible = true" icon="pi pi-arrow-right"></p-button>
+  </div>
+
+
 <div class="content">
     <div class="svg-bg">
       <svg width="832" height="1080" viewBox="0 0 832 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,21 +35,21 @@
   <h1 class="text-4xl font-bold mb-8 text-center">Főoldal</h1>
 
   <!-- Friss események -->
-  <section class="mb-16">
+  <section class="mb-16" id="friss">
     <h2 class="text-2xl font-semibold mb-6">Friss események:</h2>
     <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       
       <p-card *ngFor="let event of newestEvents" class="shadow-lg rounded-xl overflow-hidden">
         <ng-template pTemplate="header">
-          <img [src]="event.image" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
+          <img [src]="" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
         </ng-template>
 
         <div class="px-4 py-2">
-          <h3 class="text-lg font-bold mb-2">{{ event.title }}</h3>
+          <h3 class="text-lg font-bold mb-2">{{ event.eventName }}</h3>
           <p class="text-sm mb-2">{{ event.description }}</p>
-          <p class="text-sm mb-2"><b>Dátum:</b> {{ event.date }}</p>
-          <p class="text-sm mb-2"><b>Cím:</b> {{ event.address }}</p>
-          <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.start }} | <b>Vég:</b> {{ event.end }}</p>
+          <p class="text-sm mb-2"><b>Dátum:</b> {{ event.eventDate }}</p>
+          <p class="text-sm mb-2"><b>Cím:</b> {{ event.eventAddress }}</p>
+          <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.eventStart }} | <b>Vég:</b> {{ event.eventEnd }}</p>
         </div>
 
 
@@ -42,22 +58,22 @@
   </section>
 
   <!-- Legnépszerűbb események -->
-  <section>
+  <section id="nepszeru">
     <h2 class="text-2xl font-semibold mb-6">Legnépszerűbb események:</h2>
     <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 
    
       <p-card *ngFor="let event of popularEvents" class="shadow-lg rounded-xl overflow-hidden">
         <ng-template pTemplate="header">
-          <img [src]="event.image" alt="Event Image" style="max-width: 100%; height: auto;" class="w-full h-48 object-cover rounded-t-xl" />
+          <img [src]="" alt="Event Image" style="max-width: 100%; height: auto;" class="w-full h-48 object-cover rounded-t-xl" />
         </ng-template>
 
         <div class="px-4 py-2">
-          <h3 class="text-lg font-bold mb-2">{{ event.title }}</h3>
-          <p class="text-sm mb-2">{{ event.description }}</p>
-          <p class="text-sm mb-2"><b>Dátum:</b> {{ event.date }}</p>
-          <p class="text-sm mb-2"><b>Cím:</b> {{ event.address }}</p>
-          <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.start }} | <b>Vég:</b> {{ event.end }}</p>
+          <h3 class="text-lg font-bold mb-2"></h3>
+          <p class="text-sm mb-2"></p>
+          <p class="text-sm mb-2"><b>Dátum:</b> </p>
+          <p class="text-sm mb-2"><b>Cím:</b> </p>
+          <p class="text-sm mb-4"><b>Kezdés:</b>  | <b>Vég:</b> </p>
         </div>
 
       </p-card>
@@ -65,22 +81,22 @@
   </section>
 
     <!-- Összes esemény -->
-    <section>
+    <section id="osszes">
       <h2 class="text-2xl font-semibold mb-6">Összes esemény:</h2>
       <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
   
      
         <p-card *ngFor="let event of allEvents" class="shadow-lg rounded-xl overflow-hidden">
           <ng-template pTemplate="header">
-            <img [src]="event.image" alt="Event Image" style="max-width: 100%; height: auto;" class="w-full h-48 object-cover rounded-t-xl" />
+            <img [src]="" alt="Event Image" style="max-width: 100%; height: auto;" class="w-full h-48 object-cover rounded-t-xl" />
           </ng-template>
   
           <div class="px-4 py-2">
-            <h3 class="text-lg font-bold mb-2">{{ event.title }}</h3>
+            <h3 class="text-lg font-bold mb-2">{{ event.eventName }}</h3>
             <p class="text-sm mb-2">{{ event.description }}</p>
-            <p class="text-sm mb-2"><b>Dátum:</b> {{ event.date }}</p>
-            <p class="text-sm mb-2"><b>Cím:</b> {{ event.address }}</p>
-            <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.start }} | <b>Vég:</b> {{ event.end }}</p>
+            <p class="text-sm mb-2"><b>Dátum:</b> {{ event.eventDate }}</p>
+            <p class="text-sm mb-2"><b>Cím:</b> {{ event.eventAddress }}</p>
+            <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.eventStart }} | <b>Vég:</b> {{ event.eventEnd }}</p>
           </div>
   
         </p-card>

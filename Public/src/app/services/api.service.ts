@@ -24,7 +24,7 @@ export class ApiService {
     return { headers }
   }
 
-  //Bejelentkezés
+//Bejelentkezés
   login(table: string, user: object)
   {
     return this.http.post(`${this.server}/${table}/login`, user);
@@ -36,52 +36,64 @@ export class ApiService {
     return this.http.post(`${this.server}/${table}/login`, user);
   }
 
-  //regisztráció
+//regisztráció
   register(table: string, user: object)
   {
     return this.http.post(`${this.server}/${table}/register`, user);
   }
 
-  //regisztráció cég
+//regisztráció cég
   companyReg(table: string, user: object)
   {
     return this.http.post(`${this.server}/${table}/register`, user);
   }
 
-   //Felhasználónév módosítás
+//Felhasználónév módosítás
   passord(table: string, id: string, data:object)
   {
     return this.http.post(`${this.server}/${table}/password/${id}`, data, this.tokenHeader());
   }
 
 
- //Email módosítás
+//Email módosítás
   email(table: string, id: string, data:object)
   {
     return this.http.post(`${this.server}/${table}/email/${id}`, data, this.tokenHeader());
   }
 
- //Email módosítás
- username(table: string, id: string, data:object)
- {
-   return this.http.post(`${this.server}/${table}/username/${id}`, data, this.tokenHeader() );
- }
+//Email módosítás
+  username(table: string, id: string, data:object)
+  {
+    return this.http.post(`${this.server}/${table}/username/${id}`, data, this.tokenHeader() );
+  }
 
 
  //Kategóriák
 
- //összes kategória lekérése
- categories(table:string)
- {
+//összes kategória lekérése
+  categories(table:string)
+  {
     return this.http.get(`${this.server}/${table}/get`, this.tokenHeader());
- }
+  }
 
 
  //Események
 
- //Esemény létrehozása
- newEvent(table: string, event: object)
+//Esemény létrehozása
+  newEvent(table: string, event: object)
  {
    return this.http.post(`${this.server}/${table}/newevent`, event, this.tokenHeader());
  }
+
+//Összes esemény lekérése
+  getEvents(table:string, )
+  {
+    return this.http.get(`${this.server}/${table}/get`, this.tokenHeader())
+  }
+
+//Esemény lekérése ID alapján
+  getEventById(table:string, id:string)
+  {
+    return this.http.get(`${this.server}/${table}/get/${id}`, this.tokenHeader())
+  }
 }
