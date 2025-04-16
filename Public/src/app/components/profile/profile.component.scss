@@ -2,23 +2,36 @@ html body {
   overflow: scroll;
 }
 
+.bg {
+  position: fixed; /* Fixált pozicionálás, így mindig az ablak alján marad */
+  bottom: 0; /* Az oldal aljára igazítja */
+  left: 0; /* A bal oldalra helyezi */
+  width: 100%; /* Az egész képernyő szélességét lefedi */
+  z-index: -1; /* A háttérbe helyezi, hogy ne takarja el a tartalmat */
+}
+
+.bg svg {
+  width: 100%; /* Az SVG kitölti a konténert */
+  height: auto; /* A magasság automatikusan igazodik a szélességhez */
+}
+
 .container {
   display: flex;
   width: 100%;
   flex-direction: row;
-  
-.baloldal {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 40%;
-  height: 100vh;
-  padding: 10px;
-  margin-top: 1rem;
-  background-color: #131313;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-}
+
+  .baloldal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+    height: 100vh;
+    padding: 10px;
+    margin-top: 1rem;
+    background-color: #131313;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
 }
 
 .pfp {
@@ -34,8 +47,6 @@ p-button {
 }
 
 ::ng-deep .username-dialog {
-
-
   .dialog-content {
     display: flex;
     flex-direction: column;
@@ -79,7 +90,7 @@ p-button {
   margin-top: 60px;
 }
 
-.jobboldal{
+.jobboldal {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -97,9 +108,9 @@ p-button {
   width: 100%;
 }
 
-.saveBtn{
+.saveBtn {
   display: flex;
   width: 100%;
-  align-items:flex-end;
-  justify-content:flex-end;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
