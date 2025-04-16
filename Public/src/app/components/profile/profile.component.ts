@@ -5,11 +5,12 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [InputTextModule, FormsModule, FloatLabelModule, PasswordModule, ButtonModule, DialogModule],
+  imports: [InputTextModule, FormsModule, FloatLabelModule, PasswordModule, ButtonModule, DialogModule, FooterComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })

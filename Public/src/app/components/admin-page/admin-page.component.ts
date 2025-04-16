@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-admin-page',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    FooterComponent
   ],
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.scss']

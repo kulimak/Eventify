@@ -9,6 +9,7 @@ import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
 import { RippleModule } from 'primeng/ripple';
 import { ToastModule } from 'primeng/toast';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-pass-reset-sikeres',
@@ -23,7 +24,8 @@ import { ToastModule } from 'primeng/toast';
     ToastModule,
     RippleModule,
     CheckboxModule,
-    RouterLink
+    RouterLink,
+    FooterComponent
   ],
   templateUrl: './pass-reset-sikeres.component.html',
   styleUrl: './pass-reset-sikeres.component.scss'
