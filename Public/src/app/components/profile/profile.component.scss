@@ -1,153 +1,105 @@
-html, body {
-    height: 100vh; /* Biztosítja, hogy a body teljes magasságot vegyen fel */
-    margin: 0; /* Eltávolítja az alapértelmezett margókat */
-    display: flex; /* Flexbox elrendezés használata a középre igazításhoz */
-    justify-content: center; /* Középre igazítja vízszintesen */
-    align-items: center; /* Középre igazítja függőlegesen */
-    overflow: scroll;
+html body {
+  overflow: scroll;
 }
 
-.profileContainer {
-    display: flex;
-    width: 80%;
-    height: 90vh;
-    padding: 30px;
-    background-color: #121212;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-    margin: auto;
-    gap: 35px;
-    margin-top: 90px;
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  
+.baloldal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 40%;
+  height: 100vh;
+  padding: 10px;
+  margin-top: 1rem;
+  background-color: #131313;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
 }
 
-.leftSide {
-    display: flex;
-    justify-content: space-between;
-    background-color: #035d61;
-    height: 100%;
-    width: 60%;
-    border-radius: 15px;
-    opacity: 0.9;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    flex-direction: column;
+.pfp {
+  background-color: black;
+  width: 170px;
+  height: 170px;
+  margin-top: 50px;
+  border-radius: 100%;
 }
 
-.rightSide {
-    display: flex;
-    flex-direction: column; /* A jobb oldali két divet egymás alá rendezzük */
-    width: 40%;
-    height: 100%; /* A jobb oldal magassága az egész konténerre vonatkozik */
-    border-radius: 15px;
+p-button {
+  width: 150px;
 }
 
-.rightSideTop {
-    display: flex;
-    align-items: flex-end;
-    background-color: #035d61;
-    height: 50%; /* A felső rész felét fogja elfoglalni */
-    margin-bottom: 35px;
-    border-radius: 20px;
-    opacity: 0.9;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    padding: 5px;
-}
-
-.rightSideBottom {
-    display: flex;
-    align-items: flex-end;
-    background-color: #035d61; /* Kék szín az alsó részhez */
-    height: 50%; /* Az alsó rész felét fogja elfoglalni */
-    border-radius: 20px;
-    opacity: 0.9;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    padding: 5px;
-}
-
-.leftSide, .rightSideTop, .rightSideBottom {
-    opacity: 0;
-    transform: translateY(30px); /* Elmozdulás lefelé */
-    animation: slideIn 0.6s ease-out forwards; /* Animáció hozzáadása */
-}
-
-@keyframes slideIn {
-    to {
-        opacity: 1; /* Az elem fokozatosan láthatóvá válik */
-        transform: translateY(0); /* Az elem visszaáll az eredeti helyére */
-    }
-}
+::ng-deep .username-dialog {
 
 
-
-.pfpDiv{
-    display: flex;
-    justify-content: flex-start;
-    background-color: #121212;
-    width: 100%;
-    height: 400px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    margin-bottom: 10px;
-
-}
-
-.actionButtons {
-    width: 200px;
-    height: 70%;
-    padding: 40px;
+  .dialog-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #121212;
-    border-radius: 15px;
-    gap: 30px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-}
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+  }
 
-.update-btn {
-    background-color: #035559;
-    display: flex;
-    justify-content: center;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 15px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 140px;
-    margin-top: 10px;
-}
-
-
-@media (max-width: 768px) {
-    .profileContainer {
-        flex-direction: column; /* A teljes tartalom egymás alá kerül */
-        width: 100%; /* A konténer szélességét 100%-ra állítjuk */
-        height: auto; /* Az auto magasság biztosítja a tartalom magasságát */
-    }
-
-    .leftSide, .rightSide {
-        width: 100%; /* A bal és jobb oldali részek is 100%-os szélességűek lesznek */
-        height: auto; /* Az auto magasság biztosítja, hogy ne legyenek túl magasak */
-        margin-bottom: 20px; /* Kis margó a div-ek között */
-    }
-
-    .rightSideTop, .rightSideBottom {
-        height: auto; /* Az alsó és felső részek is automatikus magasságúak lesznek */
-        margin-bottom: 15px; /* Kis margó a div-ek között */
-    }
-}
-
-.content{
+  .form-field {
     display: flex;
     flex-direction: column;
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
 }
 
-::ng-deep .p-button {
-    width: 150px !important;      
-    height: 60px !important;      
-    font-size: 16px !important;   
+.action-buttons {
+  display: flex;
+  flex-direction: column;
 }
 
+.card {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.jobboldal{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 60%;
+  height: 100vh;
+  padding-left: 30px;
+  margin-top: 1rem;
+  background-color: #131313;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin-left: 15px;
+}
+
+::ng-deep textarea {
+  width: 100%;
+}
+
+.saveBtn{
+  display: flex;
+  width: 100%;
+  align-items:flex-end;
+  justify-content:flex-end;
+}
