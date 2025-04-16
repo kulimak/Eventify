@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,31 +8,68 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.scss']  
+  styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent implements OnInit {
   users: any[] = [];
   events: any[] = [];
-  tableType: 'users' | 'events' = 'users'; 
+  tableType: 'users' | 'events' = 'users';
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   ngOnInit(): void {
-    
-    this.loadUsers();
+    this.loadUsers(); // Betöltéskor a felhasználókat jelenítjük meg
   }
 
   loadUsers(): void {
-    this.http.get<any[]>('/').subscribe(data => {
-      this.users = data;
-      this.tableType = 'users';
-    });
+    this.tableType = 'users';
+    this.users = [
+      { name: 'Teszt Elek', email: 'teszt@pelda.hu' },
+      { name: 'Kovács Anna', email: 'anna@pelda.hu' },
+      { name: 'Varga Péter', email: 'peter@pelda.hu' },
+      
+      { name: 'Teszt Elek', email: 'teszt@pelda.hu' },
+      { name: 'Kovács Anna', email: 'anna@pelda.hu' },
+      { name: 'Varga Péter', email: 'peter@pelda.hu' },
+      
+      { name: 'Teszt Elek', email: 'teszt@pelda.hu' },
+      { name: 'Kovács Anna', email: 'anna@pelda.hu' },
+      { name: 'Varga Péter', email: 'peter@pelda.hu' },
+      { name: 'Teszt Elek', email: 'teszt@pelda.hu' },
+      { name: 'Kovács Anna', email: 'anna@pelda.hu' },
+      { name: 'Varga Péter', email: 'peter@pelda.hu' },
+      
+      { name: 'Teszt Elek', email: 'teszt@pelda.hu' },
+      { name: 'Kovács Anna', email: 'anna@pelda.hu' },
+      { name: 'Varga Péter', email: 'peter@pelda.hu' },
+      
+      { name: 'Teszt Elek', email: 'teszt@pelda.hu' },
+      { name: 'Kovács Anna', email: 'anna@pelda.hu' },
+      { name: 'Varga Péter', email: 'peter@pelda.hu' },
+    ];
   }
 
   loadEvents(): void {
-    this.http.get<any[]>('/').subscribe(data => {
-      this.events = data;
-      this.tableType = 'events';
-    });
+    this.tableType = 'events';
+    this.events = [
+      {
+        title: 'Tech Meetup 2025',
+        date: '2025-05-01',
+        userId: 'Teszt Elek',
+        description: 'Beszélgetés a legújabb technológiákról'
+      },
+      {
+        title: 'Sportnap',
+        date: '2025-06-15',
+        userId: 'Teszt Elek',
+        description: 'Futás, jóga, foci és frissítők'
+      },
+      {
+        title: 'Önkéntes Nap',
+        date: '2025-07-20',
+        userId: 'Teszt Elek',
+        description: 'Közösségi munka és ebéd a parkban'
+      }
+    ];
   }
 }
