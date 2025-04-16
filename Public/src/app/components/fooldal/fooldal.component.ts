@@ -39,11 +39,10 @@ export class FooldalComponent {
       title: 'Esemény neve',
       description: 'Esemény leírása',
       image: 'https://www.primefaces.org/cdn/primeng/images/card-ng.jpg',
-      date: '2025-04-11', // hozzáadott dátum
+      date: '2025-04-11', 
       address: 'Példa utca 123',
-      start: '2025-04-11 10:00',  // Esemény kezdete
-      end: '2025-04-11 12:00'    // Esemény vége
-   // Hozzáadott cím
+      start: '2025-04-11 10:00',  
+      end: '2025-04-11 12:00' 
     },
     {
       title: 'Esemény neve',
@@ -124,5 +123,17 @@ export class FooldalComponent {
       end: '2025-04-13 11:00'
     },
     // További népszerű események...
+  ];
+
+  allEvents = [
+    {
+      title: 'Esemény 1',
+      description: 'Ez az esemény 1 leírása.',
+      image: 'https://www.primefaces.org/cdn/primeng/images/card-ng.jpg',
+      date: '2025-04-12',
+      address: 'Esemény cím 1',
+      start: '2025-04-12 08:00',
+      end: '2025-04-12 10:00'
+    }
   ];
 }
