@@ -29,7 +29,7 @@ import moment from 'moment';
     MenubarModule,
     CommonModule,
     DialogModule,
-    FooterComponent,
+    //FooterComponent,
     CardModule,
     SidebarModule
   ],
@@ -74,7 +74,8 @@ export class FooldalComponent implements OnInit{
     eventEnd: '',
     eventAddress: '',
     eventDate: '',
-    description: ''
+    description: '',
+    image:''
   }];
 
   ngOnInit(): void {
@@ -86,7 +87,8 @@ export class FooldalComponent implements OnInit{
           eventEnd: events.eventEnd,
           eventAddress: events.eventAddress,
           eventDate: events.eventDate,
-          description:  events.description
+          description: events.description,
+          image: events.image
         }));
       }
 
@@ -103,7 +105,8 @@ export class FooldalComponent implements OnInit{
               eventEnd: event.eventEnd,
               eventAddress: event.eventAddress,
               eventDate: event.eventDate,
-              description:  event.description
+              description:  event.description,
+              image: event.image
             })
           }
         }

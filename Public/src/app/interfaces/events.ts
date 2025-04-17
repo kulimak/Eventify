@@ -6,5 +6,6 @@ export interface NewEvent {
     eventDate: '';
     userId: '';
     catId: '';
-    description: ''; 
+    description: '';
+    image?: string[];
 }

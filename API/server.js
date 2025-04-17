@@ -13,7 +13,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+
 // útvonalak lekezelése
+app.use('/uploads', express.static('uploads'));
 app.use('/api', require('./routers/index'));
 app.use(errorMiddleware);
 

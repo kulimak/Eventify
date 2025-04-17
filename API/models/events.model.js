@@ -32,6 +32,10 @@ const Events = db.define('Events', {
     description:{
         type: DataTypes.TEXT,
         allowNull: false
+    },
+    image:{
+        type:DataTypes.STRING(100),
+        allowNull: true
     }
 });
 

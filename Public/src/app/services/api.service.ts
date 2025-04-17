@@ -80,10 +80,11 @@ export class ApiService {
  //Események
 
 //Esemény létrehozása
-  newEvent(table: string, event: object)
- {
-   return this.http.post(`${this.server}/${table}/newevent`, event, this.tokenHeader());
- }
+  newEvent(table: string, data: FormData)
+  {
+    return this.http.post(`${this.server}/${table}/newevent`, data, this.tokenHeader());
+  }
+
 
 //Összes esemény lekérése
   getEvents(table:string, )
