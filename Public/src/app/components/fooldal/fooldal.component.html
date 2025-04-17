@@ -41,7 +41,7 @@
       
       <p-card *ngFor="let event of newestEvents" class="shadow-lg rounded-xl overflow-hidden">
         <ng-template pTemplate="header">
-          <img [src]="" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
+          <img src="http://localhost:3000/uploads/{{event.image}}" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
         </ng-template>
 
         <div class="px-4 py-2">
@@ -88,7 +88,7 @@
      
         <p-card *ngFor="let event of allEvents" class="shadow-lg rounded-xl overflow-hidden">
           <ng-template pTemplate="header">
-            <img [src]="" alt="Event Image" style="max-width: 100%; height: auto;" class="w-full h-48 object-cover rounded-t-xl" />
+            <img src="http://localhost:3000/uploads/{{event.image}}" alt="Event Image" style="max-width: 100%; height: auto;" class="w-full h-48 object-cover rounded-t-xl" />
           </ng-template>
   
           <div class="px-4 py-2">

@@ -2,7 +2,7 @@ const { Events } = require('../models/events.model');
 const { generateToken } = require('../utils/token');
 const { configDotenv } = require('dotenv');
 
-exports.newEvent = async (eventName, eventStart, eventEnd, eventAddress, eventDate, description, userId, catId) => {
+exports.newEvent = async (eventName, eventStart, eventEnd, eventAddress, eventDate, description, userId, catId, image) => {
 
     const newEvent = await Events.create({
         eventName,
@@ -12,7 +12,8 @@ exports.newEvent = async (eventName, eventStart, eventEnd, eventAddress, eventDa
         eventDate,
         description,
         userId,
-        catId
+        catId,
+        image
     });
 
     return newEvent;

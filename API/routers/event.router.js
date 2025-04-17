@@ -5,7 +5,7 @@ const { authMiddleware } = require('../middlewares/auth.middleware');
 const upload = require('../middlewares/upload.middleware');
 
 //New Event
-router.post('/newevent', authMiddleware, eventController.newevent);
+router.post('/newevent', authMiddleware, upload.single('file') ,eventController.newevent);
 
 //Get all Events
 router.get('/get', authMiddleware, eventController.getAll);

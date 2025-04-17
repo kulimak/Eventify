@@ -2,21 +2,39 @@ const { Event } = require('../models/events.model');
 const eventService = require('../services/event.service');
 
 exports.newevent = async (req, res, next) => {
-    try {
+    try{
+
+        /*console.log('Body:', req.body);
+        console.log('File:', req.file);*/
+        // Ellenőrizzük, hogy van-e feltöltött fájl
+        if (!req.file) {
+            return res.status(400).json({
+                success: false,
+                message: 'Nem található feltöltött fájl.',
+            });
+        }
+
+        // Feltöltött fájl adatai
+        const file = req.file;
+
         const { eventName, eventStart, eventEnd, eventAddress, eventDate, description, userId, catId} = req.body;
-        if (!eventName || !eventStart || !eventEnd || !eventAddress || !eventDate || !description) {
+        const image = req.file ? req.file.filename : null;
+
+        if (!eventName || !eventStart || !eventEnd || !eventAddress || !eventDate || !description || !userId || !catId){
             return res.status(400).json({ message: 'Hiányzó adatok!'});
         }
         else if (eventStart >= eventEnd) {
             return res.status(400).json({ message: 'Az esemény kezdete nem lehet előbb vagy ugyanakkor, mint az esemény vége!'});
         }
         else{
-            const event = await eventService.newEvent(eventName, eventStart, eventEnd, eventAddress, eventDate, description, userId, catId);
+            const event = await eventService.newEvent(eventName, eventStart, eventEnd, eventAddress, eventDate, description, userId, catId, image);
             res.status(201).json({success: true, message: "Esemény létrehozása sikeres!"});
         }
-    } catch (error) {
+    }catch(error){
+        //console.log(error)
         next(error);
     }
+
 }
 
 exports.getAll = async (req, res, next) => {
