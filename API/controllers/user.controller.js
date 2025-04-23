@@ -46,7 +46,7 @@ exports.image = async(req, res, next)=>{
 
         const image = req.file ? req.file.filename : null;
 
-        if ( !image){
+        if (!image){
             return res.status(400).json({ message: 'Hiányzó adat!'});
         }
         const ad = await userService.uploadImg(req.params.id, image);
@@ -120,6 +120,20 @@ exports.username = async (req, res, next) => {
         res.status(200).json({success:true, message: 'Felhasználónév módosítás sikeres!'});
     } 
     catch (error) {
+        next(error)
+    }
+}
+
+exports.getUserById = async (req, res, next) => {
+    try {
+        if (!req.params.id) {
+            return res.status(400).json({ message: 'Hiányzó esemény azonosító!'});
+        }
+    
+        const user = await userService.getUserById(req.params.id);
+            
+        res.status(200).json({success:true, results: user});
+    } catch (error) {
         next(error)
     }
 }
