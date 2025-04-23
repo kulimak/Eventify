@@ -10,10 +10,47 @@
 
 <div class="container">
   <div class="baloldal">
-    <div class="pfp"></div>
-    <div class="nev"><h1>Test User</h1></div>
+
+    <div class="pfp">
+      <img [src]="profileDatas.image ? 'http://localhost:3000/uploads/' + profileDatas.image : 'http://localhost:3000/uploads/default.jpg'" alt="Profile picture" class="profile-img">
+    </div>
+
+    <div class="nev">
+      <h1>{{profileDatas.username}}</h1>
+    </div>
+
     <div class="action-buttons">
       <div class="card flex justify-content-center mb-3">
+
+        <p-button
+        (onClick)="showPfpDialog()"
+        label="Profilkép módosítás"
+      />
+      <p-dialog
+        header="Profilkép módosítás"
+        [modal]="true"
+        [(visible)]="visiblePFP"
+        class="username-dialog"
+      >
+        <div class="dialog-content">
+          <span class="p-text-secondary block mb-4">
+            Válaszd ki a profilképed.
+          </span>
+
+          <div class="uploadDiv">
+            <input type="file" class="" id="image" placeholder="" accept="image/*" (change)="onFileSelected($event)">
+          </div>
+
+          <div class="dialog-footer">
+            <p-button
+              label="Mégse"
+              severity="secondary"
+              (onClick)="visibleUser = false"
+            />
+            <p-button label="Mentés" (onClick)="uploadPFP()" />
+          </div>
+        </div>
+      </p-dialog>
         <p-button
           (onClick)="showUserNameDialog()"
           label="Felhasználónév módosítás"

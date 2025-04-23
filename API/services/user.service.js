@@ -85,3 +85,11 @@ exports.updateUsername = async(id ,username) => {
     return 'Felhasználónév módosítás sikeres!'
 
 }
+
+exports.getUserById = async(id) => {
+    const user = await User.findOne({
+        where: {id}
+    })
+
+    return user
+}
