@@ -48,22 +48,22 @@ export class ApiService {
     return this.http.post(`${this.server}/${table}/register`, user);
   }
 
- //Felhasználónév módosítás
-  password(table: string, id: string, data:object)
+ //jelszó módosítás
+  password(table: string, id: string, password:object)
   {
-    return this.http.post(`${this.server}/${table}/password/${id}`, data, this.tokenHeader());
+    return this.http.patch(`${this.server}/${table}/password/${id}`, password, this.tokenHeader());
   }
 
  //Email módosítás
-  email(table: string, id: string, data:object)
+  email(table: string, id: string, email:string)
   {
-    return this.http.post(`${this.server}/${table}/email/${id}`, data, this.tokenHeader());
+    return this.http.patch(`${this.server}/${table}/email/${id}`, { email }, this.tokenHeader());
   }
 
  //felhsználónév módosítás
- username(table: string, id: string, data:object)
+ username(table: string, id: string, username:string)
  {
-   return this.http.post(`${this.server}/${table}/username/${id}`, data, this.tokenHeader() );
+   return this.http.patch(`${this.server}/${table}/username/${id}`, { username }, this.tokenHeader());
  }
 
  //felhasználó lékérése azonosító alapján

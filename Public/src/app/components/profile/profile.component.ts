@@ -12,12 +12,25 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
-import { userProfile } from '../../interfaces/user';
+import { updatePassword, userProfile } from '../../interfaces/user';
+import { ToastModule } from 'primeng/toast';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [InputTextModule, FormsModule, FloatLabelModule, PasswordModule, ButtonModule, DialogModule, FooterComponent, RatingModule, InputTextareaModule],
+  imports: [
+    InputTextModule,
+    FormsModule,
+    FloatLabelModule,
+    PasswordModule,
+    ButtonModule,
+    DialogModule,
+    FooterComponent,
+    RatingModule,
+    InputTextareaModule,
+    ToastModule
+  ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
   providers: [MessageService]
@@ -32,16 +45,24 @@ export class ProfileComponent implements OnInit{
   ){}
 
   profileDatas:userProfile={
-    image:'',
-    username:''
+    image: '',
+    username: '',
+    email: '',
+    password: ''
+  }
+  
+  newUsername:any="";
+  newEmail:string="";
+  passwordValue:string= "";
+
+  newPasswords:updatePassword={
+    password: '',
+    confirm: ''
   }
   
   selectedFile: File | null = null;
 
   userValue: string | undefined;
-  emailValue!: string;
-  passwordValue!: string;
-  newPasswordValue!: string;
   ratingValue: number = 5;
   visiblePFP: boolean = false;
   visibleEmail: boolean = false;
@@ -56,22 +77,22 @@ export class ProfileComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.api.getUser('users',this.auth.loggedUser().id).subscribe((res:any)=>{
+    this.getLoggedUser()
+  }
+
+  getLoggedUser(){
+    this.api.getUser('users', this.auth.loggedUser().id).subscribe((res:any)=>{
       if (res.success == true) {
         this.profileDatas = {
           image: res.results.image,
-          username: res.results.username
+          username: res.results.username,
+          email: res.results.email,
+          password: res.results.password
         };
       }
-      //console.log(this.profileDatas)
     });
   }
 
-  /*getProfileImage(): string {
-    return this.profileDatas.image
-      ? `http://localhost:3000/uploads/${this.profileDatas.image}`
-      : `http://localhost:3000/uploads/default.jpg`;
-  }*/
   
   uploadPFP(){
     this.visiblePFP = false;
@@ -80,7 +101,6 @@ export class ProfileComponent implements OnInit{
      
       const file: File | null = this.selectedFile;
       if (file) {
-        //console.log('>>>>', file)
         formData.append('file', file);
       }
     }
@@ -95,21 +115,68 @@ export class ProfileComponent implements OnInit{
         window.location.reload();
       },
       error: (err: any) => {
-
+        this.showMessage('error', 'Hiba', err.error.message);
       }
     }); 
   }
 
+  updateUserName(){
+    this.api.username('users', this.auth.loggedUser().id, this.newUsername).subscribe({
+      next: (res: any) => {
+        window.location.reload();
+      },
+      error: (err: any) => {
+        this.showMessage('error', 'Hiba', 'Nem adtál meg új felhasználónevet!');
+      }
+    });
+    this.visibleUser=false
+  }
+
+  updateEmail(){
+    this.api.email('users', this.auth.loggedUser().id, this.newEmail).subscribe({
+      next: (res: any) => {
+        window.location.reload();
+      },
+      error: (err: any) => {
+        this.showMessage('error', 'Hiba', 'Nem adtál meg új email címet!');
+      }
+    });
+    this.visibleEmail=false
+  }
+
+  updatePassword() {
+    bcrypt.compare(this.passwordValue, this.profileDatas.password).then((isMatch) => {
+      if (isMatch) {
+        this.api.password('users', this.auth.loggedUser().id, this.newPasswords).subscribe({
+          next: (res: any) => {
+            window.location.reload()
+          },
+          error: (err: any) => {
+            this.showMessage('error', 'Hiba', err.error.message);
+          }
+        });
+      } else {
+        this.showMessage('error', 'Hiba', 'A jelenlegi jelszó hibás');
+      }
+    });
+  }
   showPfpDialog() {
     this.visiblePFP = true;
   }
-    showUserNameDialog() {
+
+  showUserNameDialog() {
         this.visibleUser = true;
     }
-    showEmailDialog() {
+
+  showEmailDialog() {
       this.visibleEmail = true;
     }
-    showPasswdDialog() {
+
+  showPasswdDialog() {
       this.visiblePass = true;
+    }
+
+  showMessage(tipus:string, cim:string, tartalom:string){
+      this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });
     }
 }

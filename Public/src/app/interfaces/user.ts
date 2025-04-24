@@ -20,4 +20,11 @@ export interface UserRegister {
 export interface userProfile {
   image: '';
   username: '';
+  email: '';
+  password: '';
+}
+
+export interface updatePassword {
+  password:'';
+  confirm:'';
 }
