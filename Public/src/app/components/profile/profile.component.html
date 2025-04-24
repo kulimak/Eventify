@@ -9,6 +9,13 @@
 </div>
 
 <div class="container">
+
+  <p-toast position="bottom-center" key="bc"    
+    [showTransformOptions]="'translateX(-100%)'" 
+    [showTransitionOptions]="'500ms'" 
+    [hideTransitionOptions]="'750ms'" 
+    [showTransformOptions]="'translateY(100%)'"
+  />
   <div class="baloldal">
 
     <div class="pfp">
@@ -56,19 +63,19 @@
           label="Felhasználónév módosítás"
         />
         <p-dialog
-          header="Email cím módosítás"
+          header="Felhasználónév módosítás"
           [modal]="true"
           [(visible)]="visibleUser"
           class="username-dialog"
         >
           <div class="dialog-content">
-            <span class="p-text-secondary block mb-4"
-              >Frissítsd a felhasználóneved az alábbi mezők kitöltésével.</span
-            >
+            <span class="p-text-secondary block mb-4">
+              Frissítsd a felhasználóneved az alábbi mezők kitöltésével.
+            </span>
 
             <div class="form-field">
               <label for="username">Felhasználónév</label>
-              <input pInputText id="username" autocomplete="off" />
+              <input pInputText id="username" autocomplete="off" [(ngModel)]="newUsername"/>
             </div>
 
             <div class="dialog-footer">
@@ -77,7 +84,7 @@
                 severity="secondary"
                 (onClick)="visibleUser = false"
               />
-              <p-button label="Mentés" (onClick)="visibleUser = false" />
+              <p-button label="Mentés" (onClick)="updateUserName()" />
             </div>
           </div>
         </p-dialog>
@@ -100,14 +107,14 @@
                 [disabled]="true"
                 pInputText
                 id="email"
-                [(value)]="emailValue"
+                [(value)]="profileDatas.email"
                 autocomplete="off"
               />
             </div>
 
             <div class="form-field">
               <label for="updatedEmail">Módosított email</label>
-              <input pInputText id="updatedEmail" autocomplete="off" />
+              <input pInputText id="updatedEmail" autocomplete="off" [(ngModel)]="newEmail"/>
             </div>
 
             <div class="dialog-footer">
@@ -116,7 +123,7 @@
                 severity="secondary"
                 (onClick)="visibleEmail = false"
               />
-              <p-button label="Mentés" (onClick)="visibleEmail = false" />
+              <p-button label="Mentés" (onClick)="updateEmail()" />
             </div>
           </div>
         </p-dialog>
@@ -134,12 +141,17 @@
 
             <div class="form-field">
               <label for="password">Jelenlegi jelszó</label>
-              <p-password [(ngModel)]="passwordValue" [feedback]="false" />
+              <p-password [(ngModel)]="passwordValue" [toggleMask]="true" [feedback]="false" />
             </div>
 
             <div class="form-field">
               <label for="updatedPassword">Új jelszó</label>
-              <p-password [(ngModel)]="newPasswordValue" [feedback]="false" />
+              <p-password [(ngModel)]="newPasswords.password" [toggleMask]="true" [feedback]="false" />
+            </div>
+
+            <div class="form-field">
+              <label for="updatedPassword">Új jelszó megerősítése</label>
+              <p-password [(ngModel)]="newPasswords.confirm" [toggleMask]="true" [feedback]="false" />
             </div>
 
             <div class="dialog-footer">
@@ -148,7 +160,7 @@
                 severity="secondary"
                 (onClick)="visiblePass = false"
               />
-              <p-button label="Mentés" (onClick)="visiblePass = false" />
+              <p-button label="Mentés" (onClick)="updatePassword()" />
             </div>
           </div>
         </p-dialog>
