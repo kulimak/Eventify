@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { MenubarModule } from 'primeng/menubar';
 import { AuthService } from '../../services/auth.service';
+import { IconField } from 'primeng/iconfield';
 
 @Component({
   selector: 'app-navbar',
@@ -71,6 +72,9 @@ export class NavbarComponent  implements OnInit{
         // logged out routes
           {
             label: 'Belépés',icon: 'pi pi-sign-in',routerLink: '/login',     
+          },
+          {
+            label: 'Esemény', icon: 'pi pi-box', routerLink: '/fullscreenevent'
           },
           {
             label: 'Admin', icon: 'pi pi-users', routerLink: '/adminpage'
