@@ -2,32 +2,13 @@ body, html {
     overflow: scroll;
 }
 
-.svg-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: auto;
-    height: 100vh;
-    overflow: hidden;
-    z-index: -5;
-}
-  
-.svg-bg svg {
-    position: relative;
-    height: 100vh;
-    width: auto;
-    left: 0;
-    max-width: none;
-  
-}
-
 .content{
     display: flex;
-    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
-    width: auto;
-    margin-top: 20px;
 
 }
 
@@ -114,5 +95,12 @@ input{
 .bg svg {
     width: 100%; /* Az SVG kitölti a konténert */
     height: auto; /* A magasság automatikusan igazodik a szélességhez */
+}
+
+
+p-card {
+    display: flex;
+    width: 50%;
+    border-radius: 10px;
 }
 
