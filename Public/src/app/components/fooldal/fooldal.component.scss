@@ -147,3 +147,38 @@ p-card .p-card-body {
     grid-template-columns: repeat(3, 1fr); 
   }
 }
+
+.event-card {
+  cursor: pointer;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.1s ease;
+
+  &:hover {
+    border: 2px solid whitesmoke;
+  }
+
+  .event-image {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  .event-content {
+    padding: 1rem;
+    
+    h3 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+

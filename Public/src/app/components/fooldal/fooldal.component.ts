@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { IconFieldModule } from 'primeng/iconfield';
@@ -31,8 +31,18 @@ import { CardModule } from 'primeng/card';
   styleUrls: ['./fooldal.component.scss'] 
 })
 export class FooldalComponent {
+
+  constructor(
+      private router : Router
+    ){}
   title = 'Főoldal';
   visible: boolean = false;
+
+  navigateToEvent(event: any) {
+    // Példa router navigációra
+    this.router.navigate(['/#', event.id]); //ide jön majd az az oldal ahová szeretnénk navigálni a felhasználót miután rákatintott a card-ra
+  }
+  
 
   newestEvents = [
     {
