@@ -41,24 +41,22 @@
       
       <p-card *ngFor="let event of newestEvents" class="event-card shadow-lg rounded-xl overflow-hidden" (click)="navigateToEvent(event)">
         <ng-template pTemplate="header">
-
-          <img src="http://localhost:3000/uploads/{{event.image}}" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
+          <img src="http://localhost:3000/uploads/{{ event.image }}" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
         </ng-template>
-
-        <div class="px-4 py-2">
-          <h3 class="text-lg font-bold mb-2">{{ event.eventName }}</h3>
-
-
-        <div class="event-content">
-          <h3 class="text-lg font-bold mb-2">{{ event.title }}</h3>
-
-          <p class="text-sm mb-2">{{ event.description }}</p>
-          <p class="text-sm mb-2"><b>Dátum:</b> {{ event.eventDate }}</p>
-          <p class="text-sm mb-2"><b>Cím:</b> {{ event.eventAddress }}</p>
-          <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.eventStart }} | <b>Vég:</b> {{ event.eventEnd }}</p>
-        </div>
-
-
+      
+        <ng-template pTemplate="content">
+          <div class="px-4 py-2">
+            <h3 class="text-lg font-bold mb-2">{{ event.eventName }}</h3>
+      
+            <div class="event-content">
+              <h3 class="text-lg font-bold mb-2">{{ event.title }}</h3>
+              <p class="text-sm mb-2">{{ event.description }}</p>
+              <p class="text-sm mb-2"><b>Dátum:</b> {{ event.eventDate }}</p>
+              <p class="text-sm mb-2"><b>Cím:</b> {{ event.eventAddress }}</p>
+              <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.eventStart }} | <b>Vég:</b> {{ event.eventEnd }}</p>
+            </div>
+          </div>
+        </ng-template>
       </p-card>
     </div>
   </section>
@@ -71,27 +69,18 @@
    
       <p-card *ngFor="let event of popularEvents" class="event-card shadow-lg rounded-xl overflow-hidden" (click)="navigateToEvent(event)">
         <ng-template pTemplate="header">
-
-          <img [src]="" alt="Event Image" style="max-width: 100%; height: auto;" class="w-full h-48 object-cover rounded-t-xl" />
+          <img [src]="'http://localhost:3000/uploads/' + event.image" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
         </ng-template>
-
-        <div class="px-4 py-2">
-          <h3 class="text-lg font-bold mb-2"></h3>
-          <p class="text-sm mb-2"></p>
-          <p class="text-sm mb-2"><b>Dátum:</b> </p>
-          <p class="text-sm mb-2"><b>Cím:</b> </p>
-          <p class="text-sm mb-4"><b>Kezdés:</b>  | <b>Vég:</b> </p>
-
-
-        <div class="event-content">
-          <h3 class="text-lg font-bold mb-2">{{ event.title }}</h3>
-          <p class="text-sm mb-2">{{ event.description }}</p>
-          <p class="text-sm mb-2"><b>Dátum:</b> {{ event.date }}</p>
-          <p class="text-sm mb-2"><b>Cím:</b> {{ event.address }}</p>
-          <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.start }} | <b>Vég:</b> {{ event.end }}</p>
-
-        </div>
-
+      
+        <ng-template pTemplate="content">
+          <div class="px-4 py-2 event-content">
+            <h3 class="text-lg font-bold mb-2">{{ event.title }}</h3>
+            <p class="text-sm mb-2">{{ event.description }}</p>
+            <p class="text-sm mb-2"><b>Dátum:</b> {{ event.date }}</p>
+            <p class="text-sm mb-2"><b>Cím:</b> {{ event.address }}</p>
+            <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.start }} | <b>Vég:</b> {{ event.end }}</p>
+          </div>
+        </ng-template>
       </p-card>
     </div>
   </section>
@@ -101,25 +90,24 @@
       <h2 class="text-2xl font-semibold mb-6">Összes esemény:</h2>
       <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
   
-     
         <p-card *ngFor="let event of allEvents" class="event-card shadow-lg rounded-xl overflow-hidden" (click)="navigateToEvent(event)">
-
-            <img src="http://localhost:3000/uploads/{{event.image}}" alt="Event Image" style="max-width: 100%; height: auto;" class="w-full h-48 object-cover rounded-t-xl" />
+  
+          <ng-template pTemplate="header">
+            <img [src]="'http://localhost:3000/uploads/' + event.image" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
           </ng-template>
-  
-          <div class="px-4 py-2">
-            <h3 class="text-lg font-bold mb-2">{{ event.eventName }}</h3>
-
-  
-          <div class="event-content">
-            <h3 class="text-lg font-bold mb-2">{{ event.title }}</h3>
-
-            <p class="text-sm mb-2">{{ event.description }}</p>
-            <p class="text-sm mb-2"><b>Dátum:</b> {{ event.eventDate }}</p>
-            <p class="text-sm mb-2"><b>Cím:</b> {{ event.eventAddress }}</p>
-            <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.eventStart }} | <b>Vég:</b> {{ event.eventEnd }}</p>
-          </div>
-  
+        
+          <ng-template pTemplate="content">
+            <div class="px-4 py-2 event-content">
+              <h3 class="text-lg font-bold mb-2">{{ event.eventName }}</h3>
+              <h4 class="text-md font-semibold mb-2">{{ event.title }}</h4>
+        
+              <p class="text-sm mb-2">{{ event.description }}</p>
+              <p class="text-sm mb-2"><b>Dátum:</b> {{ event.eventDate }}</p>
+              <p class="text-sm mb-2"><b>Cím:</b> {{ event.eventAddress }}</p>
+              <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.eventStart }} | <b>Vég:</b> {{ event.eventEnd }}</p>
+            </div>
+          </ng-template>
+        
         </p-card>
       </div>
     </section>

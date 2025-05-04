@@ -29,7 +29,7 @@ import moment from 'moment';
     MenubarModule,
     CommonModule,
     DialogModule,
-    //FooterComponent,
+    FooterComponent,
     CardModule,
     SidebarModule
   ],
@@ -66,9 +66,9 @@ export class FooldalComponent implements OnInit{
 
   newestEvents:any[] = [];
 
-  popularEvents = [];
+  popularEvents:any[] = [];
 
-  allEvents = [{
+  allEvents:any[] = [{
     eventName: '',
     eventStart: '',
     eventEnd: '',
@@ -112,5 +112,8 @@ export class FooldalComponent implements OnInit{
         }
       });
     });
+  }
+  navigateToEvent(event: any){
+
   }
 }
