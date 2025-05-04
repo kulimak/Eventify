@@ -13,6 +13,7 @@ import { Message, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
 import { CheckboxModule } from 'primeng/checkbox';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     ToastModule,
     RippleModule,
     CheckboxModule,
-    RouterLink
+    RouterLink,
+    FooterComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

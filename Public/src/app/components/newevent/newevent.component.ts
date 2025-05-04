@@ -14,12 +14,13 @@ import { NewEvent } from '../../interfaces/events';
 import { Token } from '@angular/compiler';
 import { ToastModule } from 'primeng/toast';
 import moment from 'moment';
+import { FooterComponent } from '../footer/footer.component';
 
 
 @Component({
   selector: 'app-newevent',
   standalone: true,
-  imports: [  FormsModule, ButtonModule, CardModule, InputTextModule,InputTextareaModule, CalendarModule, SelectButtonModule, ToastModule],
+  imports: [  FormsModule, ButtonModule, CardModule, InputTextModule,InputTextareaModule, CalendarModule, SelectButtonModule, ToastModule, FooterComponent],
   templateUrl: './newevent.component.html',
   styleUrl: './newevent.component.scss',
   providers: [MessageService]

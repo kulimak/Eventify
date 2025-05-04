@@ -1,62 +1,183 @@
-<div class="profileContainer">
-    <div class="leftSide">
-        <div class="pfpDiv"></div>
-        <div class="actionButtons">
-            
-            <div class="card flex justify-content-center">
-                <p-button (onClick)="showUserNameDialog()" label="Felhasználónév változtatás"  />
-                <p-dialog header="Felhasználónév változtatás" [modal]="true" [(visible)]="visibleUser" [draggable]="false">
-                    <div class="content">
-                        <p>Felhasználónév</p>
-                        <input pInputText id="username" class="flex-auto" autocomplete="off" />
-                        <p>Jelszó</p>
-                        <input pInputText id="password" class="flex-auto" autocomplete="off" />
-                        <br>
-                        <p-button label="Mentés" (onClick)="visibleUser = false" />
-                    </div>
-                </p-dialog>
-            </div>
-            
-            <div class="card flex justify-content-center">
-                <p-button (onClick)="showEmailDialog()" label="Email cím változtatás" id="gonb" />
-                <p-dialog header="Email cím változtatás" [modal]="true" [(visible)]="visibleEmail" [draggable]="false"  >
-                    <div class="content">
-                        <p>Új email cím</p>
-                        <input pInputText id="email" class="flex-auto" autocomplete="off" />
-                        <p>Új email cím megerősítése</p>
-                        <input pInputText id="emailConf" class="flex-auto" autocomplete="off" />
-                        <p>Jelszó</p>
-                        <input pInputText id="password" class="flex-auto" autocomplete="off" />
-                        <br>
-                        <p-button label="Mentés" (onClick)="visibleEmail = false" />
-                    </div>  
-                </p-dialog>
-            </div>
-
-            <div class="card flex justify-content-center">
-                <p-button (onClick)="showPasswdDialog()" label="Jelszó változtatás" id="gonb" />
-                <p-dialog header="Jelszó változtatás" [modal]="true" [(visible)]="visiblePass" [draggable]="false"  >
-                    <div class="content">
-                        <p>Régi Jelszó</p>
-                        <input pInputText id="username" class="flex-auto" autocomplete="off" />
-                        <p>Új jelszó</p>
-                        <input pInputText id="password" class="flex-auto" autocomplete="off" />
-                        <p>Új jelszó megerősítése</p>
-                        <input pInputText id="passwordConf" class="flex-auto" autocomplete="off" />
-                        <br>
-                        <p-button label="Mentés" (onClick)="visiblePass = false" />
-                    </div>
-                </p-dialog>
-            </div>
-
-        </div>
-    </div>
-    <div class="rightSide">
-        <div class="rightSideTop">
-            
-            
-        </div>
-        <div class="rightSideBottom">
-        </div>
-    </div>
+<div class="bg">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path
+      fill="#055459"
+      fill-opacity="1"
+      d="M0,224L30,234.7C60,245,120,267,180,245.3C240,224,300,160,360,128C420,96,480,96,540,80C600,64,660,32,720,58.7C780,85,840,171,900,176C960,181,1020,107,1080,101.3C1140,96,1200,160,1260,154.7C1320,149,1380,75,1410,37.3L1440,0L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"
+    ></path>
+  </svg>
 </div>
+
+<div class="container">
+
+  <p-toast position="bottom-center" key="bc"    
+    [showTransformOptions]="'translateX(-100%)'" 
+    [showTransitionOptions]="'500ms'" 
+    [hideTransitionOptions]="'750ms'" 
+    [showTransformOptions]="'translateY(100%)'"
+  />
+  <div class="baloldal">
+
+    <div class="pfp">
+      <img [src]="profileDatas.image ? 'http://localhost:3000/uploads/' + profileDatas.image : 'http://localhost:3000/uploads/default.jpg'" alt="Profile picture" class="profile-img">
+    </div>
+
+    <div class="nev">
+      <h1>{{profileDatas.username}}</h1>
+    </div>
+
+    <div class="action-buttons">
+      <div class="card flex justify-content-center mb-3">
+
+        <p-button
+        (onClick)="showPfpDialog()"
+        label="Profilkép módosítás"
+      />
+      <p-dialog
+        header="Profilkép módosítás"
+        [modal]="true"
+        [(visible)]="visiblePFP"
+        class="username-dialog"
+      >
+        <div class="dialog-content">
+          <span class="p-text-secondary block mb-4">
+            Válaszd ki a profilképed.
+          </span>
+
+          <div class="uploadDiv">
+            <input type="file" class="" id="image" placeholder="" accept="image/*" (change)="onFileSelected($event)">
+          </div>
+
+          <div class="dialog-footer">
+            <p-button
+              label="Mégse"
+              severity="secondary"
+              (onClick)="visibleUser = false"
+            />
+            <p-button label="Mentés" (onClick)="uploadPFP()" />
+          </div>
+        </div>
+      </p-dialog>
+        <p-button
+          (onClick)="showUserNameDialog()"
+          label="Felhasználónév módosítás"
+        />
+        <p-dialog
+          header="Felhasználónév módosítás"
+          [modal]="true"
+          [(visible)]="visibleUser"
+          class="username-dialog"
+        >
+          <div class="dialog-content">
+            <span class="p-text-secondary block mb-4">
+              Frissítsd a felhasználóneved az alábbi mezők kitöltésével.
+            </span>
+
+            <div class="form-field">
+              <label for="username">Felhasználónév</label>
+              <input pInputText id="username" autocomplete="off" [(ngModel)]="newUsername"/>
+            </div>
+
+            <div class="dialog-footer">
+              <p-button
+                label="Mégse"
+                severity="secondary"
+                (onClick)="visibleUser = false"
+              />
+              <p-button label="Mentés" (onClick)="updateUserName()" />
+            </div>
+          </div>
+        </p-dialog>
+
+        <p-button (onClick)="showEmailDialog()" label="Email módosítás" />
+        <p-dialog
+          header="Email cím módosítás"
+          [modal]="true"
+          [(visible)]="visibleEmail"
+          class="username-dialog"
+        >
+          <div class="dialog-content">
+            <span class="p-text-secondary block mb-4"
+              >Frissítsd az email címed az alábbi mező kitöltésével.</span
+            >
+
+            <div class="form-field">
+              <label for="email">Jelenlegi email</label>
+              <input
+                [disabled]="true"
+                pInputText
+                id="email"
+                [(value)]="profileDatas.email"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="updatedEmail">Módosított email</label>
+              <input pInputText id="updatedEmail" autocomplete="off" [(ngModel)]="newEmail"/>
+            </div>
+
+            <div class="dialog-footer">
+              <p-button
+                label="Mégse"
+                severity="secondary"
+                (onClick)="visibleEmail = false"
+              />
+              <p-button label="Mentés" (onClick)="updateEmail()" />
+            </div>
+          </div>
+        </p-dialog>
+        <p-button (onClick)="showPasswdDialog()" label="Jelszó módosítás" />
+        <p-dialog
+          header="Jelszómódosítás"
+          [modal]="true"
+          [(visible)]="visiblePass"
+          class="username-dialog"
+        >
+          <div class="dialog-content">
+            <span class="p-text-secondary block mb-4"
+              >Frissítsd a jelszavad az alábbi mezők kitöltésével.</span
+            >
+
+            <div class="form-field">
+              <label for="password">Jelenlegi jelszó</label>
+              <p-password [(ngModel)]="passwordValue" [toggleMask]="true" [feedback]="false" />
+            </div>
+
+            <div class="form-field">
+              <label for="updatedPassword">Új jelszó</label>
+              <p-password [(ngModel)]="newPasswords.password" [toggleMask]="true" [feedback]="false" />
+            </div>
+
+            <div class="form-field">
+              <label for="updatedPassword">Új jelszó megerősítése</label>
+              <p-password [(ngModel)]="newPasswords.confirm" [toggleMask]="true" [feedback]="false" />
+            </div>
+
+            <div class="dialog-footer">
+              <p-button
+                label="Mégse"
+                severity="secondary"
+                (onClick)="visiblePass = false"
+              />
+              <p-button label="Mentés" (onClick)="updatePassword()" />
+            </div>
+          </div>
+        </p-dialog>
+      </div>
+    </div>
+  </div>
+
+  <div class="jobboldal">
+    <h2>Éretékelésed</h2>
+    <p-rating [(ngModel)]="ratingValue" [readonly]="true" [cancel]="false" />
+    <br />
+    <h2>Rólam:</h2>
+    <textarea rows="8" cols="30" pInputTextarea [autoResize]="true"> </textarea>
+    <br />
+    <div class="saveBtn">
+      <p-button> Mentés </p-button>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

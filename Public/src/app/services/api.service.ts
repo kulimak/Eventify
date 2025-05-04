@@ -48,24 +48,35 @@ export class ApiService {
     return this.http.post(`${this.server}/${table}/register`, user);
   }
 
-//Felhasználónév módosítás
-  passord(table: string, id: string, data:object)
+ //jelszó módosítás
+  password(table: string, id: string, password:object)
   {
-    return this.http.post(`${this.server}/${table}/password/${id}`, data, this.tokenHeader());
+    return this.http.patch(`${this.server}/${table}/password/${id}`, password, this.tokenHeader());
   }
 
-
-//Email módosítás
-  email(table: string, id: string, data:object)
+ //Email módosítás
+  email(table: string, id: string, email:string)
   {
-    return this.http.post(`${this.server}/${table}/email/${id}`, data, this.tokenHeader());
+    return this.http.patch(`${this.server}/${table}/email/${id}`, { email }, this.tokenHeader());
   }
+  
+ //felhsználónév módosítás
+ username(table: string, id: string, username:string)
+ {
+   return this.http.patch(`${this.server}/${table}/username/${id}`, { username }, this.tokenHeader());
+ }
 
-//Email módosítás
-  username(table: string, id: string, data:object)
-  {
-    return this.http.post(`${this.server}/${table}/username/${id}`, data, this.tokenHeader() );
-  }
+ //felhasználó lékérése azonosító alapján
+ getUser(table: string, id:string)
+ {
+  return this.http.get(`${this.server}/${table}/get/${id}`, this.tokenHeader());
+ }
+
+ //kép feltöltés
+ uploadPfp(table: string, id:string, data: FormData)
+ {
+   return this.http.patch(`${this.server}/${table}/image/${id}`, data, this.tokenHeader());
+ }
 
 
  //Kategóriák

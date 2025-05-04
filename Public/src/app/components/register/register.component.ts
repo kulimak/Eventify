@@ -19,6 +19,7 @@ import { formatDate } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from '../footer/footer.component';
 
 
 
@@ -41,7 +42,8 @@ interface Category {
     MessagesModule,
     ToastModule,
     RippleModule,
-    RouterModule
+    RouterModule,
+    FooterComponent
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',

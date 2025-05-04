@@ -22,4 +22,7 @@ router.patch('/email/:id', authMiddleware, userController.email);
 //update username
 router.patch('/username/:id', authMiddleware, userController.username);
 
+//get user by id 
+router.get('/get/:id', authMiddleware, userController.getUserById);
+
 module.exports = router

@@ -1,6 +1,6 @@
 .container {
-    position: fixed;
-    bottom: 0;
+    position: relative;
+    bottom: -100px; /* Kivisszük a láblécet az oldalról, hogy ne legyen látható a kezdő pozícióban */
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.6);
@@ -15,7 +15,7 @@
 .footer-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     max-width: 1200px;
 }
@@ -82,5 +82,10 @@ a {
 }
 
 .logo{
-    margin-top: 20px;
+    margin-top: 10px;
+}
+
+/* Margin hozzáadása, hogy a lábléc látszódjon, amikor az oldal alján vagyunk */
+body {
+    padding-bottom: 120px; /* A lábléc magasságának megfelelően */
 }

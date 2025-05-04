@@ -15,6 +15,7 @@ import { CompanyRegister } from '../../interfaces/company';
 import { CompanyLogin } from '../../interfaces/company';
 import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-company-reg',
@@ -30,7 +31,8 @@ import { RippleModule } from 'primeng/ripple';
     CalendarModule, 
     RouterModule,
     ToastModule,
-    RippleModule
+    RippleModule,
+    FooterComponent
   ],
   templateUrl: './company-reg.component.html',
   styleUrl: './company-reg.component.scss',
