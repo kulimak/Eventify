@@ -148,6 +148,38 @@ p-card .p-card-body {
   }
 }
 
+#siteNavigate{
+    position: fixed;
+    z-index: 9999;
+}
+
+#buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.siteNavBtn{
+    background-color: #035559;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    font-size: medium;
+}
+
+.siteNavBtn:hover {
+  background-color: #043f44;
+}
+
+#arrowBtn{
+  width: 200px;
+}
+
 .event-card {
   cursor: pointer;
   border-radius: 1rem;
@@ -181,4 +213,5 @@ p-card .p-card-body {
     }
   }
 }
+
 

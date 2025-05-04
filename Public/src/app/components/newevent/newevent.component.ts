@@ -34,9 +34,10 @@ export class NeweventComponent implements OnInit{
     private router : Router,
     private messageService: MessageService
   ){}
+  selectedFile: File | null = null;
+
   value: string | undefined;
   date: Date[] | undefined;
-
 
   Catvalue!: number;
   eventDateMoment:any="";
@@ -48,9 +49,16 @@ export class NeweventComponent implements OnInit{
     eventEnd: '',
     eventAddress: '',
     eventDate: '',
-    userId: this.auth.loggedUser().id,
+    userId: '',
     catId: '',
     description: ''
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      this.selectedFile = input.files[0];
+    }
   }
 
   ngOnInit(): void {
@@ -63,12 +71,36 @@ export class NeweventComponent implements OnInit{
       }
     })
   }
-
-  createEvent(){
+  uploadEvent(){
+    const formData: FormData = new FormData();
+    if (this.selectedFile) {
+     
+      const file: File | null = this.selectedFile;
+      if (file) {
+        //console.log('>>>>', file)
+        formData.append('file', file);
+      }
+    }
     this.eventDateMoment=moment(this.eventDateMoment).format('YYYY-MM-DD');
     this.newEvent.eventDate=this.eventDateMoment;
 
-    this.api.newEvent('event', this.newEvent).subscribe({
+    formData.append('eventName', this.newEvent.eventName);
+    formData.append('eventStart', this.newEvent.eventStart);
+    formData.append('eventEnd', this.newEvent.eventEnd);
+    formData.append('eventAddress', this.newEvent.eventAddress);
+    formData.append('eventDate', this.newEvent.eventDate);
+    formData.append('userId', this.auth.loggedUser().id);
+    formData.append('catId', this.newEvent.catId);
+    formData.append('description', this.newEvent.description);
+
+   
+    this.createEvent(formData);
+  }
+
+  createEvent(formData: FormData){
+    console.log(formData);
+
+    this.api.newEvent('event', formData).subscribe({
       next: (res: any) => {
           this.showMessage('success', 'Siker', res.message);
                 
@@ -76,7 +108,7 @@ export class NeweventComponent implements OnInit{
       error: (err: any) => {
           this.showMessage('error', 'Hiba', err.error.message);
       }
-  });
+    });
   }
 
   showMessage(tipus:string, cim:string, tartalom:string){

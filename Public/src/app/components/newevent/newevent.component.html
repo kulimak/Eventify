@@ -119,12 +119,16 @@
       Válaszd ki, milyen kategóriába tartozik az esemény
   </small>
 
+  </div>
 
+  <div class="">
+    <input type="file" class="form-control" id="image" placeholder="" accept="image/*" (change)="onFileSelected($event)">
+    <label for="image">Kép</label>
   </div>
 
     <ng-template pTemplate="footer">
         <div class="actionButton">
-            <p-button (onClick)="createEvent()" label="Létrehozás" class="w-full" styleClass="w-full" />
+            <p-button (onClick)="uploadEvent()" label="Létrehozás" class="w-full" styleClass="w-full" />
         </div>
     </ng-template>
 </p-card>

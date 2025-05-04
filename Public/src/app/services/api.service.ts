@@ -24,7 +24,7 @@ export class ApiService {
     return { headers }
   }
 
-  //Bejelentkezés
+//Bejelentkezés
   login(table: string, user: object)
   {
     return this.http.post(`${this.server}/${table}/login`, user);
@@ -36,13 +36,13 @@ export class ApiService {
     return this.http.post(`${this.server}/${table}/login`, user);
   }
 
-  //regisztráció
+//regisztráció
   register(table: string, user: object)
   {
     return this.http.post(`${this.server}/${table}/register`, user);
   }
 
-  //regisztráció cég
+//regisztráció cég
   companyReg(table: string, user: object)
   {
     return this.http.post(`${this.server}/${table}/register`, user);
@@ -59,7 +59,7 @@ export class ApiService {
   {
     return this.http.patch(`${this.server}/${table}/email/${id}`, { email }, this.tokenHeader());
   }
-
+  
  //felhsználónév módosítás
  username(table: string, id: string, username:string)
  {
@@ -81,18 +81,31 @@ export class ApiService {
 
  //Kategóriák
 
- //összes kategória lekérése
- categories(table:string)
- {
+//összes kategória lekérése
+  categories(table:string)
+  {
     return this.http.get(`${this.server}/${table}/get`, this.tokenHeader());
- }
+  }
 
 
  //Események
 
- //Esemény létrehozása
- newEvent(table: string, event: object)
- {
-   return this.http.post(`${this.server}/${table}/newevent`, event, this.tokenHeader());
- }
+//Esemény létrehozása
+  newEvent(table: string, data: FormData)
+  {
+    return this.http.post(`${this.server}/${table}/newevent`, data, this.tokenHeader());
+  }
+
+
+//Összes esemény lekérése
+  getEvents(table:string, )
+  {
+    return this.http.get(`${this.server}/${table}/get`, this.tokenHeader())
+  }
+
+//Esemény lekérése ID alapján
+  getEventById(table:string, id:string)
+  {
+    return this.http.get(`${this.server}/${table}/get/${id}`, this.tokenHeader())
+  }
 }
