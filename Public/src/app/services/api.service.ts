@@ -116,4 +116,10 @@ export class ApiService {
   {
     return this.http.post(`${this.server}/${table}/new`, registration, this.tokenHeader())
   }
+
+//Jelentekezések lekérése
+  getRegistrations(table:string)
+  {
+    return this.http.get(`${this.server}/${table}/get`, this.tokenHeader())
+  }
 }
