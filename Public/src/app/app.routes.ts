@@ -85,6 +85,9 @@ export const routes: Routes = [
     {
         path: 'stats', component: StatsComponent, canActivate: [UserAuthGuard]
     },
+    {
+        path: 'event', component: FullScreenEventComponent, canActivate: [UserAuthGuard]
+    },
 
     /**
    * Other routes

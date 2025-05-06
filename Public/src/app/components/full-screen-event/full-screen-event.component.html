@@ -16,21 +16,21 @@
     <p-card>
   
       <ng-template pTemplate="header">
-        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
+        <img alt="Card" [src]="'http://localhost:3000/uploads/' + event.image"/>
       </ng-template>
   
       <div class="eventName">
         <label><b>Név</b></label>
-        <p>{{ newEvent.eventName }}</p>
-        <small>Ez lesz a neve a létrehozott eseménynek.</small>
+        <p>{{ event.eventName }}</p>
+       
       </div>
   
       <hr>
   
       <div class="eventDesc">
         <label><b>Leírás</b></label>
-        <p>{{ newEvent.description }}</p>
-        <small>Ezzel a szöveggel tudod jellemezni az eseményt.</small>
+        <p>{{ event.description }}</p>
+        
       </div>
   
       <hr>
@@ -38,25 +38,26 @@
       <div class="eventCalendar">
         <label><b>Dátum</b></label>
         <p>{{ eventDateMoment | date: 'yyyy.MM.dd.' }}</p>
-        <small>Ekkor kerül megrendezésre az esemény.</small>
+       
       </div>
   
       <hr>
   
       <div class="eventAddress">
         <label><b>Cím</b></label>
-        <p>{{ newEvent.eventAddress }}</p>
-        <small>Ezen a címen kerül megrendezésre az esemény (irányítószám, település neve, utca, házszám).</small>
+        <p>{{ event.eventAddress }}</p>
+        
       </div>
   
       <hr>
   
       <label><b>Esemény kezdete és vége</b></label>
       <div class="eventEndStart">
-        <p><b>Kezdés:</b> {{ newEvent.eventStart }}</p>
-        <p><b>Vég:</b> {{ newEvent.eventEnd }}</p>
+        <p><b>Kezdés:</b> {{ event.eventStart }}</p>
+        <p><b>Vég:</b> {{ event.eventEnd }}</p>
       </div>
-  
+      
+      <button class="jelentkezesBtn" >Jelentkezés</button> 
     </p-card>
   </div>
   

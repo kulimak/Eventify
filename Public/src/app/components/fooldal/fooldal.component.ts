@@ -69,6 +69,7 @@ export class FooldalComponent implements OnInit{
   popularEvents:any[] = [];
 
   allEvents:any[] = [{
+    Id:'',
     eventName: '',
     eventStart: '',
     eventEnd: '',
@@ -82,6 +83,7 @@ export class FooldalComponent implements OnInit{
     this.api.getEvents('/event').subscribe((res: any)=>{
       if (res.success == true) {
         this.allEvents = res.results.map((events: any) => ({
+          Id: events.Id,
           eventName: events.eventName,
           eventStart: events.eventStart,
           eventEnd: events.eventEnd,
@@ -100,6 +102,7 @@ export class FooldalComponent implements OnInit{
           const eventDate = moment(event.eventDate, 'YYYY-MM-DD');
           if (eventDate.isSameOrAfter(moment(), 'day')) {
             this.newestEvents.push({
+              Id: event.Id,
               eventName: event.eventName,
               eventStart: event.eventStart,
               eventEnd: event.eventEnd,
@@ -114,6 +117,17 @@ export class FooldalComponent implements OnInit{
     });
   }
   navigateToEvent(event: any){
-
+    this.router.navigate(['/event'], {
+      queryParams: {
+        Id: event.Id,
+        eventName: event.eventName,
+        eventDate: event.eventDate,
+        eventStart: event.eventStart,
+        eventEnd: event.eventEnd,
+        eventAddress: event.eventAddress,
+        description: event.description,
+        image: event.image
+      }
+    });
   }
 }

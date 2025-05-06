@@ -118,6 +118,24 @@ input{
     gap: 10px;
 }
 
+.jelentkezesBtn{
+    background-color: #035559;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    font-size: medium;
+    align-self: center;
+}
+
+.jelentkezesBtn:hover{
+    background-color: #043f44;
+}
+
 p-card {
     display: flex;
     width: auto;
