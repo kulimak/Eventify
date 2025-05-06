@@ -49,8 +49,8 @@ export class FullScreenEventComponent implements OnInit{
   };
 
   eventRegistration:any= {
-    userId: this.auth.loggedUser().Id,
-    eventId: this.event.Id
+    userId: this.auth.loggedUser().id,
+    eventId: ''
   }
 
   eventDateMoment: Date = new Date();
@@ -74,6 +74,7 @@ export class FullScreenEventComponent implements OnInit{
         image: params['image']
       };
     });
+    this.eventRegistration.eventId = this.event.Id
   }
 
   getCategoryName(catId: number): string {
@@ -82,9 +83,16 @@ export class FullScreenEventComponent implements OnInit{
   }
 
   registration(){
-    this.api.eventregistrations('/eventregistrations',this.eventRegistration).subscribe((res:any)=>{
-
+    this.api.eventregistrations('eventregistrations', this.eventRegistration).subscribe({
+      next: (res: any) => {
+        this.showMessage('success', 'Siker', res.message)
+      },
+      error: (err: any) => {
+        this.showMessage('error', 'Hiba', err.error.message);
+      }
     });
   }
-
+  showMessage(tipus:string, cim:string, tartalom:string){
+    this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });
+  }
 }

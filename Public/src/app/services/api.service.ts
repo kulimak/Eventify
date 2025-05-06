@@ -114,6 +114,6 @@ export class ApiService {
 //Jelentkezés
   eventregistrations(table:string, registration:object)
   {
-    return this.http.post(`${this.server}/${table}/eventregistrations/new`, {registration}, this.tokenHeader())
+    return this.http.post(`${this.server}/${table}/new`, registration, this.tokenHeader())
   }
 }

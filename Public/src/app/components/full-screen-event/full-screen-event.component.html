@@ -1,3 +1,10 @@
+<p-toast position="bottom-center" key="bc"    
+  [showTransformOptions]="'translateX(-100%)'" 
+  [showTransitionOptions]="'500ms'" 
+  [hideTransitionOptions]="'750ms'" 
+  [showTransformOptions]="'translateY(100%)'"
+/>
+
 <div class="svg-bg">
     <svg width="832" height="1080" viewBox="0 0 832 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_59_14)">
@@ -57,7 +64,7 @@
         <p><b>Vég:</b> {{ event.eventEnd }}</p>
       </div>
       
-      <button class="jelentkezesBtn" >Jelentkezés</button> 
+      <button class="jelentkezesBtn" (click)="registration()">Jelentkezés</button> 
     </p-card>
   </div>
   
