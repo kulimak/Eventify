@@ -30,7 +30,7 @@ export class ApiService {
     return this.http.post(`${this.server}/${table}/login`, user);
   }
 
-  //Bejelentkezés cég
+//Bejelentkezés cég
   companyLogin(table: string, user: object)
   {
     return this.http.post(`${this.server}/${table}/login`, user);
@@ -48,35 +48,35 @@ export class ApiService {
     return this.http.post(`${this.server}/${table}/register`, user);
   }
 
- //jelszó módosítás
+//jelszó módosítás
   password(table: string, id: string, password:object)
   {
     return this.http.patch(`${this.server}/${table}/password/${id}`, password, this.tokenHeader());
   }
 
- //Email módosítás
+//Email módosítás
   email(table: string, id: string, email:string)
   {
     return this.http.patch(`${this.server}/${table}/email/${id}`, { email }, this.tokenHeader());
   }
   
- //felhsználónév módosítás
- username(table: string, id: string, username:string)
- {
-   return this.http.patch(`${this.server}/${table}/username/${id}`, { username }, this.tokenHeader());
- }
+//felhsználónév módosítás
+  username(table: string, id: string, username:string)
+  {
+    return this.http.patch(`${this.server}/${table}/username/${id}`, { username }, this.tokenHeader());
+  }
 
- //felhasználó lékérése azonosító alapján
- getUser(table: string, id:string)
- {
-  return this.http.get(`${this.server}/${table}/get/${id}`, this.tokenHeader());
- }
+//felhasználó lékérése azonosító alapján
+  getUser(table: string, id:string)
+  {
+    return this.http.get(`${this.server}/${table}/get/${id}`, this.tokenHeader());
+  }
 
- //kép feltöltés
- uploadPfp(table: string, id:string, data: FormData)
- {
-   return this.http.patch(`${this.server}/${table}/image/${id}`, data, this.tokenHeader());
- }
+//kép feltöltés
+  uploadPfp(table: string, id:string, data: FormData)
+  {
+     return this.http.patch(`${this.server}/${table}/image/${id}`, data, this.tokenHeader());
+  }
 
 
  //Kategóriák
@@ -107,5 +107,13 @@ export class ApiService {
   getEventById(table:string, id:string)
   {
     return this.http.get(`${this.server}/${table}/get/${id}`, this.tokenHeader())
+  }
+
+  //Eseményre Jelentkezés
+
+//Jelentkezés
+  eventregistrations(table:string, registration:object)
+  {
+    return this.http.post(`${this.server}/${table}/new`, registration, this.tokenHeader())
   }
 }
