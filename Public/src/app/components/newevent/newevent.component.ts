@@ -69,7 +69,7 @@ export class NeweventComponent implements OnInit{
           value: cat.Id     
         }));
       }
-    })
+    });
   }
   uploadEvent(){
     const formData: FormData = new FormData();
