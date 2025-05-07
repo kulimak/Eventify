@@ -47,6 +47,7 @@ input{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .eventCalendar{
@@ -100,7 +101,7 @@ input{
 
 p-card {
     display: flex;
-    width: 50%;
+    width: 350px;
     border-radius: 10px;
 }
 

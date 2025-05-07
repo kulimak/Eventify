@@ -109,6 +109,12 @@ export class ApiService {
     return this.http.get(`${this.server}/${table}/get/${id}`, this.tokenHeader())
   }
 
+//Esmény törlése
+  deleteEvent(table:string, id:string)
+  {
+    return this.http.delete(`${this.server}/${table}/delete/${id}`, this.tokenHeader())
+  }
+
   //Eseményre Jelentkezés
 
 //Jelentkezés
