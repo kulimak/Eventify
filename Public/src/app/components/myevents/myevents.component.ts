@@ -85,9 +85,11 @@ export class MyeventsComponent implements OnInit{
           this.api.deleteEvent('event',eventId).subscribe({
             next: (res: any) => {
               this.showMessage('success', 'Siker', res.results);
+
               setTimeout(() => {
                 window.location.reload();
               }, 3000);
+              
             },
             error: (err: any) => {
               this.showMessage('error', 'Hiba', err.error.message);
