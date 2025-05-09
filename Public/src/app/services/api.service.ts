@@ -96,6 +96,11 @@ export class ApiService {
     return this.http.post(`${this.server}/${table}/newevent`, data, this.tokenHeader());
   }
 
+//Esemény létrehozása
+  update(table: string, data: FormData, eventId:string)
+  {
+    return this.http.patch(`${this.server}/${table}/update/${eventId}`, data, this.tokenHeader());
+  }
 
 //Összes esemény lekérése
   getEvents(table:string, )

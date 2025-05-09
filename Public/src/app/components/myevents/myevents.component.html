@@ -58,7 +58,7 @@
   
       <ng-template pTemplate="footer">
           <div class="actionButton">
-              <p-button severity="warning" label="Módosítás" class="w-full" styleClass="w-full" />
+              <p-button severity="warning" label="Módosítás" class="w-full" styleClass="w-full" (onClick)="modositas(event.Id)"/>
 
               <p-button severity="danger" label="Törlés" class="w-full" styleClass="w-full" (onClick)="deleteEvent($event, event.Id)" />
           </div>

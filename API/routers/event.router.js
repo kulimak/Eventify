@@ -5,7 +5,7 @@ const { authMiddleware } = require('../middlewares/auth.middleware');
 const upload = require('../middlewares/upload.middleware');
 
 //New Event
-router.post('/newevent', authMiddleware, upload.single('file') ,eventController.newevent);
+router.post('/newevent', authMiddleware, upload.single('file'), eventController.newevent);
 
 //Get all Events
 router.get('/get', authMiddleware, eventController.getAll);
@@ -17,6 +17,6 @@ router.get('/get/:id', authMiddleware, eventController.getOneById);
 router.delete('/delete/:id', authMiddleware, eventController.delete);
 
 //Update Event
-router.patch('/update/:id', authMiddleware, eventController.update);
+router.patch('/update/:id', authMiddleware, upload.single('file'), eventController.update);
 
 module.exports = router
