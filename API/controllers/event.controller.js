@@ -7,12 +7,12 @@ exports.newevent = async (req, res, next) => {
         /*console.log('Body:', req.body);
         console.log('File:', req.file);*/
         // Ellenőrizzük, hogy van-e feltöltött fájl
-        if (!req.file) {
+        /*if (!req.file) {
             return res.status(400).json({
                 success: false,
                 message: 'Nem található feltöltött fájl.',
             });
-        }
+        }*/
 
         // Feltöltött fájl adatai
         const file = req.file;
@@ -78,12 +78,17 @@ exports.delete = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
     try {
-        const {eventName, eventStart, eventEnd, eventAddress, eventDate, description} = req.body
+
+        const file = req.file;
+
+        const { eventName, eventStart, eventEnd, eventAddress, eventDate, description, userId, catId} = req.body;
+        const image = req.file ? req.file.filename : null;
+
         if (!req.params.id) {
             return res.status(400).json({ message: 'Hiányzó esemény azonosító!'});
         }
         else{
-            const event = await eventService.updateEvent(req.params.id, eventName, eventStart, eventEnd, eventAddress, eventDate, description);
+            const event = await eventService.updateEvent(req.params.id,eventName, eventStart, eventEnd, eventAddress, eventDate, description, catId, image);
             res.status(200).json({success: true, message: "Esemény módosítása sikeres!"});
         }
     } catch (error) {

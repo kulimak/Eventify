@@ -102,6 +102,14 @@ export class MyeventsComponent implements OnInit{
   });
   }
 
+  modositas(eventId:string){
+    this.router.navigate(['/modevent'], {
+      queryParams: {
+        Id: eventId
+      }
+    });
+  }
+
   showMessage(tipus:string, cim:string, tartalom:string){
     this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });
   }

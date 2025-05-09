@@ -40,23 +40,26 @@ exports.deleteEvent = async (id) => {
     
     if (!event) throw new Error('Esemény nem található!');
 
-    const imagePath = path.join(__dirname, '..', 'uploads', event.image);
+    const imagePath = event.image ? path.join(__dirname, '..', 'uploads', event.image) : null;
+
     await Events.destroy({
         where: { id }
     });
-
-    fs.unlink(imagePath, (err) => {
-        if (err) {
-            console.error('Kép törlése sikertelen:', err.message);
-        } else {
-            console.log('Kép sikeresen törölve:', event.image);
-        }
-    });
+    
+    if (imagePath) {
+        fs.unlink(imagePath, (err) => {
+            if (err) {
+                console.error('Kép törlése sikertelen:', err.message);
+            } else {
+                console.log('Kép sikeresen törölve:', event.image);
+            }
+        });
+    }
 
     return 'Esemény törölve!';
 }
 
-exports.updateEvent = async (id, eventName, eventStart, eventEnd, eventAddress, eventDate, description) => {
+exports.updateEvent = async (id, eventName, eventStart, eventEnd, eventAddress, eventDate, description, catId, image) => {
 
     const updateEvent = Events.update({
         eventName, 
@@ -64,7 +67,9 @@ exports.updateEvent = async (id, eventName, eventStart, eventEnd, eventAddress, 
         eventEnd, 
         eventAddress, 
         eventDate, 
-        description
+        description,
+        catId,
+        image
     },
     {
         where: {id}
