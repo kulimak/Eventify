@@ -108,7 +108,7 @@ export class ProfileComponent implements OnInit{
   }
 
   createEvent(formData: FormData){
-    console.log(formData);
+    //console.log(formData);
 
     this.api.uploadPfp('users', this.auth.loggedUser().id, formData).subscribe({
       next: (res: any) => {

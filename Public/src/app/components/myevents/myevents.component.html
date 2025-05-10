@@ -1,34 +1,43 @@
-<div class="content">
+<p-toast position="bottom-center" key="bc"    
+  [showTransformOptions]="'translateX(-100%)'" 
+  [showTransitionOptions]="'500ms'" 
+  [hideTransitionOptions]="'750ms'" 
+  [showTransformOptions]="'translateY(100%)'"
+/>
+<p-confirmDialog />
+
+<ng-container *ngIf="ownEvents.length > 0; else noEvents">
+  <div class="content" *ngFor="let event of ownEvents">
 
     <p-card>
   
       <ng-template pTemplate="header">
-          <img alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
+          <img alt="Card" [src]="'http://localhost:3000/uploads/' + event.image" />
       </ng-template>
       
       <div class="eventName">
-        <label for="name"><b>Név</b></label>
+        <label for="name"><b>{{ event.eventName }}</b></label>
         
       </div>
   
       <hr>
   
      <div class="eventDesc">
-      <label for="eventDesc"><b>Leírás</b></label>
+      <label for="eventDesc"><b>{{event.description}}</b></label>
         
      </div>
   
      <hr>
   
      <div class="eventCalendar">
-      <label for="eventCalendar"><b>Dátum</b></label>
+      <label for="eventCalendar"><b>{{event.eventDate}}</b></label>
       
      </div>
   
      <hr>
   
      <div class="eventAddress">
-      <label for="eventAddress"><b>Cím</b></label>
+      <label for="eventAddress"><b>{{event.eventAddress}}</b></label>
       
     </div>
   
@@ -38,89 +47,30 @@
     <div class="eventEndStart">
   
       <label id="eventEndStart-help">
-        Kezdés:
+        Kezdés: {{event.eventStart}}
       </label>
-  
-      
   
       <label id="eventEndStart-help">
-        Vég:
+        Vég: {{event.eventEnd}}
       </label>
   
-        
-  
-      
     </div>
   
       <ng-template pTemplate="footer">
           <div class="actionButton">
-              <p-button severity="warning" label="Módosítás" class="w-full" styleClass="w-full" />
-              <p-button severity="danger" label="Törlés" class="w-full" styleClass="w-full" />
+              <p-button severity="warning" label="Módosítás" class="w-full" styleClass="w-full" (onClick)="modositas(event.Id)"/>
+
+              <p-button severity="danger" label="Törlés" class="w-full" styleClass="w-full" (onClick)="deleteEvent($event, event.Id)" />
           </div>
       </ng-template>
   </p-card>
 
-  <p-card>
-  
-    <ng-template pTemplate="header">
-        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
-    </ng-template>
-    
-    <div class="eventName">
-      <label for="name"><b>Név</b></label>
-      
-    </div>
-
-    <hr>
-
-   <div class="eventDesc">
-    <label for="eventDesc"><b>Leírás</b></label>
-      
-   </div>
-
-   <hr>
-
-   <div class="eventCalendar">
-    <label for="eventCalendar"><b>Dátum</b></label>
-    
-   </div>
-
-   <hr>
-
-   <div class="eventAddress">
-    <label for="eventAddress"><b>Cím</b></label>
-    
   </div>
+</ng-container>
+<ng-template #noEvents>
+  <h1 id="ertesites">Még nincs általad létrehozott esemény</h1>
+</ng-template>
 
-  <hr>
-
-  <label for="eventEndStart"><b>Esemeny kezdete és vége</b></label>
-  <div class="eventEndStart">
-
-    <label id="eventEndStart-help">
-      Kezdés:
-    </label>
-
-    
-
-    <label id="eventEndStart-help">
-      Vég:
-    </label>
-
-      
-
-    
-  </div>
-
-    <ng-template pTemplate="footer">
-        <div class="actionButton">
-            <p-button severity="warning" label="Módosítás" class="w-full" styleClass="w-full" />
-            <p-button severity="danger" label="Törlés" class="w-full" styleClass="w-full" />
-        </div>
-    </ng-template>
-</p-card>
-  
-</div>
 
 <div class="bg">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

@@ -14,6 +14,7 @@ import { PasswordResetComponent } from './components/password-reset/password-res
 import { PassResetSikeresComponent } from './components/pass-reset-sikeres/pass-reset-sikeres.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { FullScreenEventComponent } from './components/full-screen-event/full-screen-event.component';
+import { ModEventComponent } from './components/mod-event/mod-event.component';
 
 
 export const routes: Routes = [
@@ -87,6 +88,9 @@ export const routes: Routes = [
     },
     {
         path: 'event', component: FullScreenEventComponent, canActivate: [UserAuthGuard]
+    },
+    {
+        path: 'modevent', component: ModEventComponent, canActivate: [UserAuthGuard]
     },
 
     /**

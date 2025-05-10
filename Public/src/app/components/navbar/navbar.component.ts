@@ -84,11 +84,6 @@ export class NavbarComponent implements OnInit {
                     routerLink: '/myevents',
                   },
                   {
-                    label: 'Esemény',
-                    icon: 'pi pi-box',
-                    routerLink: '/fullscreenevent',
-                  },
-                  {
                     label: 'Profil',
                     icon: 'pi pi-user',
                     routerLink: '/profile',

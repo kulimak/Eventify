@@ -27,13 +27,13 @@ import { FooterComponent } from '../footer/footer.component';
 })
 
 export class NeweventComponent implements OnInit{
-
   constructor(
     private api: ApiService,
     private auth: AuthService,
     private router : Router,
     private messageService: MessageService
   ){}
+
   selectedFile: File | null = null;
 
   value: string | undefined;
@@ -69,7 +69,7 @@ export class NeweventComponent implements OnInit{
           value: cat.Id     
         }));
       }
-    })
+    });
   }
   uploadEvent(){
     const formData: FormData = new FormData();

@@ -1,4 +1,6 @@
 const { Events } = require('../models/events.model');
+const fs = require('fs');
+const path = require('path');
 const { generateToken } = require('../utils/token');
 const { configDotenv } = require('dotenv');
 
@@ -34,17 +36,30 @@ exports.getOneById = async (id) => {
 }
 
 exports.deleteEvent = async (id) => {
+    const event = await Events.findByPk(id);
     
-    const event = await Events.destroy({
-        where: {id}
-    });
-
     if (!event) throw new Error('Esemény nem található!');
 
-    return "Esemény törölve!";
+    const imagePath = event.image ? path.join(__dirname, '..', 'uploads', event.image) : null;
+
+    await Events.destroy({
+        where: { id }
+    });
+    
+    if (imagePath) {
+        fs.unlink(imagePath, (err) => {
+            if (err) {
+                console.error('Kép törlése sikertelen:', err.message);
+            } else {
+                console.log('Kép sikeresen törölve:', event.image);
+            }
+        });
+    }
+
+    return 'Esemény törölve!';
 }
 
-exports.updateEvent = async (id, eventName, eventStart, eventEnd, eventAddress, eventDate, description) => {
+exports.updateEvent = async (id, eventName, eventStart, eventEnd, eventAddress, eventDate, description, catId, image) => {
 
     const updateEvent = Events.update({
         eventName, 
@@ -52,7 +67,9 @@ exports.updateEvent = async (id, eventName, eventStart, eventEnd, eventAddress, 
         eventEnd, 
         eventAddress, 
         eventDate, 
-        description
+        description,
+        catId,
+        image
     },
     {
         where: {id}

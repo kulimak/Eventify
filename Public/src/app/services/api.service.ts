@@ -96,6 +96,11 @@ export class ApiService {
     return this.http.post(`${this.server}/${table}/newevent`, data, this.tokenHeader());
   }
 
+//Esemény létrehozása
+  update(table: string, data: FormData, eventId:string)
+  {
+    return this.http.patch(`${this.server}/${table}/update/${eventId}`, data, this.tokenHeader());
+  }
 
 //Összes esemény lekérése
   getEvents(table:string, )
@@ -109,11 +114,23 @@ export class ApiService {
     return this.http.get(`${this.server}/${table}/get/${id}`, this.tokenHeader())
   }
 
+//Esmény törlése
+  deleteEvent(table:string, id:string)
+  {
+    return this.http.delete(`${this.server}/${table}/delete/${id}`, this.tokenHeader())
+  }
+
   //Eseményre Jelentkezés
 
 //Jelentkezés
   eventregistrations(table:string, registration:object)
   {
     return this.http.post(`${this.server}/${table}/new`, registration, this.tokenHeader())
+  }
+
+//Jelentekezések lekérése
+  getRegistrations(table:string)
+  {
+    return this.http.get(`${this.server}/${table}/get`, this.tokenHeader())
   }
 }

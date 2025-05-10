@@ -64,6 +64,8 @@ export class FooldalComponent implements OnInit{
   title = 'Főoldal';
   visible: boolean = false;
 
+  categories: any[] = [];
+
   newestEvents:any[] = [];
 
   popularEvents:any[] = [];
@@ -76,11 +78,13 @@ export class FooldalComponent implements OnInit{
     eventAddress: '',
     eventDate: '',
     description: '',
-    image:''
+    image: '',
+    catId: '',
+    category: ''
   }];
 
   ngOnInit(): void {
-    this.api.getEvents('/event').subscribe((res: any)=>{
+    this.api.getEvents('event').subscribe((res: any) => {
       if (res.success == true) {
         this.allEvents = res.results.map((events: any) => ({
           Id: events.Id,
@@ -90,31 +94,39 @@ export class FooldalComponent implements OnInit{
           eventAddress: events.eventAddress,
           eventDate: events.eventDate,
           description: events.description,
-          image: events.image
+          image: events.image,
+          catId: events.catId
         }));
-      }
-
-      this.allEvents.forEach(event  => {
-        if (
-          event.eventDate &&
-          moment(event.eventDate, 'YYYY-MM-DD', true).isValid()
-        ) {
-          const eventDate = moment(event.eventDate, 'YYYY-MM-DD');
-          if (eventDate.isSameOrAfter(moment(), 'day')) {
-            this.newestEvents.push({
-              Id: event.Id,
-              eventName: event.eventName,
-              eventStart: event.eventStart,
-              eventEnd: event.eventEnd,
-              eventAddress: event.eventAddress,
-              eventDate: event.eventDate,
-              description:  event.description,
-              image: event.image
-            })
+    
+        this.allEvents.forEach(event => {
+          if (
+            event.eventDate &&
+            moment(event.eventDate, 'YYYY-MM-DD', true).isValid()
+          ) {
+            const eventDate = moment(event.eventDate, 'YYYY-MM-DD');
+            if (eventDate.isSameOrAfter(moment(), 'day')) {
+              this.newestEvents.push({
+                Id: event.Id,
+                eventName: event.eventName,
+                eventStart: event.eventStart,
+                eventEnd: event.eventEnd,
+                eventAddress: event.eventAddress,
+                eventDate: event.eventDate,
+                description: event.description,
+                image: event.image
+              });
+            }
           }
-        }
-      });
+    
+          // Itt már biztosan van adat, itt csináld a kategória hozzárendelést
+          const matchedCategory = this.categories.find(cat => cat.value === event.catId);
+          if (matchedCategory) {
+            console.log(`Esemény: ${event.eventName} → Kategória: ${matchedCategory.name}`);
+          }
+        });
+      }
     });
+    
   }
   navigateToEvent(event: any){
     this.router.navigate(['/event'], {

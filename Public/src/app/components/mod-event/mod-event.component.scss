@@ -2,13 +2,29 @@ body, html {
     overflow: scroll;
 }
 
+
+.bg {
+    position: fixed; /* Fixált pozicionálás, így mindig az ablak alján marad */
+    bottom: 0; /* Az oldal aljára igazítja */
+    left: 0; /* A bal oldalra helyezi */
+    width: 100%; /* Az egész képernyő szélességét lefedi */
+    z-index: -1; /* A háttérbe helyezi, hogy ne takarja el a tartalmat */
+}
+
+.bg svg {
+    width: 100%; /* Az SVG kitölti a konténert */
+    height: auto; /* A magasság automatikusan igazodik a szélességhez */
+}
+
+
+
 .content{
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     margin-top: 20px;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
+    padding: 20px;
 
 }
 
@@ -30,7 +46,7 @@ small{
 }
 
 input{
-    width: 30%;
+    width: 75%;
 }
 
 .eventName{
@@ -47,7 +63,6 @@ input{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    flex-wrap: wrap;
 }
 
 .eventCalendar{
@@ -71,7 +86,7 @@ input{
     display: flex;
     align-items: baseline;
     height:auto;
-    width: 50%;
+    width: 70%;
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -85,26 +100,16 @@ input{
     justify-content: space-between;
 }
 
-.bg {
-    position: fixed; /* Fixált pozicionálás, így mindig az ablak alján marad */
-    bottom: 0; /* Az oldal aljára igazítja */
-    left: 0; /* A bal oldalra helyezi */
-    width: 100%; /* Az egész képernyő szélességét lefedi */
-    z-index: -1; /* A háttérbe helyezi, hogy ne takarja el a tartalmat */
+.category{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
-
-.bg svg {
-    width: 100%; /* Az SVG kitölti a konténert */
-    height: auto; /* A magasság automatikusan igazodik a szélességhez */
-}
-
 
 p-card {
     display: flex;
-    width: 350px;
+    width: auto;
     border-radius: 10px;
-}
-
-#ertesites{
-    text-align: center;
 }
