@@ -25,11 +25,6 @@ export const routes: Routes = [
     {
         path: 'login', component: LoginComponent
     },
-
-    {
-        path: 'fullscreenevent', component: FullScreenEventComponent
-    },
-
     {
         path: 'adminpage', component: AdminPageComponent
     },

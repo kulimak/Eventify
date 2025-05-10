@@ -27,10 +27,10 @@ exports.getAll = async () => {
     return registrations;
 }
 
-exports.getOneById = async (id) => {
-    const registration = await EventRegistrations.findOne({
-        where: {id}
+exports.getAllById = async (userId) => {
+    const registrations = await EventRegistrations.findAll({
+        where: {userId}
     })
 
-    return registration
+    return registrations
 }

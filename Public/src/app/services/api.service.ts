@@ -72,6 +72,12 @@ export class ApiService {
     return this.http.get(`${this.server}/${table}/get/${id}`, this.tokenHeader());
   }
 
+//felhasználó lékérése azonosító alapján
+  getAllUsers(table: string)
+  {
+    return this.http.get(`${this.server}/${table}/get`, this.tokenHeader());
+  }
+
 //kép feltöltés
   uploadPfp(table: string, id:string, data: FormData)
   {
@@ -132,5 +138,17 @@ export class ApiService {
   getRegistrations(table:string)
   {
     return this.http.get(`${this.server}/${table}/get`, this.tokenHeader())
+  }
+
+//Jelentkezések lekérése Id alapján
+  getAllById(table:string, id:string)
+  {
+    return this.http.get(`${this.server}/${table}/get/${id}`, this.tokenHeader())
+  }
+
+//Jelentkezés törlése
+  deleteRegistration(table:string, id:number)
+  {
+    return this.http.delete(`${this.server}/${table}/delete/${id}`, this.tokenHeader())
   }
 }

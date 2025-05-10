@@ -13,6 +13,6 @@ router.delete('/delete/:id', authMiddleware, eventRegistration.delete);
 router.get('/get', authMiddleware, eventRegistration.getAll);
 
 //Get one Registration by id
-router.get('/get/:id', authMiddleware, eventRegistration.getOneById);
+router.get('/get/:id', authMiddleware, eventRegistration.getAllById);
 
 module.exports = router

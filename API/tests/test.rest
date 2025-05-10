@@ -186,9 +186,9 @@ Authorization: Bearer {{authToken}}
 GET {{baseUrl}}/eventregistrations/get
 Authorization: Bearer {{authToken}}
 
-### Get one Registration by id
-# @name getOneById
-GET {{baseUrl}}/eventregistrations/get/1
+### Get all Registration by id
+# @name getAllById
+GET {{baseUrl}}/eventregistrations/get/58c45e17-3c68-4d52-9e1b-be2113737156
 Authorization: Bearer {{authToken}}
 
 ### Delete Registration
