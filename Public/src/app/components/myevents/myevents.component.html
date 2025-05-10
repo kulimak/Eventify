@@ -12,7 +12,7 @@
     <p-card>
   
       <ng-template pTemplate="header">
-          <img alt="Card" [src]="'http://localhost:3000/uploads/' + event.image" />
+          <img alt="Card" [src]="event.image ? 'http://localhost:3000/uploads/' + event.image : 'http://localhost:3000/uploads/placeholder.jpg'" />
       </ng-template>
       
       <div class="eventName">

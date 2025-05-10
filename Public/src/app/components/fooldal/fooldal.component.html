@@ -41,7 +41,7 @@
       
       <p-card *ngFor="let event of newestEvents" class="event-card shadow-lg rounded-xl overflow-hidden" (click)="navigateToEvent(event)">
         <ng-template pTemplate="header">
-          <img src="http://localhost:3000/uploads/{{ event.image }}" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
+          <img [src]="event.image ? 'http://localhost:3000/uploads/' + event.image : 'http://localhost:3000/uploads/placeholder.jpg'" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
         </ng-template>
       
         <ng-template pTemplate="content">
@@ -54,6 +54,7 @@
               <p class="text-sm mb-2"><b>Dátum:</b> {{ event.eventDate }}</p>
               <p class="text-sm mb-2"><b>Cím:</b> {{ event.eventAddress }}</p>
               <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.eventStart }} | <b>Vég:</b> {{ event.eventEnd }}</p>
+              <p class="text-sm mb-2"><b>Kategória:</b> {{ event.category }}</p>
             </div>
           </div>
         </ng-template>
@@ -69,7 +70,7 @@
    
       <p-card *ngFor="let event of popularEvents" class="event-card shadow-lg rounded-xl overflow-hidden" (click)="navigateToEvent(event)">
         <ng-template pTemplate="header">
-          <img [src]="'http://localhost:3000/uploads/' + event.image" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
+          <img [src]="event.image ? 'http://localhost:3000/uploads/' + event.image : 'http://localhost:3000/uploads/placeholder.jpg'" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
         </ng-template>
       
         <ng-template pTemplate="content">
@@ -94,7 +95,7 @@
         <p-card *ngFor="let event of allEvents" class="event-card shadow-lg rounded-xl overflow-hidden" (click)="navigateToEvent(event)">
   
           <ng-template pTemplate="header">
-            <img [src]="'http://localhost:3000/uploads/' + event.image" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
+            <img [src]="event.image ? 'http://localhost:3000/uploads/' + event.image : 'http://localhost:3000/uploads/placeholder.jpg'" alt="Event Image" class="w-full h-48 object-cover rounded-t-xl" />
           </ng-template>
         
           <ng-template pTemplate="content">
