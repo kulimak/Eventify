@@ -84,50 +84,57 @@ export class FooldalComponent implements OnInit{
   }];
 
   ngOnInit(): void {
-    this.api.getEvents('event').subscribe((res: any) => {
-      if (res.success == true) {
-        this.allEvents = res.results.map((events: any) => ({
-          Id: events.Id,
-          eventName: events.eventName,
-          eventStart: events.eventStart,
-          eventEnd: events.eventEnd,
-          eventAddress: events.eventAddress,
-          eventDate: events.eventDate,
-          description: events.description,
-          image: events.image,
-          catId: events.catId
-        }));
-    
-        this.allEvents.forEach(event => {
-          if (
-            event.eventDate &&
-            moment(event.eventDate, 'YYYY-MM-DD', true).isValid()
-          ) {
-            const eventDate = moment(event.eventDate, 'YYYY-MM-DD');
-            if (eventDate.isSameOrAfter(moment(), 'day')) {
-              this.newestEvents.push({
-                Id: event.Id,
-                eventName: event.eventName,
-                eventStart: event.eventStart,
-                eventEnd: event.eventEnd,
-                eventAddress: event.eventAddress,
-                eventDate: event.eventDate,
-                description: event.description,
-                image: event.image
-              });
+  // Előbb töltsük be a kategóriákat
+  this.api.categories('categories').subscribe((catRes: any) => {
+    if (catRes.success === true) {
+      this.categories = catRes.results.map((cat: any) => ({
+        name: cat.name,
+        value: cat.Id
+      }));
+
+      // Ha megvannak a kategóriák, töltsük be az eseményeket
+      this.api.getEvents('event').subscribe((res: any) => {
+        if (res.success == true) {
+          this.allEvents = res.results.map((event: any) => {
+            const matchedCategory = this.categories.find(cat => String(cat.value) === String(event.catId));
+
+            const eventDateValid = event.eventDate && moment(event.eventDate, 'YYYY-MM-DD', true).isValid();
+            if (eventDateValid) {
+              const eventDate = moment(event.eventDate, 'YYYY-MM-DD');
+              if (eventDate.isSameOrAfter(moment(), 'day')) {
+                this.newestEvents.push({
+                  Id: event.Id,
+                  eventName: event.eventName,
+                  eventStart: event.eventStart,
+                  eventEnd: event.eventEnd,
+                  eventAddress: event.eventAddress,
+                  eventDate: event.eventDate,
+                  description: event.description,
+                  image: event.image,
+                  category: matchedCategory ? matchedCategory.name : ''
+                });
+              }
             }
-          }
-    
-          // Itt már biztosan van adat, itt csináld a kategória hozzárendelést
-          const matchedCategory = this.categories.find(cat => cat.value === event.catId);
-          if (matchedCategory) {
-            console.log(`Esemény: ${event.eventName} → Kategória: ${matchedCategory.name}`);
-          }
-        });
-      }
-    });
-    
-  }
+
+            return {
+              Id: event.Id,
+              eventName: event.eventName,
+              eventStart: event.eventStart,
+              eventEnd: event.eventEnd,
+              eventAddress: event.eventAddress,
+              eventDate: event.eventDate,
+              description: event.description,
+              image: event.image,
+              catId: event.catId,
+              category: matchedCategory ? matchedCategory.name : ''
+            };
+          });
+        }
+      });
+    }
+  });
+}
+
   navigateToEvent(event: any){
     this.router.navigate(['/event'], {
       queryParams: {
