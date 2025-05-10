@@ -93,3 +93,9 @@ exports.getUserById = async(id) => {
 
     return user
 }
+
+exports.getAllUsers = async() => {
+    const user = await User.findAll();
+
+    return user
+}

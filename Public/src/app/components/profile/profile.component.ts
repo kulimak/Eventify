@@ -9,12 +9,14 @@ import { FooterComponent } from '../footer/footer.component';
 import { RatingModule } from 'primeng/rating';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
 import { updatePassword, userProfile } from '../../interfaces/user';
 import { ToastModule } from 'primeng/toast';
+import { TableModule } from 'primeng/table';
 import * as bcrypt from 'bcryptjs';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @Component({
   selector: 'app-profile',
@@ -29,11 +31,14 @@ import * as bcrypt from 'bcryptjs';
     FooterComponent,
     RatingModule,
     InputTextareaModule,
-    ToastModule
+    ToastModule,
+    TableModule,
+    ConfirmDialogModule
+    
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
-  providers: [MessageService]
+  providers: [MessageService, ConfirmationService]
 })
 export class ProfileComponent implements OnInit{
   
@@ -41,7 +46,8 @@ export class ProfileComponent implements OnInit{
     private api: ApiService,
     private auth: AuthService,
     private router : Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
   ){}
 
   profileDatas:userProfile={
@@ -63,11 +69,22 @@ export class ProfileComponent implements OnInit{
   selectedFile: File | null = null;
 
   userValue: string | undefined;
-  ratingValue: number = 5;
   visiblePFP: boolean = false;
   visibleEmail: boolean = false;
   visibleUser: boolean = false;
   visiblePass: boolean = false;
+
+  registeredEventId:any[] = [];
+
+  registrationId:any[] = []
+
+   EventDatas:any[] = [{
+    eventName: '',
+    userId: '',
+    eventDate: '',
+    organizer: '',
+    registrationId: ''
+  }];
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -77,7 +94,85 @@ export class ProfileComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getLoggedUser()
+    this.getLoggedUser();
+
+    this.api.getAllById('eventregistrations', this.auth.loggedUser().id).subscribe((res: any) => {
+      if (res.success == true) {
+        res.results.forEach((registration: any) => {
+          if (registration.eventId) {
+            this.registeredEventId.push(registration.eventId);
+            this.registrationId.push(registration.Id);
+          }
+        });
+        console.log(this.registeredEventId)
+        this.loadRegisteredEvents()
+      }
+    });
+  }
+
+  loadRegisteredEvents() {
+  this.api.getEvents('event').subscribe((res: any) => {
+    if (res.success === true && Array.isArray(res.results)) {
+      this.EventDatas = res.results
+        .filter((event: any) => this.registeredEventId.includes(event.Id))
+        .map((event: any) => ({
+          eventName: event.eventName,
+          userId: event.userId,
+          eventDate: event.eventDate
+        }));
+    }
+    //console.log(this.EventDatas)
+    this.getEventOrganizer()
+  });
+}
+
+getEventOrganizer() {
+  this.api.getAllUsers('users').subscribe((res: any) => {
+    if (res.success === true) {
+      this.EventDatas = this.EventDatas.map(event => {
+        const matchingUser = res.results.find((user: any) => user.Id === event.userId);
+        return {
+            ...event,
+            organizer: matchingUser ? matchingUser.username : 'Ismeretlen'
+          };
+        });
+      }
+      console.log(this.EventDatas);
+    });
+  }
+
+  deleteRegistration(event:Event, id:number){
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Biztosan törlöd a jelentkezést?',
+      header: 'Törlés megerősítése',
+      icon: 'pi pi-info-circle',
+      acceptButtonStyleClass:"p-button-danger p-button-text",
+      rejectButtonStyleClass:"p-button-text p-button-text",
+      acceptIcon:"none",
+      rejectIcon:"none",
+      acceptLabel: 'Igen',
+      rejectLabel: 'Mégsem',
+
+      accept: () => {
+          this.api.deleteRegistration('eventregistrations', this.registrationId[id]).subscribe({
+            next: (res: any) => {
+              this.showMessage('success', 'Siker', res.results);
+
+              setTimeout(() => {
+                window.location.reload();
+              }, 1500);
+              
+            },
+            error: (err: any) => {
+              this.showMessage('error', 'Hiba', err.error.message);
+            }
+          }); 
+      },
+      reject: () => {
+          this.showMessage('error', 'Törlés elutasítva', 'Elutasítottad a jelentkezés törlését!');
+      }
+  });
   }
 
   getLoggedUser(){

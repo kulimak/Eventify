@@ -137,3 +137,14 @@ exports.getUserById = async (req, res, next) => {
         next(error)
     }
 }
+
+exports.getAllUser = async (req, res, next) => {
+    try {
+
+        const users = await userService.getAllUsers();
+            
+        res.status(200).json({success:true, results: users});
+    } catch (error) {
+        next(error)
+    }
+}

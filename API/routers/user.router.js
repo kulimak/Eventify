@@ -25,4 +25,7 @@ router.patch('/username/:id', authMiddleware, userController.username);
 //get user by id 
 router.get('/get/:id', authMiddleware, userController.getUserById);
 
+//get users
+router.get('/get', authMiddleware, userController.getAllUser);
+
 module.exports = router

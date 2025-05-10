@@ -86,6 +86,9 @@ export class FullScreenEventComponent implements OnInit{
     this.api.eventregistrations('eventregistrations', this.eventRegistration).subscribe({
       next: (res: any) => {
         this.showMessage('success', 'Siker', res.message)
+        setTimeout(() => {
+          this.router.navigate(['/fooldal'])
+        }, 1500);
       },
       error: (err: any) => {
         this.showMessage('error', 'Hiba', err.error.message);

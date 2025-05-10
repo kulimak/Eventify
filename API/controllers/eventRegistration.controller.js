@@ -41,15 +41,15 @@ exports.getAll = async (req, res, next) => {
     }
 }
 
-exports.getOneById = async (req, res, next) => {
+exports.getAllById = async (req, res, next) => {
     try {
         if (!req.params.id) {
             return res.status(400).json({ message: 'Hiányzó azonosító!'});
         }
 
-        const registration = await eventRegistrationService.getOneById(req.params.id);
+        const registrations = await eventRegistrationService.getAllById(req.params.id);
         
-        res.status(200).json({success:true, results: registration});
+        res.status(200).json({success:true, results: registrations});
     } catch (error) {
         next(error)
     }
