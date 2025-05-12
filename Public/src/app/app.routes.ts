@@ -15,6 +15,7 @@ import { PassResetSikeresComponent } from './components/pass-reset-sikeres/pass-
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { FullScreenEventComponent } from './components/full-screen-event/full-screen-event.component';
 import { ModEventComponent } from './components/mod-event/mod-event.component';
+import { EventRatingComponent } from './components/event-rating/event-rating.component';
 
 
 export const routes: Routes = [
@@ -86,6 +87,9 @@ export const routes: Routes = [
     },
     {
         path: 'modevent', component: ModEventComponent, canActivate: [UserAuthGuard]
+    },
+        {
+        path: 'ratingevent', component: EventRatingComponent, canActivate: [UserAuthGuard]
     },
 
     /**
