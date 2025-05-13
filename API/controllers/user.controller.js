@@ -82,6 +82,31 @@ exports.password = async (req, res, next) => {
     }
 };
 
+exports.passwordEmail = async (req, res, next) => {
+    try {
+        const {password, confirm} = req.body
+
+        if (!req.params.email)
+        {
+            return res.status(400).json({ message: 'Hiányzó azonosító!'});
+        }
+        if (!password || !confirm) {
+            return res.status(400).json({message: 'Hiányzó adatok'})
+        }
+        if (password != confirm)
+        {
+            return res.status(400).json({ message: 'A jelszavak nem egyeznek!'});
+        }
+
+        const user = userService.updatePasswordViaEmail(req.params.email, password)
+
+        res.status(200).json({success:true, message: 'jelszó módosítás sikeres!'});
+    } 
+    catch (error) {
+        next(error)
+    }
+};
+
 exports.email = async (req, res, next) => {
     try {
         const {email} = req.body

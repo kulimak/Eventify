@@ -55,7 +55,7 @@ export class PasswordResetComponent {
     generateCode() {
       const code = Math.floor(100000 + Math.random() * 900000).toString();
       this.emailData.text = "A jelszavad visszaállításához írd be ezt a kódot: "+code
-      this.codeService.setCode(code);
+      this.codeService.setCode(code, this.emailData.to);
     }
 
  sendEmail() {
