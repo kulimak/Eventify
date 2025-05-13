@@ -16,12 +16,11 @@ body, html {
     height: auto; /* A magasság automatikusan igazodik a szélességhez */
 }
 
-
-
 .content{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 80%;
     margin: auto;
     padding: 20px;
@@ -34,8 +33,18 @@ body, html {
     gap: 5px
 }
 
-#uploadBtn{
-    align-self: flex-end;
+.ratingStars{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    align-self: center;    
+}
+
+.actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .eventName{
@@ -46,9 +55,7 @@ body, html {
 }
 
 label{
-    font-size: 140%;
-    
-
+    font-size: 110%;
 }
 
 small{
@@ -122,4 +129,8 @@ p-card {
     display: flex;
     width: auto;
     border-radius: 10px;
+}
+
+hr{
+    width: 80%;
 }

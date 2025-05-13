@@ -76,6 +76,16 @@ Authorization: Bearer {{authToken}}
     "username": "asd123"
 }
 
+### Get all users
+# @name getAll
+GET {{baseUrl}}/users/get
+Authorization: Bearer {{authToken}}
+
+### Get one user
+# @name getAll
+GET {{baseUrl}}/users/get/22529ed5-902e-4f9d-ad0c-d821ab8dc227
+Authorization: Bearer {{authToken}}
+
 
 ### EVENTS ###
 

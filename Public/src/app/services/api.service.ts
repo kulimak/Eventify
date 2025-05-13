@@ -151,4 +151,13 @@ export class ApiService {
   {
     return this.http.delete(`${this.server}/${table}/delete/${id}`, this.tokenHeader())
   }
+
+
+  //Értékelések
+
+//Új ésemény értékelés
+  newEventRating(table:string, rating:object)
+  {
+    return this.http.post(`${this.server}/${table}/new`, rating, this.tokenHeader())
+  }
 }

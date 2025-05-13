@@ -11,20 +11,29 @@
       [hideTransitionOptions]="'750ms'" 
       [showTransformOptions]="'translateY(100%)'"
     />
-    
-    
+    <H1>{{event.eventName}}</H1>
+    <p>{{event.description}}</p>
+    <hr>
     <div class="ratingDiv">
 
-        <label for="float-input">Írd le a véleményed</label>
+      <div class="ratingStars">
+        <label for="float-input">Értékeld az eseményt:</label>
+        <p-rating [(ngModel)]="newRating.rating" [cancel]="false"/>
+      </div>
+
+        <label for="float-input">Írd le a véleményed:</label>
         <textarea
-            id="float-input" 
-            rows="10"
-            cols="50"
-            pInputTextarea 
-            [autoResize]="true"
-            [autofocus]="false">
+          rows="10"
+          cols="30"
+          pInputTextarea 
+          [autoResize]="true"
+          [(ngModel)]="newRating.opinion">
         </textarea>
-        <p-button (onClick)="uploadrating()" label="Módosítás" class="w-full" styleClass="w-full" id="uploadBtn"/>
+
+        <div class="actions">
+          <p-button (onClick)="backToProfile()" label="Vissza" severity="contrast" class="w-full" styleClass="w-full" id="backBtn"/>
+          <p-button (onClick)="uploadrating()" label="Feltöltés" class="w-full" styleClass="w-full" />
+        </div>
 
     </div>
 

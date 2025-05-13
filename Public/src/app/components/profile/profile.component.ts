@@ -139,7 +139,7 @@ getEventOrganizer() {
           };
         });
       }
-      console.log(this.EventDatas);
+      //console.log(this.EventDatas);
     });
   }
 
