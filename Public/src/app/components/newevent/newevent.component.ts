@@ -36,8 +36,7 @@ export class NeweventComponent implements OnInit{
 
   selectedFile: File | null = null;
 
-  value: string | undefined;
-  date: Date[] | undefined;
+  today:any = moment().toDate();
 
   Catvalue!: number;
   eventDateMoment:any="";

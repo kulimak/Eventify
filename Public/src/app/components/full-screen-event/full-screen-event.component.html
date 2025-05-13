@@ -20,10 +20,10 @@
   </div>
   
   <div class="content">
-    <p-card>
-  
+
+    <p-card> 
       <ng-template pTemplate="header">
-        <img alt="Card" [src]="'http://localhost:3000/uploads/' + event.image"/>
+        <img alt="Card" [src]="event.image ? 'http://localhost:3000/uploads/' + event.image : 'http://localhost:3000/uploads/placeholder.jpg'"/>
       </ng-template>
   
       <div class="eventName">
@@ -63,10 +63,38 @@
         <p><b>Kezdés:</b> {{ event.eventStart }}</p>
         <p><b>Vég:</b> {{ event.eventEnd }}</p>
       </div>
+
+       <hr>
+
+      <div class="category">
+        <label id="eventCat-help">
+          <b>Kategória:</b>
+        </label>
+        <p>{{event.category}}</p>
+      </div>
       
       <button class="jelentkezesBtn" (click)="registration()">Jelentkezés</button> 
     </p-card>
   </div>
-  
-  <app-footer></app-footer>
-  
+
+    <h2>Vélemények</h2>
+    <hr>
+<p-confirmDialog />
+  <div class="ratingBox">
+    <div class="ratings" *ngFor="let rating of Ratings">
+      <p-card class="ratingCard" header="{{rating.writer}}">
+        <p-rating [(ngModel)]="rating.rating" [readonly]="true" [cancel]="false" />
+          <p class="opinionText">
+            {{rating.opinion}}
+          </p>
+
+        <div class="deleteBtn">
+          <p-button *ngIf="rating.userId === currentUserId"
+            icon="pi pi-trash"
+            severity="danger"
+            (onClick)="deleteRating($event, rating.Id)" />
+        </div>
+      </p-card>
+    </div>
+  </div>
+<app-footer></app-footer> 

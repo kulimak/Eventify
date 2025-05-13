@@ -66,11 +66,13 @@ export class FooldalComponent implements OnInit{
 
   categories: any[] = [];
 
-  newestEvents:any[] = [];
+  newestEvents: any[] = [];
 
-  popularEvents:any[] = [];
+  popularEvents: any[] = [];
+  ratings: any = {};
+  avgRatings: any[] = [];
 
-  allEvents:any[] = [{
+  allEvents: any[] = [{
     Id:'',
     eventName: '',
     eventStart: '',
@@ -129,23 +131,75 @@ export class FooldalComponent implements OnInit{
               category: matchedCategory ? matchedCategory.name : ''
             };
           });
+          this.getPopularEvents();
         }
       });
     }
   });
 }
 
+  getPopularEvents(){
+    this.api.getAllRatings('eventrating').subscribe((res: any) => {
+      if (res.success && res.results) {
+        this.ratings = res.results.map((item: any) => {
+          return {
+            Id: item.Id,
+            rating: Number(item.rating),
+            opinion: item.opinion,
+            eventId: item.eventId,
+            userId: item.userId
+          };
+        });
+      }
+      this.sortPopularEvents()
+    });
+  }
+  
+  sortPopularEvents() {
+    // Első lépés: Mapeljük az eventId-kat, és számoljuk ki az átlagot
+    const ratingMap: { [eventId: string]: { totalRating: number, count: number } } = {};
+
+    // Végezze el az értékelések aggregálását eventId szerint
+    this.ratings.forEach((item: any) => {
+      if (!ratingMap[item.eventId]) {
+        ratingMap[item.eventId] = { totalRating: 0, count: 0 };
+      }
+      ratingMap[item.eventId].totalRating += item.rating;
+      ratingMap[item.eventId].count++;
+    });
+
+    // Második lépés: Számítsuk ki az átlagot minden eventId-ra
+    this.avgRatings = Object.keys(ratingMap).map((eventId) => {
+      const { totalRating, count } = ratingMap[eventId];
+      const averageRating = totalRating / count;
+
+      return {
+        eventId: eventId,
+        avgRating: averageRating
+      };
+    });
+
+    // Harmadik lépés: Az átlagokat most már használhatjuk az események népszerűségének meghatározására.
+    //console.log(this.avgRatings);
+    this.showPopularEvent();
+  }
+
+  showPopularEvent() {
+    // Lépés 1: Keresd meg azokat az eseményeket, amelyek átlagos értékelése 3 felett van
+    this.popularEvents = this.avgRatings.filter((avg: any) => avg.avgRating > 4).map((avg: any) => {
+      // Lépés 2: Keresd meg az eseményt az allEvents tömbben az eventId alapján
+      const event = this.allEvents.find((event: any) => String(event.Id) === String(avg.eventId));
+      return event ? {
+        ...event,
+        avgRating: avg.avgRating // Adjunk hozzá az eseményhez az átlagos értékelést
+      } : null;
+    }).filter((event: any) => event !== null); // Szűrjük ki a null értékeket, ha nincs ilyen esemény
+  }
+
   navigateToEvent(event: any){
     this.router.navigate(['/event'], {
       queryParams: {
         Id: event.Id,
-        eventName: event.eventName,
-        eventDate: event.eventDate,
-        eventStart: event.eventStart,
-        eventEnd: event.eventEnd,
-        eventAddress: event.eventAddress,
-        description: event.description,
-        image: event.image
       }
     });
   }

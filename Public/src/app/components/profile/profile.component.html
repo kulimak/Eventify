@@ -189,7 +189,7 @@
                 <td>{{ event.organizer }}</td>
                 <td>{{ event.eventDate }}</td>
                 <td>
-                  <p-button label="Értékelés" severity="primary" class="actions"/>
+                  <p-button label="Értékelés" severity="primary" class="actions" (onClick)="ertekeles(event.eventId)"/>
 
                   <p-button label="Törlése" severity="danger" (onClick)="deleteRegistration($event, i)" />
                 </td>

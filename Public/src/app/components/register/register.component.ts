@@ -78,19 +78,22 @@ export class RegisterComponent {
     status: 'active',
   }
 
-  cities!: Category[];
+  categories:any[] = []
 
     selectedCategories!: Category[];
 
-    ngOnInit() {
-        this.cities = [
-            {name: 'New York'},
-            {name: 'Rome'},
-            {name: 'London'},
-            {name: 'Istanbul'},
-            {name: 'Paris'}
-        ];
+  ngOnInit() {
+    this.api.categories('categories').subscribe((res: any) => {
+      if (res.success === true) {
+        this.categories = res.results.map((cat: any) => ({
+          name: cat.name,
+          value: cat.Id
+        }));
+      }
+    });
     }
+  
+
     register(){
       if (this.userReg.email=="" || this.userReg.username=="" || this.userReg.password=="" || this.userReg.confirm=="" || this.birthDateMoment=="") {
         this.showMessage('error','Hiba','Nem adtál meg minden adatot!');

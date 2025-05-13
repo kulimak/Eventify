@@ -79,6 +79,7 @@ export class ProfileComponent implements OnInit{
   registrationId:any[] = []
 
    EventDatas:any[] = [{
+    eventId: '',
     eventName: '',
     userId: '',
     eventDate: '',
@@ -116,6 +117,7 @@ export class ProfileComponent implements OnInit{
       this.EventDatas = res.results
         .filter((event: any) => this.registeredEventId.includes(event.Id))
         .map((event: any) => ({
+          eventId: event.Id,
           eventName: event.eventName,
           userId: event.userId,
           eventDate: event.eventDate
@@ -137,7 +139,7 @@ getEventOrganizer() {
           };
         });
       }
-      console.log(this.EventDatas);
+      //console.log(this.EventDatas);
     });
   }
 
@@ -188,6 +190,13 @@ getEventOrganizer() {
     });
   }
 
+  ertekeles(eventId:string){
+    this.router.navigate(['/ratingevent'], {
+      queryParams: {
+        Id: eventId
+      }
+    });
+  }
   
   uploadPFP(){
     this.visiblePFP = false;

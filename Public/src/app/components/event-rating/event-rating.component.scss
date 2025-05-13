@@ -1,0 +1,136 @@
+body, html {
+    overflow: scroll;
+}
+
+
+.bg {
+    position: fixed; /* Fixált pozicionálás, így mindig az ablak alján marad */
+    bottom: 0; /* Az oldal aljára igazítja */
+    left: 0; /* A bal oldalra helyezi */
+    width: 100%; /* Az egész képernyő szélességét lefedi */
+    z-index: -1; /* A háttérbe helyezi, hogy ne takarja el a tartalmat */
+}
+
+.bg svg {
+    width: 100%; /* Az SVG kitölti a konténert */
+    height: auto; /* A magasság automatikusan igazodik a szélességhez */
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+.ratingDiv{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+}
+
+.ratingStars{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    align-self: center;    
+}
+
+.actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.eventName{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-size: 110%;
+}
+
+small{
+    margin-top: 5px;
+}
+
+input{
+    width: 75%;
+}
+
+.eventName{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.eventDesc{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.eventCalendar{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.eventAddress{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.eventEndStart{
+    display: flex;
+    align-items: baseline;
+    height:auto;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    
+}
+
+.actionButton{
+    display: flex;
+    justify-content: space-between;
+}
+
+.category{
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+p-card {
+    display: flex;
+    width: auto;
+    border-radius: 10px;
+}
+
+hr{
+    width: 80%;
+}

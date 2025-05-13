@@ -90,7 +90,7 @@ export class ApiService {
 //összes kategória lekérése
   categories(table:string)
   {
-    return this.http.get(`${this.server}/${table}/get`, this.tokenHeader());
+    return this.http.get(`${this.server}/${table}/get`);
   }
 
 
@@ -151,4 +151,32 @@ export class ApiService {
   {
     return this.http.delete(`${this.server}/${table}/delete/${id}`, this.tokenHeader())
   }
+
+
+  //Értékelések
+
+//Új ésemény értékelés
+  newEventRating(table:string, rating:object)
+  {
+    return this.http.post(`${this.server}/${table}/new`, rating, this.tokenHeader());
+  }
+
+//Összes lekérése eventId alapján
+  getAllRatingById(table:string, eventId:string)
+  {
+    return this.http.get(`${this.server}/${table}/get/${eventId}`, this.tokenHeader());
+  }
+
+//Összes értékelés lékérése
+  getAllRatings(table:string)
+  {
+    return this.http.get(`${this.server}/${table}/get`, this.tokenHeader());
+  }
+
+//Értékelés törlése
+  deleteRating(table:string, id:any)
+  {
+    return this.http.delete(`${this.server}/${table}/delete/${id}`, this.tokenHeader())
+  }
+
 }

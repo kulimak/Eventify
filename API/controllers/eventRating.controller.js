@@ -55,15 +55,15 @@ exports.getAll = async (req, res, next) => {
     }
 }
 
-exports.getOneById = async (req, res, next) => {
+exports.getAllById = async (req, res, next) => {
     try {
         if (!req.params.id) {
             return res.status(400).json({ message: 'Hiányzó esemény azonosító!'});
         }
 
-        const rating = await eventRatingService.getOneById(req.params.id);
+        const ratings = await eventRatingService.getAllById(req.params.id);
         
-        res.status(200).json({success:true, results: rating});
+        res.status(200).json({success:true, results: ratings});
     } catch (error) {
         next(error)
     }

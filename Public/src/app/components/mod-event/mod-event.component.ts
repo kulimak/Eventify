@@ -29,7 +29,7 @@ export class ModEventComponent implements OnInit{
     private api: ApiService,
     private auth: AuthService,
     private router : Router,
-        private route: ActivatedRoute,
+    private route: ActivatedRoute,
     private messageService: MessageService
   ){}
 
