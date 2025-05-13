@@ -50,7 +50,8 @@
    <div class="eventCalendar">
     <label for="eventCalendar"><b>Dátum</b></label>
     <p-calendar 
-    [(ngModel)]="eventDateMoment" 
+    [(ngModel)]="eventDateMoment"
+    [minDate]="today"
     variant="filled" />
     <small id="eventCalendar-help">
       Ekkor kerül megrendezésre az esemény.

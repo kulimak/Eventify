@@ -172,9 +172,9 @@ Authorization: Bearer {{authToken}}
 GET {{baseUrl}}/eventrating/get
 Authorization: Bearer {{authToken}}
 
-### Get one Rating by id
-# @name getOneById
-GET {{baseUrl}}/eventrating/get/1
+### Get All Rating by eventId
+# @name getAllById
+GET {{baseUrl}}/eventrating/get/72526029-6660-4846-a6ae-969ffd218b80
 Authorization: Bearer {{authToken}}
 
 

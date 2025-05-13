@@ -139,13 +139,6 @@ export class FooldalComponent implements OnInit{
     this.router.navigate(['/event'], {
       queryParams: {
         Id: event.Id,
-        eventName: event.eventName,
-        eventDate: event.eventDate,
-        eventStart: event.eventStart,
-        eventEnd: event.eventEnd,
-        eventAddress: event.eventAddress,
-        description: event.description,
-        image: event.image
       }
     });
   }

@@ -43,9 +43,9 @@ exports.getAll = async () => {
     return ratings;
 }
 
-exports.getOneById = async (id) => {
-    const rating = await EventRatings.findOne({
-        where: {id}
+exports.getAllById = async (eventId) => {
+    const rating = await EventRatings.findAll({
+        where: {eventId}
     })
 
     return rating

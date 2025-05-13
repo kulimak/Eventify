@@ -16,6 +16,6 @@ router.delete('/delete/:id', authMiddleware, eventRatingController.delete);
 router.get('/get', authMiddleware, eventRatingController.getAll);
 
 //Get one Evenet by id
-router.get('/get/:id', authMiddleware, eventRatingController.getOneById);
+router.get('/get/:id', authMiddleware, eventRatingController.getAllById);
 
 module.exports = router
