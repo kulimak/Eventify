@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FloatLabelModule } from 'primeng/floatlabel';
@@ -10,6 +10,10 @@ import { PasswordModule } from 'primeng/password';
 import { RippleModule } from 'primeng/ripple';
 import { ToastModule } from 'primeng/toast';
 import { FooterComponent } from '../footer/footer.component';
+import { MessageService } from 'primeng/api';
+import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/auth.service';
+import { CodeService } from '../../services/code.service';
 
 @Component({
   selector: 'app-pass-reset-sikeres',
@@ -24,12 +28,25 @@ import { FooterComponent } from '../footer/footer.component';
     ToastModule,
     RippleModule,
     CheckboxModule,
-    RouterLink,
+    //RouterLink,
     FooterComponent
   ],
   templateUrl: './pass-reset-sikeres.component.html',
-  styleUrl: './pass-reset-sikeres.component.scss'
+  styleUrl: './pass-reset-sikeres.component.scss',
+  providers: [MessageService]
 })
-export class PassResetSikeresComponent {
 
+export class PassResetSikeresComponent implements OnInit{
+  constructor(
+    private api: ApiService,
+    private auth: AuthService,
+    private router : Router,
+    private messageService: MessageService,
+    private codeService: CodeService
+  ){}
+
+  ngOnInit() {
+  const code = this.codeService.getCode();
+  console.log('Kapott kód:', code);
+}
 }
