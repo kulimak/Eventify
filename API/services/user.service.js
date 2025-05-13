@@ -58,6 +58,22 @@ exports.updatePassword = async(id ,password) => {
 
 };
 
+exports.updatePasswordViaEmail = async(email ,password) => {
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const userPasswd = User.update({
+        password: hashedPassword
+    },
+    {
+        where: {email}
+    });
+
+    if (userPasswd == 0) throw new Error('A felhasználó nem található!');
+
+    return 'Jelszó módosítás sikeres!'
+
+};
+
 exports.updateEmail = async(id ,email) => {
     const userEmail = User.update({
         email

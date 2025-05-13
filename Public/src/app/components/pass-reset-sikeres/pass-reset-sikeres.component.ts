@@ -45,8 +45,17 @@ export class PassResetSikeresComponent implements OnInit{
     private codeService: CodeService
   ){}
 
+  code: string = '';
+  inputCode: string = '';
+
   ngOnInit() {
-  const code = this.codeService.getCode();
-  console.log('Kapott kód:', code);
-}
+    this.code = this.codeService.getCode();
+    console.log(this.code)
+  }
+
+  checkingCodes(){
+    if (this.inputCode===this.code) {
+      this.router.navigate(['/pass-reset-final'])
+    }
+  }
 }

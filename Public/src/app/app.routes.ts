@@ -16,6 +16,7 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
 import { FullScreenEventComponent } from './components/full-screen-event/full-screen-event.component';
 import { ModEventComponent } from './components/mod-event/mod-event.component';
 import { EventRatingComponent } from './components/event-rating/event-rating.component';
+import { PassResetFinalComponent } from './components/pass-reset-final/pass-reset-final.component';
 
 
 export const routes: Routes = [
@@ -29,9 +30,11 @@ export const routes: Routes = [
     {
         path: 'adminpage', component: AdminPageComponent
     },
-
     {
         path: 'pass-reset-sikeres', component: PassResetSikeresComponent
+    },
+        {
+        path: 'pass-reset-final', component: PassResetFinalComponent
     },
 
     {

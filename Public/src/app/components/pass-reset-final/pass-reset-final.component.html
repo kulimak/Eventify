@@ -10,26 +10,38 @@
       </clipPath>
       </defs>
     </svg>
-      
 </div>
+
+  <p-toast position="bottom-center" key="bc"    
+    [showTransformOptions]="'translateX(-100%)'" 
+    [showTransitionOptions]="'500ms'" 
+    [hideTransitionOptions]="'750ms'" 
+    [showTransformOptions]="'translateY(100%)'"
+  />
 
 <div class="login-container">
     <div class="login-box">
         <div class="content">
-            <h2>Hitelesítés</h2>
-            <p>Add meg az e-mail címedre küldött 6 jegyű kódot! </p>
+            <h2>Jelszó visszaállítása</h2>
+            <p>Add meg az új jelszavad! </p>
         </div>
 
-        <div class="input-wrapper">
-            <p-floatLabel>
-                <input pInputText id="verifCode"  class="input-field" [(ngModel)]="inputCode"/>
-                <label for="verifCode">Hitelesítő kód</label>
-            </p-floatLabel>
-        </div>
+            <div class="input-wrapper">
+                <p-floatLabel>
+                    <p-password id="password" [(ngModel)]="newPasswords.password" [toggleMask]="true" class="input-field"></p-password>
+                    <label for="Jelszó">Új jelszó</label>
+                </p-floatLabel>
+            </div>
+            <div class="input-wrapper">
+                <p-floatLabel>
+                    <p-password id="password" [(ngModel)]="newPasswords.confirm" [toggleMask]="true" class="input-field"></p-password>
+                    <label for="Jelszó">Új jelszó megerősítése</label>
+                </p-floatLabel>
+            </div>
 
         
         
-        <p-button (onClick)="checkingCodes()" label="Ellenőrzés" class="w-full" styleClass="w-full" />
+        <p-button label="Mentés" (onClick)="saveNewPasswd()" class="w-full" styleClass="w-full" />
 
 
     </div>

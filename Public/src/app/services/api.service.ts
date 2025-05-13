@@ -55,6 +55,12 @@ export class ApiService {
     return this.http.patch(`${this.server}/${table}/password/${id}`, password, this.tokenHeader());
   }
 
+//jelszó visszaállítűs
+  reset(table: string, email: string, password:object)
+  {
+    return this.http.patch(`${this.server}/${table}/reset/${email}`, password);
+  }
+
 //Email módosítás
   email(table: string, id: string, email:string)
   {
