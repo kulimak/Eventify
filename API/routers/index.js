@@ -19,4 +19,7 @@ router.use('/eventregistrations', require('./eventRegistrations.router'));
 // Categories routes
 router.use('/categories', require('./categories.router'))
 
+// Email routes
+router.use('/email', require('./email.router'))
+
 module.exports = router;

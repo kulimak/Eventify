@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -177,6 +178,13 @@ export class ApiService {
   deleteRating(table:string, id:any)
   {
     return this.http.delete(`${this.server}/${table}/delete/${id}`, this.tokenHeader())
+  }
+
+  //Email
+
+//Küldés
+  sendEmail(emailData: any): Observable<any> {
+    return this.http.post(`${this.server}/email/sendemail`, emailData); // HTTP POST kérés
   }
 
 }
