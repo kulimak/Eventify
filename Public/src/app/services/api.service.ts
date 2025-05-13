@@ -167,6 +167,12 @@ export class ApiService {
     return this.http.get(`${this.server}/${table}/get/${eventId}`, this.tokenHeader());
   }
 
+//Összes értékelés lékérése
+  getAllRatings(table:string)
+  {
+    return this.http.get(`${this.server}/${table}/get`, this.tokenHeader());
+  }
+
 //Értékelés törlése
   deleteRating(table:string, id:any)
   {

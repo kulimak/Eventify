@@ -75,11 +75,11 @@
       
         <ng-template pTemplate="content">
           <div class="px-4 py-2 event-content">
-            <h3 class="text-lg font-bold mb-2">{{ event.title }}</h3>
+            <h3 class="text-lg font-bold mb-2">{{ event.eventName }}</h3>
             <p class="text-sm mb-2">{{ event.description }}</p>
-            <p class="text-sm mb-2"><b>Dátum:</b> {{ event.date }}</p>
-            <p class="text-sm mb-2"><b>Cím:</b> {{ event.address }}</p>
-            <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.start }} | <b>Vég:</b> {{ event.end }}</p>
+            <p class="text-sm mb-2"><b>Dátum:</b> {{ event.eventDate }}</p>
+            <p class="text-sm mb-2"><b>Cím:</b> {{ event.eventAddress }}</p>
+            <p class="text-sm mb-4"><b>Kezdés:</b> {{ event.eventStart }} | <b>Vég:</b> {{ event.eventEnd }}</p>
             <p class="text-sm mb-2"><b>Kategória:</b> {{ event.category }}</p>
           </div>
         </ng-template>
