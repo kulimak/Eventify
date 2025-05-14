@@ -8,7 +8,7 @@ POST  {{baseUrl}}/users/register
 Content-Type: application/json
 
 {
-    "username": "teszt1",
+    "username": "teszt",
     "email": "teszt@gmail.com",
     "password": "Teszt123",
     "gender": "férfi",
@@ -16,7 +16,7 @@ Content-Type: application/json
     "favCategories": "",
     "birthDate":"2000-01-01",
     "image":"",
-    "role": "user",
+    "role": "admin",
     "status": "active"
 }
 
@@ -54,6 +54,18 @@ Authorization: Bearer {{authToken}}
     "confirm": "Teszt321"
 }
 
+### update role status
+# @name rolestatus
+
+PATCH {{baseUrl}}/users/rolestatus/0d94aa94-e435-4f81-80a9-a6094b0b0713
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "role": "user",
+    "status":"active"
+}
+
 ### update email
 # @name email
 
@@ -83,7 +95,7 @@ Authorization: Bearer {{authToken}}
 
 ### Get one user
 # @name getAll
-GET {{baseUrl}}/users/get/22529ed5-902e-4f9d-ad0c-d821ab8dc227
+GET {{baseUrl}}/users/get/0d94aa94-e435-4f81-80a9-a6094b0b0713
 Authorization: Bearer {{authToken}}
 
 

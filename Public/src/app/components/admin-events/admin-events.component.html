@@ -12,6 +12,7 @@
     </svg>
       
 </div>
+
     <p-confirmDialog />
 
     <p-toast position="bottom-center" key="bc"    
@@ -24,37 +25,32 @@
 <div class="content">
 
     <div class="cimsor">
-        <h1>Felhasználók kezelése</h1>
+        <h1>Események kezelése</h1>
     </div>
+      
+      <div class="alsodiv">
 
-    <div class="felsodiv">   
-
-    </div>
-    <div class="alsodiv">
-       <p-table class="table" [value]="users" [paginator]="true" [rows]="6">
+        <p-table class="table" [value]="events" [paginator]="true" [rows]="6" [resizableColumns]="true" >
         <ng-template pTemplate="header">
             <tr>
-                <th>Felhasználó nev</th>
-                <th>Email cím</th>
-                <th>Szerepkör</th>
-                <th>Állapot</th>
+                <th>Esemény neve</th>
+                <th>Esemény szervezője</th>
+                <th>Esemény dátuma</th>
                 <th>Műveletek</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-user let-i="rowIndex">
+        <ng-template pTemplate="body" let-event let-i="rowIndex">
             <tr>
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.role}}</td>
-                <td>{{user.status}}</td>
-                <td >
-                  <p-button class="actionBtn" label="Módosítás" (onClick)="modUser(user.Id)" />
-
-                  <p-button class="actionBtn" label="Törlése" severity="danger" (onClick)="deleteUser($event, user.Id)" />
+                <td>{{ event.eventName }}</td>
+                <td>{{ event.organizer }}</td>
+                <td>{{ event.eventDate }}</td>
+                <td>
+                  <p-button label="Törlése" severity="danger" (onClick)="deleteEvent($event, event.eventId)" />
                 </td>
             </tr>
         </ng-template>
     </p-table>
-    </div> 
+  </div>
+      
 </div>
 <app-footer></app-footer>

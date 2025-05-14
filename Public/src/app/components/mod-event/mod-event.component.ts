@@ -146,8 +146,6 @@ export class ModEventComponent implements OnInit{
       }
     }
     
-    
-
     this.updateEvent.eventDate = moment(this.eventDateMoment).startOf('day').toISOString();
 
     formData.append('eventName', this.updateEvent.eventName);

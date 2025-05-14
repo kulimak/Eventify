@@ -102,6 +102,19 @@ exports.updateUsername = async(id ,username) => {
 
 }
 
+exports.updateRoleStatus = async(id, role, status) => {
+  const [affectedCount] = await User.update(
+    { role, status },
+    { where: { id } }
+  );
+
+  if (affectedCount === 0) {
+    throw new Error('A felhasználó nem található!');
+  }
+
+  return 'Felhasználó jogosultságai sikeresen módosítva!';
+};
+
 exports.getUserById = async(id) => {
     const user = await User.findOne({
         where: {id}
@@ -114,4 +127,10 @@ exports.getAllUsers = async() => {
     const user = await User.findAll();
 
     return user
+}
+
+exports.deleteUser = async(id) => {
+    const user = await User.destroy({where:{id}});
+
+    return 'Felhasználó törölve'
 }

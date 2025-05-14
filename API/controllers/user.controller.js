@@ -149,10 +149,30 @@ exports.username = async (req, res, next) => {
     }
 }
 
+exports.updateRoleStatus = async (req, res, next) => {
+  try {
+    const { role, status } = req.body;
+
+    if (!req.params.id) {
+      return res.status(400).json({ message: 'Hiányzó azonosító!' });
+    }
+
+    if (!role || !status) {
+      return res.status(400).json({ message: 'Hiányzó adatok!' });
+    }
+
+    const result = await userService.updateRoleStatus(req.params.id, role, status);
+
+    res.status(200).json({ success: true, message: result });
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.getUserById = async (req, res, next) => {
     try {
         if (!req.params.id) {
-            return res.status(400).json({ message: 'Hiányzó esemény azonosító!'});
+            return res.status(400).json({ message: 'Hiányzó felhasználó azonosító!'});
         }
     
         const user = await userService.getUserById(req.params.id);
@@ -169,6 +189,20 @@ exports.getAllUser = async (req, res, next) => {
         const users = await userService.getAllUsers();
             
         res.status(200).json({success:true, results: users});
+    } catch (error) {
+        next(error)
+    }
+}
+
+exports.deleteUser = async (req, res, next) => {
+        try {
+        if (!req.params.id) {
+            return res.status(400).json({ message: 'Hiányzó felhasználó azonosító!'});
+        }
+    
+        const user = await userService.deleteUser(req.params.id);
+            
+        res.status(200).json({success:true, results: user});
     } catch (error) {
         next(error)
     }

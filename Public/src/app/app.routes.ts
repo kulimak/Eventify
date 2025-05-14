@@ -17,6 +17,9 @@ import { FullScreenEventComponent } from './components/full-screen-event/full-sc
 import { ModEventComponent } from './components/mod-event/mod-event.component';
 import { EventRatingComponent } from './components/event-rating/event-rating.component';
 import { PassResetFinalComponent } from './components/pass-reset-final/pass-reset-final.component';
+import { ModUserComponent } from './components/mod-user/mod-user.component';
+import { AdminAuthGuard } from './guards/admin-auth.guard';
+import { AdminEventsComponent } from './components/admin-events/admin-events.component';
 
 
 export const routes: Routes = [
@@ -26,9 +29,6 @@ export const routes: Routes = [
    */
     {
         path: 'login', component: LoginComponent
-    },
-    {
-        path: 'adminpage', component: AdminPageComponent
     },
     {
         path: 'pass-reset-sikeres', component: PassResetSikeresComponent
@@ -83,16 +83,25 @@ export const routes: Routes = [
         path: 'profile', component: ProfileComponent, canActivate: [UserAuthGuard]
     },
     {
-        path: 'stats', component: StatsComponent, canActivate: [UserAuthGuard]
-    },
-    {
         path: 'event', component: FullScreenEventComponent, canActivate: [UserAuthGuard]
     },
     {
         path: 'modevent', component: ModEventComponent, canActivate: [UserAuthGuard]
     },
-        {
+     {
+        path: 'moduser', component: ModUserComponent, canActivate: [UserAuthGuard]
+    },
+    {
         path: 'ratingevent', component: EventRatingComponent, canActivate: [UserAuthGuard]
+    },
+    {
+        path: 'adminpage', component: AdminPageComponent, canActivate: [AdminAuthGuard]
+    },
+    {
+        path: 'adminevents', component: AdminEventsComponent, canActivate: [AdminAuthGuard]
+    },
+    {
+        path: 'stats', component: StatsComponent, canActivate: [AdminAuthGuard]
     },
 
     /**

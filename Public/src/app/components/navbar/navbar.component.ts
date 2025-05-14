@@ -48,7 +48,9 @@ export class NavbarComponent implements OnInit {
                   {
                     label: 'Felhasználók és események kezelése',
                     icon: 'pi pi-calendar',
-                    routerLink: '/adminpage',
+
+                    routerLink: '/adminevents',
+
                   },
                   {
                     label: 'Statisztika',

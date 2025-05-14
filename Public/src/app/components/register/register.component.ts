@@ -80,7 +80,7 @@ export class RegisterComponent {
 
   categories:any[] = []
 
-    selectedCategories!: Category[];
+  selectedCategories: any[]=[];
 
   ngOnInit() {
     this.api.categories('categories').subscribe((res: any) => {
@@ -113,7 +113,7 @@ export class RegisterComponent {
         else {
           try {
             this.selectedCategories.forEach(item => {
-              this.userReg.favCategories += ` ${item.name},`;
+              this.userReg.favCategories += ` ${item},`;
             });
           } catch (error) {}
           
@@ -128,6 +128,7 @@ export class RegisterComponent {
               this.showMessage('error', 'Hiba', 'Hiba a regisztráció során!');
             }
           });
+          console.log(this.userReg);
         }
       }
     }

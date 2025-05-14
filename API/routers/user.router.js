@@ -25,10 +25,16 @@ router.patch('/email/:id', authMiddleware, userController.email);
 //update username
 router.patch('/username/:id', authMiddleware, userController.username);
 
+//update role status
+router.patch('/rolestatus/:id', authMiddleware, userController.updateRoleStatus);
+
 //get user by id 
 router.get('/get/:id', authMiddleware, userController.getUserById);
 
 //get users
 router.get('/get', authMiddleware, userController.getAllUser);
+
+//delete users
+router.delete('/delete/:id', authMiddleware, userController.deleteUser);
 
 module.exports = router

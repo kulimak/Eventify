@@ -73,16 +73,28 @@ export class ApiService {
     return this.http.patch(`${this.server}/${table}/username/${id}`, { username }, this.tokenHeader());
   }
 
+//jogosultségok módosítása
+  rolestatus(table: string, id: string, data: object)
+  {
+    return this.http.patch(`${this.server}/${table}/rolestatus/${id}`, data, this.tokenHeader());
+  }
+
 //felhasználó lékérése azonosító alapján
   getUser(table: string, id:string)
   {
     return this.http.get(`${this.server}/${table}/get/${id}`, this.tokenHeader());
   }
 
-//felhasználó lékérése azonosító alapján
+//felhasználó lékérése
   getAllUsers(table: string)
   {
     return this.http.get(`${this.server}/${table}/get`, this.tokenHeader());
+  }
+
+//felhasználó törlése
+  deleteUser(table:string, id:string)
+  {
+    return this.http.delete(`${this.server}/${table}/delete/${id}`, this.tokenHeader());
   }
 
 //kép feltöltés
