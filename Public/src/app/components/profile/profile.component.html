@@ -186,7 +186,7 @@
             <tr>
                 <td>{{ i + 1 }}</td>
                 <td>{{ event.eventName }}</td>
-                <td>{{ event.organizer }}</td>
+                <td id="navigator" (click)="onWriterClick(event.userId)">{{ event.organizer }}</td>
                 <td>{{ event.eventDate }}</td>
                 <td>
                   <p-button label="Értékelés" severity="primary" class="actions" (onClick)="ertekeles(event.eventId)"/>

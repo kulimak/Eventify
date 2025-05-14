@@ -21,6 +21,7 @@ import { ModUserComponent } from './components/mod-user/mod-user.component';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { AdminEventsComponent } from './components/admin-events/admin-events.component';
 import { AdminCategoriesComponent } from './components/admin-categories/admin-categories.component';
+import { ProfileVisitComponent } from './components/profile-visit/profile-visit.component';
 
 
 export const routes: Routes = [
@@ -71,11 +72,9 @@ export const routes: Routes = [
     {
         path: 'fooldal', component: FooldalComponent, canActivate: [UserAuthGuard]
     },
-
     {
         path: 'newevent', component: NeweventComponent, canActivate: [UserAuthGuard]
     },
-
     {
         path: 'myevents', component: MyeventsComponent, canActivate: [UserAuthGuard]
     },
@@ -83,27 +82,39 @@ export const routes: Routes = [
     {
         path: 'profile', component: ProfileComponent, canActivate: [UserAuthGuard]
     },
+
+    {
+        path: 'visit', component: ProfileVisitComponent, canActivate: [UserAuthGuard]
+    },
+
     {
         path: 'event', component: FullScreenEventComponent, canActivate: [UserAuthGuard]
     },
+
     {
         path: 'modevent', component: ModEventComponent, canActivate: [UserAuthGuard]
     },
+
      {
         path: 'moduser', component: ModUserComponent, canActivate: [UserAuthGuard]
     },
+
     {
         path: 'ratingevent', component: EventRatingComponent, canActivate: [UserAuthGuard]
     },
+
     {
         path: 'adminpage', component: AdminPageComponent, canActivate: [AdminAuthGuard]
     },
+
     {
         path: 'adminevents', component: AdminEventsComponent, canActivate: [AdminAuthGuard]
     },
+
     {
         path: 'admincategories', component: AdminCategoriesComponent, canActivate: [AdminAuthGuard]
     },
+
     {
         path: 'stats', component: StatsComponent, canActivate: [AdminAuthGuard]
     },

@@ -1,0 +1,73 @@
+<div class="bg">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path
+      fill="#055459"
+      fill-opacity="1"
+      d="M0,224L30,234.7C60,245,120,267,180,245.3C240,224,300,160,360,128C420,96,480,96,540,80C600,64,660,32,720,58.7C780,85,840,171,900,176C960,181,1020,107,1080,101.3C1140,96,1200,160,1260,154.7C1320,149,1380,75,1410,37.3L1440,0L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"
+    ></path>
+  </svg>
+</div>
+
+  <p-toast position="bottom-center" key="bc"    
+    [showTransformOptions]="'translateX(-100%)'" 
+    [showTransitionOptions]="'500ms'" 
+    [hideTransitionOptions]="'750ms'" 
+    [showTransformOptions]="'translateY(100%)'"
+  />
+  <p-confirmDialog />
+
+<div class="container">
+
+  <div class="baloldal">
+
+    <div class="pfp">
+      <img [src]="profileDatas.image ? 'http://localhost:3000/uploads/' + profileDatas.image : 'http://localhost:3000/uploads/default.jpg'" alt="Profile picture" class="profile-img">
+    </div>
+
+    <div class="nev">
+      <h1>{{profileDatas.username}}</h1>
+    </div>
+
+    <div class="rating">
+      <span>Értékeld a felhasználot:</span>
+      <p-rating [(ngModel)]="userRating" [cancel]="false" />
+      <p-button class="sendBtn" icon="pi pi-send" size="small" />
+    </div>
+
+    <h2 class="separator">Névjegy</h2>
+    <hr>
+
+    <div class="action-buttons">
+      <span class="nevjegy"><b>Születési dátum:</b> {{profileDatas.birthDate}}</span>
+      <span class="nevjegy"><b>Email cím:</b> {{profileDatas.email}}</span>
+      <span class="nevjegy"><b>Kedvenc kategóriák:</b> {{profileDatas.category}}</span>
+    </div>
+  </div>
+
+  <div class="jobboldal">
+    <h2>{{profileDatas.username}} által létrehozott események</h2>
+    <p-table class="table" [value]="events" [paginator]="true" [rows]="6" [resizableColumns]="true" >
+        <ng-template pTemplate="header">
+            <tr>
+                <th>#</th>
+                <th>Név</th>
+                <th>Dátum</th>
+                <th>Kategória</th>
+                <th>Műveletek</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-event let-i="rowIndex">
+            <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ event.eventName }}</td>
+                <td>{{ event.eventDate }}</td>
+                <td>{{ event.category }}</td>
+                <td>
+                  <p-button label="Megnyitás" severity="primary" class="actions" (onClick)="openEvent(event.Id)"/>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -144,6 +144,13 @@ export class ApiService {
     return this.http.get(`${this.server}/${table}/get/${id}`, this.tokenHeader())
   }
 
+//Események lekérése userId alapján
+  getAllEventByUserId(table:string, userId:string)
+  {
+    return this.http.get(`${this.server}/${table}/getbyuser/${userId}`, this.tokenHeader())
+  }
+
+
 //Esmény törlése
   deleteEvent(table:string, id:string)
   {
