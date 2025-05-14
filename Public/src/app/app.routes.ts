@@ -20,6 +20,7 @@ import { PassResetFinalComponent } from './components/pass-reset-final/pass-rese
 import { ModUserComponent } from './components/mod-user/mod-user.component';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { AdminEventsComponent } from './components/admin-events/admin-events.component';
+import { AdminCategoriesComponent } from './components/admin-categories/admin-categories.component';
 
 
 export const routes: Routes = [
@@ -99,6 +100,9 @@ export const routes: Routes = [
     },
     {
         path: 'adminevents', component: AdminEventsComponent, canActivate: [AdminAuthGuard]
+    },
+    {
+        path: 'admincategories', component: AdminCategoriesComponent, canActivate: [AdminAuthGuard]
     },
     {
         path: 'stats', component: StatsComponent, canActivate: [AdminAuthGuard]
