@@ -55,6 +55,11 @@ export class NavbarComponent implements OnInit {
                     routerLink: '/adminevents',
                   },
                   {
+                    label: 'Kategóriák kezelése',
+                    icon: 'pi pi-tags',
+                    routerLink: '/admincategories',
+                  },
+                  {
                     label: 'Statisztika',
                     icon: 'pi pi-file',
                     routerLink: '/stats',

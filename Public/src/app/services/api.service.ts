@@ -112,6 +112,11 @@ export class ApiService {
     return this.http.get(`${this.server}/${table}/get`);
   }
 
+//új ketrgória feltöltése
+  newcategory(table: string, categoryName: string)
+  {
+    return this.http.post(`${this.server}/${table}/new`, { name: categoryName }, this.tokenHeader());
+  }
 
  //Események
 

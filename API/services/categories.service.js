@@ -5,3 +5,9 @@ exports.getAll = async () => {
 
     return categories
 }
+
+exports.newCategory = async (name) => {
+    const category = await Categories.create(name);
+
+    return category
+}
