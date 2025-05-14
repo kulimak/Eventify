@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FooterComponent } from '../footer/footer.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
@@ -13,11 +12,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { ToastModule } from 'primeng/toast';
+import { FooterComponent } from '../footer/footer.component';
 import { TableModule } from 'primeng/table';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @Component({
-  selector: 'app-admin-page',
+  selector: 'app-admin-events',
   standalone: true,
   imports: [  
     CommonModule,
@@ -31,13 +31,13 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     ToastModule,
     FooterComponent,
     TableModule,
-    ConfirmDialogModule
+    ConfirmDialogModule 
   ],
-  templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.scss'],
+  templateUrl: './admin-events.component.html',
+  styleUrl: './admin-events.component.scss',
   providers: [MessageService, ConfirmationService]
 })
-export class AdminPageComponent implements OnInit {
+export class AdminEventsComponent implements OnInit{
 
   constructor(
     private api: ApiService,
@@ -47,29 +47,50 @@ export class AdminPageComponent implements OnInit {
     private messageService: MessageService,
     private confirmationService: ConfirmationService
   ){}
-
-  users: any[] = [];
+  
+  events: any[] = [{
+    eventId: '',
+    eventName: '',
+    evenDate: '',
+    userId: '',
+    organizer: ''
+  }];
 
   ngOnInit(): void {
-   this.api.getAllUsers('users').subscribe((res:any)=>{
-      if (res.success) {
-        this.users.push(...res.results);
+  this.api.getEvents('event').subscribe((res: any) => {
+    if (res.success === true && Array.isArray(res.results)) {
+      this.events = res.results
+        .map((event: any) => ({
+          eventId: event.Id,
+          eventName: event.eventName,
+          userId: event.userId,
+          eventDate: event.eventDate
+        }));
+    }
+    //console.log(this.EventDatas)
+    this.getEventOrganizer()
+  });
+  }
+
+  getEventOrganizer() {
+  this.api.getAllUsers('users').subscribe((res: any) => {
+    if (res.success === true) {
+      this.events = this.events.map(event => {
+        const matchingUser = res.results.find((user: any) => user.Id === event.userId);
+        return {
+            ...event,
+            organizer: matchingUser ? matchingUser.username : 'Ismeretlen'
+          };
+        });
       }
+      //console.log(this.EventDatas);
     });
   }
 
-  modUser(id:string){
-    this.router.navigate(['/moduser'], {
-      queryParams: {
-        Id: id
-      }
-    });
-  }
-
-  deleteUser(event:Event, userId:string){
+  deleteEvent(event:Event, eventId:string){
     this.confirmationService.confirm({
       target: event.target as EventTarget,
-      message: 'Biztosan törlöd ezt a felhasználót?',
+      message: 'Biztosan törlöd ezt az eseményt?',
       header: 'Törlés megerősítése',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass:"p-button-danger p-button-text",
@@ -80,7 +101,7 @@ export class AdminPageComponent implements OnInit {
       rejectLabel: 'Mégsem',
 
       accept: () => {
-          this.api.deleteUser('users', userId).subscribe({
+          this.api.deleteEvent('event', eventId).subscribe({
             next: (res: any) => {
               this.showMessage('success', 'Siker', res.results);
 
@@ -95,12 +116,20 @@ export class AdminPageComponent implements OnInit {
           }); 
       },
       reject: () => {
-          this.showMessage('info', 'Törlés elutasítva', 'Elutasítottad a felhasználó törlését!');
+          this.showMessage('info', 'Törlés elutasítva', 'Elutasítottad az esemény törlését!');
       }
   });
   }
+  
+  modUser(id:string){
+    this.router.navigate(['/moduser'], {
+      queryParams: {
+        Id: id
+      }
+    });
+  }
 
-    showMessage(tipus:string, cim:string, tartalom:string){
-      this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });
-    }
+  showMessage(tipus:string, cim:string, tartalom:string){
+    this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });
+  }
 }

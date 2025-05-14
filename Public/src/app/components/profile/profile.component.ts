@@ -105,7 +105,7 @@ export class ProfileComponent implements OnInit{
             this.registrationId.push(registration.Id);
           }
         });
-        console.log(this.registeredEventId)
+        //console.log(this.registeredEventId)
         this.loadRegisteredEvents()
       }
     });
