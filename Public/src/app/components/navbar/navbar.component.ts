@@ -44,15 +44,13 @@ export class NavbarComponent implements OnInit {
             ...(this.auth.isAdmin()
               ? [
                   // Admin belépett
+
                   {
-                    label: 'Felhasználók kezelése',
-                    icon: 'pi pi-users',
-                    routerLink: '/adminpage',
-                  },
-                  {
-                    label: 'Események kezelése',
+                    label: 'Felhasználók és események kezelése',
                     icon: 'pi pi-calendar',
+
                     routerLink: '/adminevents',
+
                   },
                   {
                     label: 'Statisztika',
