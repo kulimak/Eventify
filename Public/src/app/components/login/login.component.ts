@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit{
       next: (res: any) => {
           this.showMessage('success', 'Siker', res.message);
           this.auth.SaveToken(res.user.token);
-          this.router.navigate(['/fooldal']);
+           this.router.navigate(['/fooldal']);
       },
       error: (err: any) => {
           this.showMessage('error', 'Hiba', err.error.message || 'Hibás email cím vagy jelszó!');

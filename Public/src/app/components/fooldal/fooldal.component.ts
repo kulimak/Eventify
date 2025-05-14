@@ -86,6 +86,10 @@ export class FooldalComponent implements OnInit{
   }];
 
   ngOnInit(): void {
+
+    if (this.auth.loggedUser().role == "admin") {
+      this.router.navigate(['/adminpage'])
+    }else{
   // Előbb töltsük be a kategóriákat
   this.api.categories('categories').subscribe((catRes: any) => {
     if (catRes.success === true) {
@@ -136,6 +140,7 @@ export class FooldalComponent implements OnInit{
       });
     }
   });
+  }
 }
 
   getPopularEvents(){
