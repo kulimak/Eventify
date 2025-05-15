@@ -1,13 +1,13 @@
-const eventRatingService = require('../services/eventRatings.service');
+const userRatingService = require('../services/userRatings.service');
 
 exports.newRating = async (req, res, next) => {
     try {
-        const { rating, opinion, userId, eventId} = req.body;
-        if (!rating || !opinion) {
+        const { rating, userId} = req.body;
+        if (!rating || !userId) {
             return res.status(400).json({ message: 'Hiányzó adatok!'});
         }
         else{
-            const event = await eventRatingService.newRating(rating, opinion, userId, eventId);
+            const event = await userRatingService.newRating(rating, userId);
             res.status(200).json({success: true, message: "Értékelés sikeresen hozzáadva!"});
         }
     } catch (error) {
@@ -22,7 +22,7 @@ exports.updateRating = async (req, res, next) => {
             return res.status(400).json({ message: 'Hiányzó értékelés azonosító!'});
         }
         else{
-            const event = await eventRatingService.updateRating(req.params.id, rating, opinion);
+            const event = await userRatingService.updateRating(req.params.id, rating, opinion);
             res.status(200).json({success: true, message: "Értékelés módosítása sikeres!"});
         }
     } catch (error) {
@@ -33,10 +33,10 @@ exports.updateRating = async (req, res, next) => {
 exports.delete = async (req, res, next) => {
     try {
         if (!req.params.id) {
-            return res.status(400).json({ message: 'Hiányzó esemény azonosító!'});
+            return res.status(400).json({ message: 'Hiányzó azonosító!'});
         }
 
-        const rating = await eventRatingService.deleteRating(req.params.id);
+        const rating = await userRatingService.deleteRating(req.params.id);
         
         res.status(200).json({success:true, results: rating});
 
@@ -47,7 +47,7 @@ exports.delete = async (req, res, next) => {
 
 exports.getAll = async (req, res, next) => {
     try {
-        const ratings = await eventRatingService.getAll();
+        const ratings = await userRatingService.getAll();
 
         res.status(200).json({success:true, results: ratings});
     } catch (error) {
@@ -58,10 +58,10 @@ exports.getAll = async (req, res, next) => {
 exports.getAllById = async (req, res, next) => {
     try {
         if (!req.params.id) {
-            return res.status(400).json({ message: 'Hiányzó esemény azonosító!'});
+            return res.status(400).json({ message: 'Hiányzó azonosító!'});
         }
 
-        const ratings = await eventRatingService.getAllById(req.params.id);
+        const ratings = await userRatingService.getAllById(req.params.id);
         
         res.status(200).json({success:true, results: ratings});
     } catch (error) {

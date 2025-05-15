@@ -10,8 +10,11 @@ router.use('/company', require('./company.router'));
 // Event routes
 router.use('/event', require('./event.router'));
 
-// Rating routes
+// evetn Rating routes
 router.use('/eventrating', require('./eventRating.router'));
+
+// user Rating routes
+router.use('/userrating', require('./userRating.router'));
 
 // Registrations routes
 router.use('/eventregistrations', require('./eventRegistrations.router'));

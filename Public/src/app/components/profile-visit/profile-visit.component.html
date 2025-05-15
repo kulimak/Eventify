@@ -30,14 +30,15 @@
 
     <div class="rating">
       <span>Értékeld a felhasználot:</span>
-      <p-rating [(ngModel)]="userRating" [cancel]="false" />
-      <p-button class="sendBtn" icon="pi pi-send" size="small" />
+      <p-rating [(ngModel)]="userRating.rating" [cancel]="false" />
+      <p-button (onClick)="rating()" class="sendBtn" icon="pi pi-send" size="small" />
     </div>
 
     <h2 class="separator">Névjegy</h2>
     <hr>
 
     <div class="action-buttons">
+      <span class="nevjegy"><b>Átlagos értékelés: </b> <p-rating [(ngModel)]="avgRating" [cancel]="false" [readonly]="true"/></span>
       <span class="nevjegy"><b>Születési dátum:</b> {{profileDatas.birthDate}}</span>
       <span class="nevjegy"><b>Email cím:</b> {{profileDatas.email}}</span>
       <span class="nevjegy"><b>Kedvenc kategóriák:</b> {{profileDatas.category}}</span>

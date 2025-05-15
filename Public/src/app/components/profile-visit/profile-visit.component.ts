@@ -69,7 +69,11 @@ export class ProfileVisitComponent implements OnInit{
     catId:''
   }]; 
 
-  userRating:number = 0;
+  userRating:any = {
+    rating:'',
+    userId:''
+  };
+  avgRating: number = 0;
   userId:string = '';
 
   ngOnInit(): void {
@@ -80,21 +84,38 @@ export class ProfileVisitComponent implements OnInit{
       if (this.userId) {
         this.getUser();
         this.getEvents();
+        this.getUserRating();
       }
     });
   }
 
-getEvents() {
-  this.api.getAllEventByUserId('event', this.userId).subscribe((res: any) => {
-    if (res.success && res.results) {
-      this.events = res.results.map((event: any) => ({
-        Id: event.Id,
-        eventName: event.eventName,
-        eventDate: event.eventDate,
-        catId: event.catId,
-        category: ''  // később töltjük fel
-      }));
-    }
+  getUserRating() {
+    this.api.getAllRatingById('userrating', this.userId).subscribe((res: any) => {
+      if (res.success && res.results && res.results.length > 0) {
+        const ratings = res.results
+          .map((r: any) => parseFloat(r.rating))
+          .filter((r: number) => !isNaN(r));
+
+        const sum = ratings.reduce((acc:any, val:any) => acc + val, 0);
+        this.avgRating = parseFloat((sum / ratings.length).toFixed(1));
+      } else {
+        this.avgRating = 0;
+      }
+    });
+  }
+
+  getEvents() {
+    this.api.getAllEventByUserId('event', this.userId).subscribe((res: any) => {
+      if (res.success && res.results) {
+        this.events = res.results.map((event: any) => ({
+          Id: event.Id,
+          eventName: event.eventName,
+          eventDate: event.eventDate,
+          catId: event.catId,
+          category: ''  // később töltjük fel
+        }
+    ));
+  }
 
     // Kategórianév hozzárendelése csak akkor, ha már megvannak a kategóriák
     if (this.categories.length > 0) {
@@ -160,11 +181,27 @@ getEvents() {
     console.log(this.categories, this.profileDatas.category);
   }
 
+  rating(){
+    this.userRating.userId=this.userId
+    this.api.newUserRating('userrating',this.userRating).subscribe((res:any)=>{
+      if (res.success == true) {
+        this.showMessage('success', 'Siker', res.message);
+      }
+      else{
+        this.showMessage('error', 'Hiba', 'Hiba az értékelés elküldése során!')
+      }
+    })
+  }
+
   openEvent(eventId:string){
     this.router.navigate(['/event'], {
       queryParams: {
         Id: eventId,
       }
     });
+  }
+
+  showMessage(tipus:string, cim:string, tartalom:string){
+      this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });
   }
 }

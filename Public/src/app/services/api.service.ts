@@ -184,7 +184,7 @@ export class ApiService {
   }
 
 
-  //Értékelések
+  //Esemény Értékelések
 
 //Új ésemény értékelés
   newEventRating(table:string, rating:object)
@@ -209,6 +209,34 @@ export class ApiService {
   {
     return this.http.delete(`${this.server}/${table}/delete/${id}`, this.tokenHeader())
   }
+
+
+    //Felhasználók Értékelések
+
+//Új ésemény értékelés
+  newUserRating(table:string, rating:object)
+  {
+    return this.http.post(`${this.server}/${table}/new`, rating, this.tokenHeader());
+  }
+
+//Összes lekérése eventId alapján
+  getAllUserRatingById(table:string, userId:string)
+  {
+    return this.http.get(`${this.server}/${table}/get/${userId}`, this.tokenHeader());
+  }
+
+//Összes értékelés lékérése
+  getAllUserRatings(table:string)
+  {
+    return this.http.get(`${this.server}/${table}/get`, this.tokenHeader());
+  }
+
+//Értékelés törlése
+  deleteUserRating(table:string, id:any)
+  {
+    return this.http.delete(`${this.server}/${table}/delete/${id}`, this.tokenHeader())
+  }
+
 
   //Email
 

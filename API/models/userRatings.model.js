@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/database');
-const { User } = require('../models/user.model')
+const { User } = require('./user.model')
 
 const UserRatings = db.define('UserRatings', {
     Id: {
@@ -15,7 +15,7 @@ const UserRatings = db.define('UserRatings', {
 });
 
 //Kapcsolatok
-UserRatings.hasMany(User, {foreignKey: 'userId'});
-User.belongsTo(UserRatings, {foreignKey: 'userId'});
+User.hasMany(UserRatings, { foreignKey: 'userId' });
+UserRatings.belongsTo(User, { foreignKey: 'userId' });
 
 module.exports = { UserRatings };
