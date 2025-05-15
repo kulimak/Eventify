@@ -87,6 +87,8 @@ export class ProfileComponent implements OnInit{
     registrationId: ''
   }];
 
+  avgRating: number = 0;
+
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
@@ -105,8 +107,24 @@ export class ProfileComponent implements OnInit{
             this.registrationId.push(registration.Id);
           }
         });
-        //console.log(this.registeredEventId)
         this.loadRegisteredEvents()
+      }
+    });
+
+    this.getUserRating(); // <<< EZ ITT LEGYEN
+  }
+
+  getUserRating() {
+    this.api.getAllRatingById('userrating', this.auth.loggedUser().id).subscribe((res: any) => {
+      if (res.success && res.results && res.results.length > 0) {
+        const ratings = res.results
+          .map((r: any) => parseFloat(r.rating))
+          .filter((r: number) => !isNaN(r));
+
+        const sum = ratings.reduce((acc: number, val: number) => acc + val, 0);
+        this.avgRating = parseFloat((sum / ratings.length).toFixed(1));
+      } else {
+        this.avgRating = 0;
       }
     });
   }
