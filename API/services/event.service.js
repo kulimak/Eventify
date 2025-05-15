@@ -35,6 +35,14 @@ exports.getOneById = async (id) => {
     return event
 }
 
+exports.getAllByUserId = async (userId) => {
+    const event = await Events.findAll({
+        where: {userId}
+    })
+
+    return event
+}
+
 exports.deleteEvent = async (id) => {
     const event = await Events.findByPk(id);
     

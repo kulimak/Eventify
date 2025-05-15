@@ -61,6 +61,20 @@ exports.getOneById = async (req, res, next) => {
     }
 }
 
+exports.getAllByUserId = async (req, res, next) => {
+    try {
+        if (!req.params.userId) {
+            return res.status(400).json({ message: 'Hiányzó felhaszáló azonosító!'});
+        }
+
+        const events = await eventService.getAllByUserId(req.params.userId);
+        
+        res.status(200).json({success:true, results: events});
+    } catch (error) {
+        next(error)
+    }
+}
+
 exports.delete = async (req, res, next) => {
     try {
         if (!req.params.id) {

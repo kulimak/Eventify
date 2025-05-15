@@ -280,6 +280,14 @@ getEventOrganizer() {
       this.visiblePass = true;
     }
 
+  onWriterClick(userId:string){
+    this.router.navigate(['/visit'], {
+      queryParams: {
+        Id: userId
+      }
+    });
+  }
+
   showMessage(tipus:string, cim:string, tartalom:string){
       this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });
     }

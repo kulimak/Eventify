@@ -13,6 +13,9 @@ router.get('/get', authMiddleware, eventController.getAll);
 //Get one Evenet by id
 router.get('/get/:id', authMiddleware, eventController.getOneById);
 
+//Get all Evenet by userId
+router.get('/getbyuser/:userId', authMiddleware, eventController.getAllByUserId);
+
 //Delete Event
 router.delete('/delete/:id', authMiddleware, eventController.delete);
 

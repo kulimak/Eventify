@@ -108,6 +108,7 @@ p-button {
 .action-buttons {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
 }
 
 .card {
@@ -152,6 +153,28 @@ p-button {
   justify-content: flex-end;
 }
 
-#navigator{
-  cursor: pointer;
+.rating{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 22px;
+}
+
+.sendBtn{
+  width: auto;
+}
+
+.separator{
+  align-self: flex-start;
+  margin-bottom: -5px;
+}
+
+hr{
+  width: 100%;
+}
+
+.nevjegy{
+  font-size: large;
+  margin: 10px;
 }

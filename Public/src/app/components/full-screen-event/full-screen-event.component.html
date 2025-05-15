@@ -82,11 +82,21 @@
 <p-confirmDialog />
   <div class="ratingBox">
     <div class="ratings" *ngFor="let rating of Ratings">
-      <p-card class="ratingCard" header="{{rating.writer}}">
+      <p-card class="ratingCard">
+        <!-- Formázott, kattintható fejléc -->
+        <ng-template pTemplate="header">
+          <div class="card-header">
+            <span class="clickable-header" (click)="onWriterClick(rating.userId)">
+              {{ rating.writer }}
+            </span>
+          </div>
+        </ng-template>
+
         <p-rating [(ngModel)]="rating.rating" [readonly]="true" [cancel]="false" />
-          <p class="opinionText">
-            {{rating.opinion}}
-          </p>
+
+        <p class="opinionText">
+          {{ rating.opinion }}
+        </p>
 
         <div class="deleteBtn">
           <p-button *ngIf="rating.userId === currentUserId"
