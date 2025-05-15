@@ -59,11 +59,11 @@ export class NavbarComponent implements OnInit {
                     icon: 'pi pi-tags',
                     routerLink: '/admincategories',
                   },
-                  {
+                  /*{
                     label: 'Statisztika',
                     icon: 'pi pi-file',
                     routerLink: '/stats',
-                  },
+                  },*/
                   {
                     label: 'Kijelentkezés',
                     icon: 'pi pi-sign-out',
