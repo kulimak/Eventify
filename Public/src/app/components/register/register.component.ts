@@ -128,7 +128,7 @@ export class RegisterComponent {
               this.showMessage('error', 'Hiba', 'Hiba a regisztráció során!');
             }
           });
-          console.log(this.userReg);
+          //console.log(this.userReg);
         }
       }
     }

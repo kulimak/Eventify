@@ -122,11 +122,10 @@ p{
 
 .div-footer{
     width: 90%;
-    padding: 1%;
+    //padding: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
+    justify-content: center;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -177,15 +176,27 @@ p-calendar{
     .content{
         display: flex;
         flex-direction: column;
-        height: auto;
+        height: 80%;
     }
 
     .bal-div{
-        height: 400px;
+        height: 300px;
     }
     
     .jobb-div{
         height: 400px;
+    }
+
+    .div-footer{
+        width: 90%;
+        //padding: 10px;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-self: flex-start;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
 

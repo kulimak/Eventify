@@ -156,12 +156,12 @@ export class ModEventComponent implements OnInit{
     formData.append('catId', this.updateEvent.catId);
     formData.append('description', this.updateEvent.description);
 
-   console.log(this.updateEvent)
+   //console.log(this.updateEvent)
     this.update(formData);
   }
 
   update(formData: FormData){
-    console.log(formData);
+    //console.log(formData);
 
     this.api.update('event', formData, this.eventId).subscribe({
       next: (res: any) => {

@@ -115,7 +115,7 @@ export class ModUserComponent implements OnInit{
         status: res.results.status,
         image: res.results.image,
       };
-      console.log(res.results)
+      //console.log(res.results)
       // Most már biztos, hogy van catId és kategóriák -> lehet keresni
       this.getCategoryNames();
     });

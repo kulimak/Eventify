@@ -120,14 +120,16 @@ export class AdminEventsComponent implements OnInit{
       }
   });
   }
-  
-  modUser(id:string){
-    this.router.navigate(['/moduser'], {
+
+openEvent(eventId: string){
+      this.router.navigate(['/event'], {
       queryParams: {
-        Id: id
+        Id: eventId
       }
     });
-  }
+}
+
+
 
   showMessage(tipus:string, cim:string, tartalom:string){
     this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });

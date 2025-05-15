@@ -50,7 +50,6 @@ export class PassResetSikeresComponent implements OnInit{
 
   ngOnInit() {
     this.code = this.codeService.getCode();
-    console.log(this.code)
   }
 
   checkingCodes(){

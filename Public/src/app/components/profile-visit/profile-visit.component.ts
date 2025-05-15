@@ -178,7 +178,7 @@ export class ProfileVisitComponent implements OnInit{
       console.log('Nincs találat');
     }
 
-    console.log(this.categories, this.profileDatas.category);
+    //console.log(this.categories, this.profileDatas.category);
   }
 
   rating(){

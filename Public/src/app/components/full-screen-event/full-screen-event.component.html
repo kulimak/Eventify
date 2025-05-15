@@ -73,7 +73,8 @@
         <p>{{event.category}}</p>
       </div>
       
-      <button class="jelentkezesBtn" (click)="registration()">Jelentkezés</button> 
+      <p-button *ngIf="isUser()" label="Jelentkezés" class="jelentkezesBtn" (onClick)="registration()"/>
+      <p-button *ngIf="isAdmin()" label="Vissza" (onClick)="backToList()"/>
     </p-card>
   </div>
 

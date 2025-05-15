@@ -41,7 +41,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-event let-i="rowIndex">
             <tr>
-                <td>{{ event.eventName }}</td>
+                <td  (click)="openEvent(event.eventId)" class="pointer">{{ event.eventName }}</td>
                 <td>{{ event.organizer }}</td>
                 <td>{{ event.eventDate }}</td>
                 <td>

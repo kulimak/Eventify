@@ -217,6 +217,18 @@ export class FullScreenEventComponent implements OnInit{
     });
   }
 
+  isUser():boolean{
+    return this.auth.isUser();
+  }
+
+  isAdmin():boolean{
+    return this.auth.isAdmin();
+  }
+
+  backToList(){
+    this.router.navigate(['/adminevents']);
+  }
+
   showMessage(tipus:string, cim:string, tartalom:string){
     this.messageService.add({ severity: tipus, summary: cim, detail: tartalom, key: 'bc', life: 3000 });
   }

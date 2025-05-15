@@ -97,7 +97,7 @@ export class NeweventComponent implements OnInit{
   }
 
   createEvent(formData: FormData){
-    console.log(formData);
+    //console.log(formData);
 
     this.api.newEvent('event', formData).subscribe({
       next: (res: any) => {
